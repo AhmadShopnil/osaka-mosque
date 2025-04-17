@@ -1,37 +1,37 @@
 'use client';
-import useGeoLocation from '@/helper/useGeoLocation';
+
 import { useEffect, useState } from 'react';
 
-
-export default function PrayerTimes() {
-  const location = useGeoLocation();
-  const [prayerTimes, setPrayerTimes] = useState<any>(null);
+export default function PrayerTimes({ city = 'Dhaka', country = 'Bangladesh' }) {
+  const [timings, setTimings] = useState(null);
 
   useEffect(() => {
-    if (location) {
-      const fetchPrayerTimes = async () => {
+    const fetchPrayerTimes = async () => {
+      try {
         const res = await fetch(
-          `https://api.aladhan.com/v1/timings?latitude=${location.lat}&longitude=${location.lon}&method=2`
+          `https://api.aladhan.com/v1/timingsByCity?city=${city}&country=${country}&method=2`
         );
         const data = await res.json();
-        setPrayerTimes(data.data.timings);
-      };
+        setTimings(data.data.timings);
+      } catch (error) {
+        console.error('Error fetching prayer times:', error);
+      }
+    };
 
-      fetchPrayerTimes();
-    }
-  }, [location]);
+    fetchPrayerTimes();
+  }, [city, country]);
 
-  if (!location || !prayerTimes) return <p>Loading prayer times...</p>;
+  if (!timings) return <p>Loading prayer times...</p>;
 
   return (
-    <div className="space-y-2">
-      <h2 className="text-xl font-semibold">Prayer Times-tests</h2>
-      <ul className="text-sm">
-        {Object.entries(prayerTimes).map(([name, time]) => (
-          <li key={name}>
-            <strong>{name}</strong>: {time}
-          </li>
-        ))}
+    <div className="bg-white rounded shadow p-4">
+      <h2 className="text-xl font-bold mb-2">Prayer Times for {city}</h2>
+      <ul className="space-y-1">
+        <li>🕋 Fajr: {timings.Fajr}</li>
+        <li>☀️ Dhuhr: {timings.Dhuhr}</li>
+        <li>🌤 Asr: {timings.Asr}</li>
+        <li>🌇 Maghrib: {timings.Maghrib}</li>
+        <li>🌃 Isha: {timings.Isha}</li>
       </ul>
     </div>
   );

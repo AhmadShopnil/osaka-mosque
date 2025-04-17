@@ -7,7 +7,7 @@ import IslamicScholarsSection from "@/components/home/IslamicScholarsSection";
 import OfferedServicesSection from "@/components/home/OfferedServicesSection";
 import PillarOfIslamSection from "@/components/home/PillerOfIslamSection";
 import PrayerTimeSection from "@/components/home/PrayerTimeSection";
-import PrayerTimes from "@/components/shared/PrayerTimes";
+
 
 export default function Home() {
   return (
