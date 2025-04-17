@@ -5,11 +5,14 @@ import { FaTwitter, FaFacebookF, FaLinkedinIn, FaGooglePlusG, FaEnvelope, FaPhon
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+import { formatPathname } from '@/helper/formatPathname';
 
 const HeroSection = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [eventDropdownOpen, setEventDropdownOpen] = useState(false);
-
+  const pathname = usePathname();
+  const prettyPath = formatPathname(pathname)
   return (
     <section className="relative w-full h-[400px]">
       {/* Social & Contact Section */}
@@ -106,7 +109,7 @@ const HeroSection = () => {
               </li>
               <li><a href="#">Our Courses</a></li>
               <li><a href="#">Our Services</a></li>
-              <li><a href="#">Contact</a></li>
+              <Link href="/contact">Contact</Link>
             </ul>
           </nav>
         </div>
@@ -149,8 +152,8 @@ const HeroSection = () => {
               <div className="bg-[#6a994e] my-4 w-[70px] h-[2px]"></div>
               <ol className="flex items-center gap-2 text-[16px] leading-[30px]">
                 <li><a href="/">Home</a></li>
-                <li>/</li>
-                <li><a href="#" className="text-[#6a994e]">Upcoming Event</a></li>
+             
+                <li><a href="#" className="text-[#6a994e]">{prettyPath}</a></li>
               </ol>
             </div>
           </div>

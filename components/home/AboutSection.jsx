@@ -2,7 +2,7 @@ import React from 'react';
 
 const AboutSection = () => {
     return (
-        <div className="pt-[100px] pb-[100px] ">
+        <div className="pt-[100px] pb-[100px] bg-white">
       <div className="container px-20  mx-auto ">
         <div className="flex flex-col md:flex-row lg:flex-row gap-8  justify-between">
           

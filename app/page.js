@@ -1,4 +1,4 @@
-import Footer from "@/components/common/footer/Footer";
+
 import AboutSection from "@/components/home/AboutSection";
 import BlogEventsSection from "@/components/home/BlogEventsSection";
 import DonationSection from "@/components/home/DonationSection";
@@ -21,7 +21,7 @@ export default function Home() {
       <BlogEventsSection />
       <DonationSection />
       <IslamicScholarsSection />
-      <Footer />
+     
       
     </div>
   );

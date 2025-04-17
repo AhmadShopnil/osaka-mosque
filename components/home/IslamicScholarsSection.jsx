@@ -23,7 +23,7 @@ const scholars = [
 
 export default function IslamicScholarsSection() {
   return (
-    <section className="pt-[100px] islamic-scholar">
+    <section className="pt-[100px] islamic-scholar pb-64">
       <div className="container">
         <div className="text-center mb-[40px]">
           <span className="text-[#00401A] text-[20px] mb-[5px]">Our Expert</span>

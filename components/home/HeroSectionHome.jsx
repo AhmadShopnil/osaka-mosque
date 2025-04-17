@@ -158,13 +158,13 @@ const HeroSectionHome = () => {
                 </ul>
               </li>
               <li>
-                <a href="#">Our Courses</a>
+                <Link href="#">Our Courses</Link>
               </li>
               <li>
-                <a href="#">Our Services</a>
+                <Link href="#">Our Services</Link>
               </li>
               <li>
-                <a href="#">Contact</a>
+                <Link href="/contact">Contact</Link>
               </li>
             </ul>
           </nav>
