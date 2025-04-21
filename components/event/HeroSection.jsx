@@ -107,8 +107,7 @@ const HeroSection = () => {
                   <li><Link href="#" className="block hover:bg-gray-200 px-4 py-2">Event Gallery</Link></li>
                 </ul>
               </li>
-              <li><a href="#">Our Courses</a></li>
-              <li><a href="#">Our Services</a></li>
+            
               <Link href="/contact">Contact</Link>
             </ul>
           </nav>
@@ -130,14 +129,13 @@ const HeroSection = () => {
             </button>
             {eventDropdownOpen && (
               <ul className="pl-4 mt-2 border-l-2 border-gray-300">
-                <li><a href="/event.html" className="block py-1">Upcoming Events</a></li>
-                <li><a href="#" className="block py-1">Past Events</a></li>
-                <li><a href="#" className="block py-1">Event Gallery</a></li>
+                <li><Link href="/events/upcoming" className="block py-1">Upcoming Events</Link></li>
+                <li><Link href="#" className="block py-1">Past Events</Link></li>
+                <li><Link href="#" className="block py-1">Event Gallery</Link></li>
               </ul>
             )}
           </li>
-          <li><a href="#" className="hover:text-red-500">Our Courses</a></li>
-          <li><a href="#" className="hover:text-red-500">Our Services</a></li>
+        
           <li><a href="#" className="hover:text-red-500">Contact</a></li>
         </ul>
       </div>
