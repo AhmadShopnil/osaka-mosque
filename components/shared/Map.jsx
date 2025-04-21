@@ -2,7 +2,7 @@
 
 const Map = () => {
   return (
-    <section className="bg-white py-12 px-4">
+    <section className="bg-white ">
       <div className="container mx-auto">
         <div className="w-full h-[400px] rounded-lg overflow-hidden shadow-md">
           <iframe

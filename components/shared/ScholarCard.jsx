@@ -14,7 +14,8 @@ const ScholarCard = ({scholar}) => {
           className="rounded-lg w-full h-auto"
         />
       </div>
-      <div className="absolute flex flex-col justify-center items-center gap-3 bg-white group-hover:bg-[#00401A] mx-auto mt-[-70px] ml-[5%] p-4 rounded-b-lg w-[100%] max-w-[90%] text-[#222] group-hover:text-white text-center duration-600">
+      <div className="absolute flex flex-col justify-center items-center gap-3 bg-white group-hover:bg-[#00401A] mx-auto mt-[-70px] ml-[5%] p-4 rounded-lg w-[100%] 
+      max-w-[90%] text-[#222] group-hover:text-white text-center duration-600 shadow-md">
         <div className="flex items-center text-black group-hover:text-black leading-[30px]">
           {scholar.socials.map((icon, i) => (
             <i key={i} className={`text-[14px] fab mx-[10px] fa-${icon}`}></i>

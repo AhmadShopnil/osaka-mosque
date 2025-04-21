@@ -1,5 +1,8 @@
 import HeroSection from "@/components/event/HeroSection";
+import Location from "@/components/shared/Location";
+import Map from "@/components/shared/Map";
 import ScholarCard from "@/components/shared/ScholarCard";
+import SmallCard from "@/components/shared/SmallCard";
 import Image from "next/image";
 import React from "react";
 import { FaClock, FaLocationDot } from "react-icons/fa6";
@@ -53,13 +56,36 @@ const scholars = [
   },
 ];
 
+const recentevents = [
+  {
+    title: "Importance of Prayer",
+    date: "Sept 09, 2023",
+    image: "/images/r1.jpg", // Replace with your actual paths
+  },
+  {
+    title: "Islamic Teachings",
+    date: "Jun 05, 2023",
+    image: "/images/r2.jpg",
+  },
+  {
+    title: "Video Tutorials",
+    date: "Mar 20, 2023",
+    image: "/images/r3.jpg",
+  },
+  {
+    title: "Give Zakat Online",
+    date: "Feb 25, 2023",
+    image: "/images/r4.jpg",
+  },
+];
+
 const Page = () => {
   return (
     <div className="pb-96">
       <HeroSection />
-      <div className="w-full px-2 sm:px-4 md:px-20  flex gap-8 mt-24">
-        {/* LEft side */}
-        <div className="w-4/5 min-h-screen">
+      <div className="w-full px-2 sm:px-4 md:px-20 flex flex-col md:flex-row gap-8 mt-24">
+        {/* Left side */}
+        <div className="w-full md:w-3/4 min-h-screen">
           {/* Image section  start*/}
           <div className="relative">
             <Image
@@ -125,10 +151,29 @@ const Page = () => {
             </div>
           </div>
 
+          {/* Location section start */}
+          <div className="mt-24 ">
+            <h1 className="text-3xl py-5">Location</h1>
+            <Map />
+          </div>
         </div>
 
         {/* right side */}
-        <div className="w-1/5 bg-red-300 min-h-screen"></div>
+        <div className="w-full md:w-1/4  min-h-screen ">
+          <div className=" bg-white  w-full max-w-md">
+            <h3 className="text-xl font-bold text-gray-800 mb-4">
+              Recent Events
+            </h3>
+            {recentevents.map((event, index) => (
+              <SmallCard
+                key={index}
+                image={event.image}
+                title={event.title}
+                date={event.date}
+              />
+            ))}
+          </div>
+        </div>
       </div>
     </div>
   );
