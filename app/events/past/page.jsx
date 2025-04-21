@@ -76,7 +76,7 @@ const Page = () => {
     };
 
   return (
-    <div>
+    <div className=" pb-64">
       <HeroSection />
       <section className="pt-[100px] bg-[#f8f9fa]">
         <div className="container mx-auto px-2 lg:px-8">
