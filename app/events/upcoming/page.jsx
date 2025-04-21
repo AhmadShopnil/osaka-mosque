@@ -18,7 +18,7 @@ const events = [
       location: 'Delhi, Jamia Mosque',
       time: '4:00 pm - 08:00 pm',
       description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit sed do eiusmod.',
-      link: 'blog-detail.html',
+      link: '1',
     },  {
       image: '/images/event-img1.jpg',
       day: '25',
@@ -31,7 +31,7 @@ const events = [
       location: 'Delhi, Jamia Mosque',
       time: '4:00 pm - 08:00 pm',
       description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit sed do eiusmod.',
-      link: 'blog-detail.html',
+      link: '2',
     },  {
       image: '/images/event-img1.jpg',
       day: '25',
@@ -44,7 +44,7 @@ const events = [
       location: 'Delhi, Jamia Mosque',
       time: '4:00 pm - 08:00 pm',
       description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit sed do eiusmod.',
-      link: 'blog-detail.html',
+      link: '3',
     },  {
       image: '/images/event-img1.jpg',
       day: '25',
@@ -57,7 +57,7 @@ const events = [
       location: 'Delhi, Jamia Mosque',
       time: '4:00 pm - 08:00 pm',
       description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit sed do eiusmod.',
-      link: 'blog-detail.html',
+      link: '4',
     },
   
   ];
@@ -82,7 +82,7 @@ const Page = () => {
         <div className="container mx-auto px-2 lg:px-8">
           <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3">
             {events.map((event, index) => (
-              <EventCard key={index} {...event} />
+              <EventCard key={index} {...event}  path="upcoming" />
             ))}
           </div>
         </div>
