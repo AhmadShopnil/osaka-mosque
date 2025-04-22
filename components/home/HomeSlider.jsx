@@ -1,16 +1,52 @@
-import React from 'react';
-import Image from "next/image";
+"use client";
+
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
-const slides = [1, 2, 3, 4];
+import "swiper/css";
+import "swiper/css/navigation";
+import { useRef } from "react";
+import Image from "next/image";
+
+const slides = [1, 2, 3]; // Your slides data
 
 const HomeSlider = () => {
-    return (
-        <div>
-            <Swiper modules={[Navigation]} navigation className="w-full h-full">
+  const prevRef = useRef(null);
+  const nextRef = useRef(null);
+
+  return (
+    <div className="relative ">
+      {/* Custom Arrow Buttons */}
+      <button
+        ref={prevRef}
+        className="hidden md:flex absolute z-10 top-1/2 left-0 -translate-y-1/2 
+  bg-[#00401A] text-white w-12 h-20 justify-center items-center rounded-r-[50px] 
+  shadow-md hover:bg-green-900 transition"
+      >
+        <span className="text-2xl">{"‹"}</span>
+      </button>
+
+      <button
+        ref={nextRef}
+        className="hidden md:flex absolute z-10 top-1/2 right-0 -translate-y-1/2 
+  bg-[#00401A] text-white w-12 h-20 justify-center items-center rounded-l-[50px] 
+  shadow-md hover:bg-green-900 transition"
+      >
+        <span className="text-2xl">{"›"}</span>
+      </button>
+
+      <Swiper
+        modules={[Navigation]}
+        onInit={(swiper) => {
+          swiper.params.navigation.prevEl = prevRef.current;
+          swiper.params.navigation.nextEl = nextRef.current;
+          swiper.navigation.init();
+          swiper.navigation.update();
+        }}
+        className="w-full h-full"
+      >
         {slides.map((_, i) => (
           <SwiperSlide key={i}>
-            <div className="relative w-full h-full">
+            <div className="relative w-full h-[700px]">
               <Image
                 src="/images/slide-4.jpg"
                 alt={`Slide ${i + 1}`}
@@ -58,8 +94,8 @@ const HomeSlider = () => {
           </SwiperSlide>
         ))}
       </Swiper>
-        </div>
-    );
-}
+    </div>
+  );
+};
 
 export default HomeSlider;

@@ -39,9 +39,10 @@ export default function Footer() {
           {/* Latest Blogs Section */}
           <div>
             <h2 className="text-xl font-bold mb-4">Latest Blogs</h2>
+            <div className="flex flex-col gap-3">
             <div className="flex gap-3">
               <img
-                src="/placeholder.svg?height=60&width=60"
+                src="/images/r1.jpg?height=60&width=60"
                 alt="Blog thumbnail"
                 className="w-[60px] h-[60px] object-cover rounded"
               />
@@ -52,6 +53,21 @@ export default function Footer() {
                   <span>March 25, 2025</span>
                 </p>
               </div>
+            </div>
+            < div className="flex gap-3">
+              <img
+                src="/images/r2.jpg?height=60&width=60"
+                alt="Blog thumbnail"
+                className="w-[60px] h-[60px] object-cover rounded"
+              />
+              <div>
+                <h3 className="font-medium">Help the poor people</h3>
+                <p className="text-sm text-gray-600 flex items-center gap-1 mt-1">
+                  <Calendar className="h-4 w-4" />
+                  <span>March 25, 2025</span>
+                </p>
+              </div>
+            </div>
             </div>
           </div>
 
@@ -129,7 +145,8 @@ export default function Footer() {
             />
             <button
               type="submit"
-              className="bg-orange-700 hover:bg-orange-800 text-white px-6 py-3 rounded-r-full transition-colors"
+              className="bg-orange-700 hover:bg-orange-800 text-white px-6 py-3
+               rounded-r-full transition-colors text-xs"
             >
               SIGN UP
             </button>

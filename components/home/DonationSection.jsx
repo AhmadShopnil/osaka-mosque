@@ -1,32 +1,32 @@
-'use client';
+"use client";
 
-import { useState } from 'react';
-import Image from 'next/image';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation } from 'swiper/modules';
-import 'swiper/css';
-import 'swiper/css/navigation';
+import { useState } from "react";
+import Image from "next/image";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/navigation";
 
 const DonationSection = () => {
   const slideImages = [
-    '/images/car-img1-2.jpg',
-    '/images/car-img1-2.jpg',
-    '/images/car-img1-2.jpg',
+    "/images/car-img1-2.jpg",
+    "/images/car-img1-2.jpg",
+    "/images/car-img1-2.jpg",
   ];
 
   const [selectedAmount, setSelectedAmount] = useState(null);
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    amount: '',
-    message: '',
+    name: "",
+    email: "",
+    amount: "",
+    message: "",
   });
 
   const handleAmountClick = (amount) => {
-    setSelectedAmount(amount !== 'Other' ? amount : '');
+    setSelectedAmount(amount !== "Other" ? amount : "");
     setFormData((prev) => ({
       ...prev,
-      amount: amount !== 'Other' ? amount.replace('$', '') : '',
+      amount: amount !== "Other" ? amount.replace("$", "") : "",
     }));
   };
 
@@ -43,7 +43,7 @@ const DonationSection = () => {
       selectedAmount: selectedAmount || formData.amount,
     };
 
-    console.log('🚀 Donation Data Ready to Send:', donationData);
+    console.log("🚀 Donation Data Ready to Send:", donationData);
 
     // TODO: Send `donationData` to your API endpoint here
   };
@@ -58,8 +58,19 @@ const DonationSection = () => {
 
         <div className="relative grid grid-cols-1 md:grid-cols-2 items-center gap-8 z-10">
           {/* Slider */}
-          <div className="w-full h-full">
-            <Swiper navigation={true} modules={[Navigation]} className="w-full h-full">
+          {/* Slider with Overlay */}
+          <div className="relative w-full h-full">
+            {/* Black Overlay */}
+            <div className="absolute inset-0 bg-black opacity-40 z-10 rounded-md" />
+
+            <Swiper
+              navigation={{
+                nextEl: ".swiper-button-next-custom",
+                prevEl: ".swiper-button-prev-custom",
+              }}
+              modules={[Navigation]}
+              className="w-full h-full relative z-0" // Ensure the slides stay below the overlay
+            >
               {slideImages.map((img, index) => (
                 <SwiperSlide key={index}>
                   <Image
@@ -72,30 +83,55 @@ const DonationSection = () => {
                 </SwiperSlide>
               ))}
             </Swiper>
+
+            {/* Custom Navigation Buttons */}
+            <button
+              className="swiper-button-prev-custom absolute top-1/2 left-0
+      z-20 bg-green-700 hover:bg-green-900 text-white p-4 w-10 h-14 rounded-r-3xl
+      shadow-md flex items-center justify-center transition-all font-semibold text-xl"
+            >
+              ❯
+            </button>
+            <button
+              className="swiper-button-next-custom absolute top-1/2 right-0
+      z-20 bg-green-700 hover:bg-green-900 text-white p-4 w-10 h-14 rounded-l-3xl 
+      shadow-md flex items-center justify-center transition-all text-xl"
+            >
+              ❮
+            </button>
           </div>
 
           {/* Donation Content */}
           <div className="py-10 text-white container mx-auto px-4">
             <form onSubmit={handleSubmit} className="flex flex-wrap gap-6">
               <div className="w-full mb-[20px]">
-                <span className="mb-[5px] text-[#00401A] text-[20px]">Give Food & Shelter To Poor</span>
+                <span className="mb-[5px] text-[#00401A] text-[20px]">
+                  Give Food & Shelter To Poor
+                </span>
                 <h2 className="mt-2  text-[#222] text-[38px] md:text-[42px] lg:text-[48px] leading-12">
                   Make Your Donation
                 </h2>
-                <Image className="mt-4" src="/images/pshape.png" alt="Design Shape" width={80} height={10} />
+                <Image
+                  className="mt-4"
+                  src="/images/pshape.png"
+                  alt="Design Shape"
+                  width={80}
+                  height={10}
+                />
               </div>
 
               {/* Donation Amount Buttons */}
               <div className="flex flex-wrap mb-[20px] gap-3">
-                {['$100', '$200', '$300', 'Other'].map((amount, i) => (
+                {["$100", "$200", "$300", "Other"].map((amount, i) => (
                   <button
                     key={i}
                     type="button"
                     onClick={() => handleAmountClick(amount)}
                     className={`hover:bg-[#00401A] px-[30px] py-[8px] border border-[#ddd] rounded-full font-[700] text-[18px] transition duration-300 ${
-                      selectedAmount === amount || (amount === 'Other' && !selectedAmount)
-                        ? 'bg-[#00401A] text-white'
-                        : 'text-[#222] hover:text-white'
+                      selectedAmount === amount ||
+                      (amount === "Other" && !selectedAmount)
+                        ? "bg-[#00401A] text-white"
+                        : "text-[#222] hover:text-white"
                     }`}
                   >
                     {amount}
@@ -149,10 +185,15 @@ const DonationSection = () => {
 
                 {/* Progress Bar */}
                 <div className="mt-[25px]">
-                  <h5 className="font-[400] text-[#222] text-[24px] mb-[20px]">Raised Funds for the Poor</h5>
+                  <h5 className="font-[400] text-[#222] text-[24px] mb-[20px]">
+                    Raised Funds for the Poor
+                  </h5>
                   <div className="w-full mb-[20px]">
                     <div className="relative h-[7px] bg-gray-200 rounded-full">
-                      <div className="h-[7px] bg-[#00401A] rounded-full" style={{ width: '70%' }} />
+                      <div
+                        className="h-[7px] bg-[#00401A] rounded-full"
+                        style={{ width: "70%" }}
+                      />
                       <div className="absolute left-[70%] -translate-x-1/2 -top-3 w-[35px] h-[35px] bg-[#00401A] text-white text-xs font-semibold flex items-center justify-center rounded-full shadow-md">
                         70%
                       </div>

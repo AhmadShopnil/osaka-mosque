@@ -10,7 +10,7 @@ export default function Contact() {
     <div>
       <HeroSection />
       <div className="">
-        <div className="pb-64 px-16 mx-auto">
+        <div className="pb-64 px-4 md:px-16 mx-auto">
           <ContactForm />
           <Map/>
           <ContactDetail />

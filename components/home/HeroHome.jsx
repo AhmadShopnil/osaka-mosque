@@ -7,6 +7,7 @@ import { Navigation } from "swiper/modules";
 import 'swiper/css';
 import Link from 'next/link';
 import Image from "next/image";
+import HomeSlider from './HomeSlider';
 
 
 const HeroHome = () => {
@@ -146,7 +147,8 @@ const HeroHome = () => {
 
       {/* Hero Slider */}
        {/* Hero Swiper */}
-       <Swiper modules={[Navigation]} navigation className="w-full h-full">
+       <HomeSlider/>
+       {/* <Swiper modules={[Navigation]} navigation className="w-full h-full">
         {slides.map((_, i) => (
           <SwiperSlide key={i}>
             <div className="relative w-full h-full">
@@ -196,7 +198,7 @@ const HeroHome = () => {
             </div>
           </SwiperSlide>
         ))}
-      </Swiper>
+      </Swiper> */}
     </section>
   );
 };
