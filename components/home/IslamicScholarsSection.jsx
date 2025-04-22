@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Link from 'next/link';
 
 const scholars = [
   {
@@ -64,12 +65,12 @@ export default function IslamicScholarsSection() {
         </div>
 
         <div className="flex justify-center items-center mt-8 lg:mt-32">
-          <a
-            href="#"
+          <Link
+            href="/scholars"
             className="bg-[#00401A] hover:bg-[#80b918] px-[45px] py-[14px] rounded-md font-bold text-[15px] text-white transition"
           >
             View More
-          </a>
+          </Link>
         </div>
       </div>
     </section>
