@@ -8,7 +8,7 @@ const OfferedServicesSection = () => {
       <div className="absolute right-0 -z-10 -bottom-25 opacity-[0.65]">
         <Image src="/images/bg-vector-3.png" alt="Background Vector" width={500} height={500} />
       </div>
-      <div className="container px-8 mx-auto">
+      <div className="container px-4 md:px-8 mx-auto">
         <div className="flex flex-col items-center mb-[40px]">
           <span className="pb-[5px] text-[#00401A] text-[20px]">Our Worldwide</span>
           <h2 className="font-semibold text-[#222] text-[28px] sm:text-[38px] md:text-[42px] lg:text-[48px]">Offered Services</h2>
@@ -20,7 +20,7 @@ const OfferedServicesSection = () => {
               <div className="text-center ">
                 {/* <i className="text-[#00401A] text-[80px] group-hover:text-[#80b918] 
                 transition fa-solid fa-book-open"></i> */}
-                 <FontAwesomeIcon icon={faBookOpen} className="text-[#00401A] w-[90px]
+                 <FontAwesomeIcon icon={faBookOpen} className="text-[#00401A] text-[70px]
                   group-hover:text-[#80b918] 
                 transition mx-auto " />
                 <h5 className="mt-4 font-[500] text-[#222] text-[18px]">

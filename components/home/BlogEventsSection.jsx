@@ -38,7 +38,7 @@ const BlogEventsSection = () => {
 
   return (
     <section className="bg-[#f8f9fa] py-[100px]">
-      <div className="container mx-auto px-8">
+      <div className="container mx-auto px-4 md:px-8">
         <div className="text-center mb-[40px]">
           <span className="text-[#00401A] text-[20px]">Latest News & Updates</span>
           <h2 className="font-semibold text-[#222] text-[28px] sm:text-[38px] md:text-[42px] lg:text-[48px]">
@@ -53,7 +53,7 @@ const BlogEventsSection = () => {
             {blogPosts.map((post) => (
             <div
             key={post.id}
-            className="group flex flex-col lg:flex-row bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300"
+            className="group flex flex-col lg:flex-row bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-shadow duration-300"
           >
             {/* Image Section */}
             <div className="relative w-full h-[200px] lg:w-1/2 lg:h-auto overflow-hidden">

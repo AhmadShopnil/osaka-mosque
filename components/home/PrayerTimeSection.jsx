@@ -41,11 +41,12 @@ const PrayerTimeSection = () => {
         {/* Header */}
         <div className="text-start mb-[40px]">
           <span className="text-[#00401A] pb-[5px] text-[20px]">Select Country & City For</span>
-          <h2 className="font-semibold text-[#222] text-[28px] sm:text-[38px] md:text-[42px] lg:text-[48px]">Prayer Time</h2>
+          <h2 className="font-semibold text-[#222] text-[28px]
+           sm:text-[38px] md:text-[42px] lg:text-[48px]">Prayer Time</h2>
           <Image className="mt-[20px]" src="/images/pshape.png" alt="Design Shape" width={100} height={50} />
         </div>
 
-        <div className="gap-8 grid grid-cols-1 md:grid-cols-5 lg:grid-cols-5 mt-8">
+        <div className="gap-8 grid grid-cols-1 md:grid-cols-5 lg:grid-cols-5 mt-3 md:mt-8">
           <div className="w-full md:col-span-2">
             <Image
               className="md:block hidden w-full h-full object-center object-cover"

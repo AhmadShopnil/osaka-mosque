@@ -79,7 +79,7 @@ const DonationSection = () => {
             <form onSubmit={handleSubmit} className="flex flex-wrap gap-6">
               <div className="w-full mb-[20px]">
                 <span className="mb-[5px] text-[#00401A] text-[20px]">Give Food & Shelter To Poor</span>
-                <h2 className="mt-2 font-semibold text-[#222] text-[28px] sm:text-[38px] md:text-[42px] lg:text-[48px]">
+                <h2 className="mt-2  text-[#222] text-[38px] md:text-[42px] lg:text-[48px] leading-12">
                   Make Your Donation
                 </h2>
                 <Image className="mt-4" src="/images/pshape.png" alt="Design Shape" width={80} height={10} />

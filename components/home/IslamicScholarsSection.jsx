@@ -24,10 +24,11 @@ const scholars = [
 export default function IslamicScholarsSection() {
   return (
     <section className="pt-[100px]  pb-64 ">
-      <div className="container mx-auto px-20">
+      <div className="container mx-auto px-4 md:px-20">
         <div className="text-center mb-[40px]">
           <span className="text-[#00401A] text-[20px] mb-[5px]">Our Expert</span>
-          <h2 className="mt-2 font-semibold text-[#222] text-[28px] sm:text-[38px] md:text-[42px] lg:text-[48px]">
+          <h2 className="mt-2 font-semibold text-[#222] text-[38px]
+           md:text-[42px] lg:text-[48px]">
             Islamic Scholars
           </h2>
           <Image width={160} height={20} className="mx-auto mt-4" src="/images/pshape.png" alt="Design Shape" />
