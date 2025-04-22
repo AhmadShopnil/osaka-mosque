@@ -1,4 +1,6 @@
 import Image from 'next/image';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {  faBookOpen } from "@fortawesome/free-solid-svg-icons";
 
 const OfferedServicesSection = () => {
   return (
@@ -15,8 +17,12 @@ const OfferedServicesSection = () => {
         <div className="gap-8 grid offer-grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 mb-[-30px]">
           {[...Array(4)].map((_, index) => (
             <div key={index} className="group flex flex-col items-center gap-4">
-              <div className="text-center">
-                <i className="text-[#00401A] text-[80px] group-hover:text-[#80b918] transition fa-solid fa-book-open"></i>
+              <div className="text-center ">
+                {/* <i className="text-[#00401A] text-[80px] group-hover:text-[#80b918] 
+                transition fa-solid fa-book-open"></i> */}
+                 <FontAwesomeIcon icon={faBookOpen} className="text-[#00401A] w-[90px]
+                  group-hover:text-[#80b918] 
+                transition mx-auto " />
                 <h5 className="mt-4 font-[500] text-[#222] text-[18px]">
                   <a href="#">Quran Learning</a>
                 </h5>
