@@ -4,7 +4,7 @@ import Image from 'next/image';
 import React from 'react';
 
 const BlogEventsSection = () => {
-  // Sample static data – can be fetched from API or CMS
+
   const blogPosts = [
     {
       id: 1,

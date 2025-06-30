@@ -39,8 +39,8 @@ const Page = () => {
   return (
     <div className="pb-64">
       <HeroSection />
-      <section className="pt-[100px] bg-[#f8f9fa]">
-        <div className="container mx-auto px-2 lg:px-8">
+      <section className="pt-[100px] bg-[#f8f9fa] ">
+        <div className="container mx-auto px-2 lg:px-8 pb-10">
           <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3">
             {scholars.map((scholar, index) => (
               <div key={index} className="group relative mb-20 lg:mb-0">
