@@ -1,41 +1,84 @@
-import axiosInstance from "./axiosInstance";
+import { BASE_URL } from "./baseUrl";
 
-// GET request helper
-export const fetcher = async (url, options = {}) => {
-  try {
-    const response = await axiosInstance.get(url, options);
-    return response.data;
-  } catch (error) {
-    throw error.response?.data || "Error fetching data";
-  }
-};
 
-// POST request helper
-export const poster = async (url, data, options = {}) => {
-  try {
-    const response = await axiosInstance.post(url, data, options);
-    return response.data;
-  } catch (error) {
-    throw error.response?.data || "Error posting data";
-  }
-};
 
-// PUT request helper
-export const putter = async (url, data, options = {}) => {
-  try {
-    const response = await axiosInstance.put(url, data, options);
-    return response.data;
-  } catch (error) {
-    throw error.response?.data || "Error updating data";
-  }
-};
+export async function getServices() {
+const API_URL =`${BASE_URL}/api/v1/posts?term_type=services`;
 
-// DELETE request helper
-export const deleter = async (url, options = {}) => {
-  try {
-    const response = await axiosInstance.delete(url, options);
-    return response.data;
-  } catch (error) {
-    throw error.response?.data || "Error deleting data";
-  }
-};
+  const res = await fetch(API_URL, {
+    next: { revalidate: 30 }, 
+  });
+  const json = await res.json();
+  return json?.data || [];
+}
+
+
+export async function getEvents() {
+const API_URL =`${BASE_URL}/api/v1/posts?term_type=events`;
+
+  const res = await fetch(API_URL, {
+    next: { revalidate: 30 }, 
+  });
+  const json = await res.json();
+  return json?.data || [];
+}
+
+
+export async function getSingleEvent(slug) {
+const API_URL =`${BASE_URL}/api/v1/post?slug=${slug}`;
+
+// console.log("from action slug", slug)
+  const res = await fetch(API_URL, {
+    next: { revalidate: 30 }, 
+  });
+  const json = await res.json();
+// console.log("from action", json)
+
+  return json?.data || {};
+}
+
+
+export async function getSliders() {
+const API_URL =`${BASE_URL}/api/v1/posts?term_type=slider`;
+
+  const res = await fetch(API_URL, {
+    next: { revalidate: 30 }, 
+  });
+  const json = await res.json();
+  return json?.data || [];
+}
+
+export async function getSingleSlider(slug) {
+const API_URL =`${BASE_URL}/api/v1/post?slug=${slug}`;
+
+// console.log("from action slug", slug)
+  const res = await fetch(API_URL, {
+    next: { revalidate: 30 }, 
+  });
+  const json = await res.json();
+// console.log("from action", json)
+
+  return json?.data || {};
+}
+
+
+export async function getScholars() {
+const API_URL =`${BASE_URL}/api/v1/posts?term_type=scholars`;
+
+  const res = await fetch(API_URL, {
+    next: { revalidate: 30 }, 
+  });
+  const json = await res.json();
+  return json?.data || [];
+}
+
+
+export async function getBlogs() {
+const API_URL =`${BASE_URL}/api/v1/posts?term_type=post`;
+
+  const res = await fetch(API_URL, {
+    next: { revalidate: 30 }, 
+  });
+  const json = await res.json();
+  return json?.data || [];
+}

@@ -6,9 +6,14 @@ import HeroSection from "@/components/event/HeroSection";
 import Map from "@/components/shared/Map";
 
 export default function Contact() {
+
+const heroData={
+  title:"Contact Us"
+}
+
   return (
     <div>
-      <HeroSection />
+      <HeroSection heroData={heroData} />
       <div className="">
         <div className="pb-64 px-4 md:px-16 mx-auto">
           <ContactForm />

@@ -1,15 +1,15 @@
 "use client";
-
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import { useRef } from "react";
 import Image from "next/image";
+import Link from "next/link";
 
 const slides = [1, 2, 3]; // Your slides data
 
-const HomeSlider = () => {
+const HomeSlider = ({sliders}) => {
   const prevRef = useRef(null);
   const nextRef = useRef(null);
 
@@ -44,11 +44,11 @@ const HomeSlider = () => {
         }}
         className="w-full h-full"
       >
-        {slides.map((_, i) => (
+        {sliders.map((slide, i) => (
           <SwiperSlide key={i}>
             <div className="relative w-full h-[700px]">
               <Image
-                src="/images/slide-4.jpg"
+                src={slide?.featured_image}
                 alt={`Slide ${i + 1}`}
                 layout="fill"
                 objectFit="cover"
@@ -77,17 +77,17 @@ const HomeSlider = () => {
                     height={15}
                   />
                   <h3 className="text-[35px] mt-1">
-                    He Raised the Sky and Set Up the Balance
+                    {slide?.name}
                   </h3>
                   <span className="font-semibold text-[18px] mt-4">
-                    (Surah Al-Rahmaan Verse 7)
+                    {slide?.sub_title}
                   </span>
-                  <a
-                    href="#"
+                  <Link
+                    href={`/quote/${slide?.slug}`}
                     className="bg-[#00401A] hover:bg-[#80b918] mt-6 px-10 py-3 rounded-md font-bold text-sm transition"
                   >
                     Learn More
-                  </a>
+                  </Link>
                 </div>
               </div>
             </div>

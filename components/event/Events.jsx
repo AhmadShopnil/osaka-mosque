@@ -1,13 +1,15 @@
 'use client';
 
-import EventCard from "@/components/event/EventCard";
-import HeroSection from "@/components/event/HeroSection";
-import Pagination from "@/components/shared/Pagination";
+
 import React, { useState } from "react";
+import HeroSection from "./HeroSection";
+
+import Pagination from "../shared/Pagination";
+import EventCard from "./EventCard";
 
 const events = [
     {
-      image: 'images/event-img1.jpg',
+      image: '/images/event-img1.jpg',
       day: '25',
       month: 'Aug',
       days: 85,
@@ -18,9 +20,9 @@ const events = [
       location: 'Delhi, Jamia Mosque',
       time: '4:00 pm - 08:00 pm',
       description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit sed do eiusmod.',
-      link: 'blog-detail.html',
+      link: '1',
     },  {
-      image: 'images/event-img1.jpg',
+      image: '/images/event-img1.jpg',
       day: '25',
       month: 'Aug',
       days: 85,
@@ -31,9 +33,9 @@ const events = [
       location: 'Delhi, Jamia Mosque',
       time: '4:00 pm - 08:00 pm',
       description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit sed do eiusmod.',
-      link: 'blog-detail.html',
+      link: '2',
     },  {
-      image: 'images/event-img1.jpg',
+      image: '/images/event-img1.jpg',
       day: '25',
       month: 'Aug',
       days: 85,
@@ -44,9 +46,9 @@ const events = [
       location: 'Delhi, Jamia Mosque',
       time: '4:00 pm - 08:00 pm',
       description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit sed do eiusmod.',
-      link: 'blog-detail.html',
+      link: '3',
     },  {
-      image: 'images/event-img1.jpg',
+      image: '/images/event-img1.jpg',
       day: '25',
       month: 'Aug',
       days: 85,
@@ -57,7 +59,7 @@ const events = [
       location: 'Delhi, Jamia Mosque',
       time: '4:00 pm - 08:00 pm',
       description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit sed do eiusmod.',
-      link: 'blog-detail.html',
+      link: '4',
     },
   
   ];
@@ -65,7 +67,7 @@ const events = [
 
 
 
-const Page = () => {
+const Events = ({events}) => {
 
     const [currentPage, setCurrentPage] = useState(1);
     const totalPages = 10;
@@ -75,14 +77,21 @@ const Page = () => {
       // Optional: trigger fetch or router navigation
     };
 
+
+const heroData={
+  title:"Events"
+}
+
+
+
   return (
-    <div>
-      <HeroSection />
-      <section className="pt-[100px] bg-[#f8f9fa]">
+    <div className=" pb-64">
+      <HeroSection heroData={heroData} />
+      <section className="pt-4 sm:pt-10 md:pt-[100px] bg-[#f8f9fa]">
         <div className="container mx-auto px-2 lg:px-8">
           <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3">
             {events.map((event, index) => (
-              <EventCard key={index} {...event} />
+              <EventCard key={index} event={event}  path="upcoming" />
             ))}
           </div>
         </div>
@@ -96,4 +105,4 @@ const Page = () => {
   );
 };
 
-export default Page;
+export default Events;

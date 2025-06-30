@@ -1,4 +1,4 @@
-
+"use client"
 import React, { useState } from 'react';
 import { FaTwitter, FaFacebookF, FaLinkedinIn, FaGooglePlusG, FaEnvelope, FaPhoneAlt, FaListUl, FaTimes, FaSearch } from 'react-icons/fa';
 import 'swiper/css';
@@ -6,11 +6,8 @@ import Link from 'next/link';
 
 
 const Header = () => {
-
  const [sidebarOpen, setSidebarOpen] = useState(false);
   const [eventDropdownOpen, setEventDropdownOpen] = useState(false);
- 
-  const slides = [1, 2, 3, 4];
 
 
   return (

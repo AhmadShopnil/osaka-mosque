@@ -1,13 +1,14 @@
-import HeroSection from "@/components/event/HeroSection";
-import Location from "@/components/shared/Location";
-import Map from "@/components/shared/Map";
-import ScholarCard from "@/components/shared/ScholarCard";
-import SmallCard from "@/components/shared/SmallCard";
 import Image from "next/image";
 import React from "react";
 import { FaClock, FaLocationDot } from "react-icons/fa6";
+import HeroSection from "./HeroSection";
+import ScholarCard from "../shared/ScholarCard";
+import Map from "../shared/Map";
+import SmallCard from "../shared/SmallCard";
+import { getMetaValueFromExtra_Fields, getMetaValueFromExtraFields } from "@/helper/metaHelpers";
+import { getCountdownTime } from "@/helper/getCountdownTime";
 
-const event = {
+const event2 = {
   image: "/images/event-img1.jpg",
   day: "25",
   month: "Aug",
@@ -15,7 +16,7 @@ const event = {
   hours: 32,
   minutes: 54,
   seconds: 33,
-  title: "Importance of Namaz?",
+  title: "Importance of Namaz",
   location: "Delhi, Jamia Mosque",
   time: "4:00 pm - 08:00 pm",
   description: `Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
@@ -79,10 +80,33 @@ const recentevents = [
   },
 ];
 
-const Page = () => {
+const SingleEvents = ({ event }) => {
+  const { featured_image, name, description, slug } = event;
+
+  const day = getMetaValueFromExtra_Fields(event, "day");
+  const month = getMetaValueFromExtra_Fields(event, "month");
+  const time = getMetaValueFromExtra_Fields(event, "time");
+  const location = getMetaValueFromExtra_Fields(event, "location");
+  const year = getMetaValueFromExtra_Fields(event, "year");
+  const countdown = getCountdownTime({ day, month, year, time });
+  const countdownItems = [
+    { label: "Days", value: countdown.days },
+    { label: "Hours", value: countdown.hours },
+    { label: "Minutes", value: countdown.minutes },
+    { label: "Seconds", value: countdown.seconds },
+  ];
+
+  const heroData = {
+    title: name || "Events",
+  };
+
+//  console.log("event", event)
+//   console.log("location", location)
+//    console.log("time", time)
+
   return (
     <div className="pb-96">
-      <HeroSection />
+      <HeroSection heroData={heroData} />
       <div className="w-full px-2 sm:px-4 md:px-20 flex flex-col md:flex-row gap-8 mt-24">
         {/* Left side */}
         <div className="w-full md:w-3/4 min-h-screen">
@@ -99,20 +123,15 @@ const Page = () => {
             <div className="top-0 left-0 z-[77] py-[8px] px-[5px] leading-[22px] absolute w-[60px] text-white">
               <div className="z-[-33] absolute inset-0 bg-[#53765B] opacity-60" />
               <span className="flex flex-col items-center font-[500] text-[22px]">
-                {"25"}
-                <i className="text-[16px] block font-[400]">{"Jan"}</i>
+                {day}
+                <i className="text-[16px] block font-[400]">{month}</i>
               </span>
             </div>
 
             {/* event coundown */}
             <div className="absolute right-0 bottom-0 bg-[#53765B]">
               <ul className="flex justify-evenly gap-4 py-3 pl-4">
-                {[
-                  { label: "Days", value: 20 },
-                  { label: "Hours", value: 10 },
-                  { label: "Minutes", value: 24 },
-                  { label: "Seconds", value: 26 },
-                ].map((item, idx) => (
+                {countdownItems?.map((item, idx) => (
                   <li
                     key={idx}
                     className=" border-r border-white  pr-3 flex items-center"
@@ -132,15 +151,20 @@ const Page = () => {
           <div className="flex items-start lg:items-center sm:flex-col lg:flex-row gap-3 text-[#666] text-[14px] py-5">
             <span>
               <FaLocationDot className="mr-2 text-[#00401A] inline" />
-              {event?.location}
+              {location}
             </span>
             <span>
               <FaClock className="mr-2 text-[#00401A] inline" />
-              {event?.time}
+              {time}
             </span>
           </div>
-          <p className="text-[#666] text-[16px]">{event?.description}</p>
-
+          {/* <p className="text-[#666] text-[16px]">{description}</p> */}
+          <div
+            className="text-[#666] text-[16px]"
+            dangerouslySetInnerHTML={{
+              __html: description,
+            }}
+          />
           {/* Speakers section start */}
           <div>
             <h1 className="text-3xl py-5">Speakers</h1>
@@ -179,4 +203,4 @@ const Page = () => {
   );
 };
 
-export default Page;
+export default SingleEvents;

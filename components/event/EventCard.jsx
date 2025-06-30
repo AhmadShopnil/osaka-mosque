@@ -1,28 +1,33 @@
+import { getCountdownTime } from "@/helper/getCountdownTime";
+import { getMetaValueFromExtraFields } from "@/helper/metaHelpers";
 import Link from "next/link";
 import { FaClock, FaLocationDot } from "react-icons/fa6";
 
-const EventCard = (
-  {
-    image,
-    day,
-    month,
-    days,
-    hours,
-    minutes,
-    seconds,
-    title,
-    location,
-    time,
-    description,
-    link,
-    path
-  }
-  
-) => {
+const EventCard = ({ event }) => {
+  const { featured_image, name, description, slug } = event;
+
+  const day = getMetaValueFromExtraFields(event, "day");
+  const month = getMetaValueFromExtraFields(event, "month");
+  const time = getMetaValueFromExtraFields(event, "time");
+  const location = getMetaValueFromExtraFields(event, "location");
+  const year = getMetaValueFromExtraFields(event, "year");
+
+  const countdown = getCountdownTime({ day, month, year, time });
+  const countdownItems = [
+    { label: "Days", value: countdown.days },
+    { label: "Hours", value: countdown.hours },
+    { label: "Minutes", value: countdown.minutes },
+    { label: "Seconds", value: countdown.seconds },
+  ];
+
   return (
     <div className="bg-white">
       <div className="relative">
-        <img className="w-full h-full object-cover" src={image} alt={title} />
+        <img
+          className="w-full h-full object-cover"
+          src={`/images/event-img1.jpg`}
+          alt={name}
+        />
         <div className="top-0 left-0 z-[77] py-[8px] px-[5px] leading-[22px] absolute w-[60px] text-white">
           <div className="z-[-33] absolute inset-0 bg-[#00401A] opacity-60" />
           <span className="flex flex-col items-center font-[500] text-[22px]">
@@ -34,12 +39,7 @@ const EventCard = (
         <div className="right-0 bottom-0 left-0 absolute">
           <div className="absolute inset-0 bg-[#00401A] opacity-60" />
           <ul className="flex justify-evenly gap-4 p-4 border-r">
-            {[
-              { label: "Days", value: days },
-              { label: "Hours", value: hours },
-              { label: "Minutes", value: minutes },
-              { label: "Seconds", value: seconds },
-            ].map((item, idx) => (
+            {countdownItems.map((item, idx) => (
               <li key={idx} className="relative flex items-center">
                 <div className="text-center">
                   <span className="text-white">{item.value}</span>
@@ -58,12 +58,12 @@ const EventCard = (
 
       <div className="flex flex-col gap-3 p-[25px]">
         <h5>
-          <a
+          <Link
             className="text-[#222] text-[24px] hover:text-[#00401A] font-[500] transition"
-            href={link}
+            href={`#`}
           >
-            {title}
-          </a>
+            {name}
+          </Link>
         </h5>
         <ul className="flex items-start lg:items-center sm:flex-col lg:flex-row gap-3 text-[#666] text-[12px]">
           <li>
@@ -75,9 +75,17 @@ const EventCard = (
             {time}
           </li>
         </ul>
-        <p>{description}</p>
+
+        <div
+          className=""
+          dangerouslySetInnerHTML={{
+            __html: `${description.slice(0, 100)}...`,
+          }}
+        />
+
+        {/* <p>{description}</p> */}
         <Link
-          href={`${path}/${link}`}
+          href={`/events/${slug}`}
           className="font-[400] text-[#555] text-[15px] hover:text-[#00401A]"
         >
           Event Details
