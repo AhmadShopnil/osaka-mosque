@@ -5,36 +5,13 @@ import HeroSection from "./HeroSection";
 import ScholarCard from "../shared/ScholarCard";
 import Map from "../shared/Map";
 import SmallCard from "../shared/SmallCard";
-import { getMetaValueFromExtra_Fields, getMetaValueFromExtraFields } from "@/helper/metaHelpers";
+import {
+  getMetaValueFromExtra_Fields,
+  getMetaValueFromExtraFields,
+} from "@/helper/metaHelpers";
 import { getCountdownTime } from "@/helper/getCountdownTime";
-
-const event2 = {
-  image: "/images/event-img1.jpg",
-  day: "25",
-  month: "Aug",
-  days: 85,
-  hours: 32,
-  minutes: 54,
-  seconds: 33,
-  title: "Importance of Namaz",
-  location: "Delhi, Jamia Mosque",
-  time: "4:00 pm - 08:00 pm",
-  description: `Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
-   labore et dolore magna aliqua. Ut enim ad minim veniam,
-    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-     Duis aute irure dolor in reprehenderit in voluptate.
-
-
-   Lorem ipsum dolor sit amet, consectetur adipisicing elit,
- sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
- Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-  Duis aute irure dolor in reprehenderit in voluptate.exercitation ullamco laboris nisi ut aliquip ex ea 
-  commodo consequat. 
-  Duis aute irure dolor in reprehenderit in voluptate.Excepteur sint occaecat cupidatat non proident, 
-  sunt in culpa qui officia deserunt mollit anim id estsunt in culpa qui officia deserunt mollit anim 
-  id est laborum.`,
-  link: "1",
-};
+import { getEvents } from "@/helper/actions";
+import Link from "next/link";
 
 const scholars = [
   {
@@ -57,31 +34,8 @@ const scholars = [
   },
 ];
 
-const recentevents = [
-  {
-    title: "Importance of Prayer",
-    date: "Sept 09, 2023",
-    image: "/images/r1.jpg", // Replace with your actual paths
-  },
-  {
-    title: "Islamic Teachings",
-    date: "Jun 05, 2023",
-    image: "/images/r2.jpg",
-  },
-  {
-    title: "Video Tutorials",
-    date: "Mar 20, 2023",
-    image: "/images/r3.jpg",
-  },
-  {
-    title: "Give Zakat Online",
-    date: "Feb 25, 2023",
-    image: "/images/r4.jpg",
-  },
-];
-
-const SingleEvents = ({ event }) => {
-  const { featured_image, name, description, slug } = event;
+const SingleEvents = async ({ event }) => {
+  const events = await getEvents();
 
   const day = getMetaValueFromExtra_Fields(event, "day");
   const month = getMetaValueFromExtra_Fields(event, "month");
@@ -97,17 +51,17 @@ const SingleEvents = ({ event }) => {
   ];
 
   const heroData = {
-    title: name || "Events",
+    title: event?.name || "Events",
   };
 
-//  console.log("event", event)
-//   console.log("location", location)
-//    console.log("time", time)
+  //  console.log("event", event)
+  //   console.log("location", location)
+  //    console.log("time", time)
 
   return (
     <div className="pb-96">
       <HeroSection heroData={heroData} />
-      <div className="w-full px-2 sm:px-4 md:px-20 flex flex-col md:flex-row gap-8 mt-24">
+      <div className="w-full px-2 sm:px-4 md:px-20 flex flex-col md:flex-row gap-8 mt-14">
         {/* Left side */}
         <div className="w-full md:w-3/4 min-h-screen">
           {/* Image section  start*/}
@@ -162,7 +116,7 @@ const SingleEvents = ({ event }) => {
           <div
             className="text-[#666] text-[16px]"
             dangerouslySetInnerHTML={{
-              __html: description,
+              __html: event?.description,
             }}
           />
           {/* Speakers section start */}
@@ -188,13 +142,10 @@ const SingleEvents = ({ event }) => {
             <h3 className="text-xl font-bold text-gray-800 mb-4">
               Recent Events
             </h3>
-            {recentevents.map((event, index) => (
-              <SmallCard
-                key={index}
-                image={event.image}
-                title={event.title}
-                date={event.date}
-              />
+            {events?.slice(0, 4).map((event, index) => (
+              <Link key={index} href={`/event/${event?.slug}`}>
+                <SmallCard event={event} />
+              </Link>
             ))}
           </div>
         </div>

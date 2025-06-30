@@ -3,7 +3,6 @@ import AboutSection from "@/components/home/AboutSection";
 import BlogEventsSection from "@/components/home/BlogEventsSection";
 import DonationSection from "@/components/home/DonationSection";
 import HeroHome from "@/components/home/HeroHome";
-
 import IslamicScholarsSection from "@/components/home/IslamicScholarsSection";
 import OfferedServicesSection from "@/components/home/OfferedServicesSection";
 import PillarOfIslamSection from "@/components/home/PillerOfIslamSection";

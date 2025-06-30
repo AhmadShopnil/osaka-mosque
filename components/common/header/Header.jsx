@@ -38,6 +38,9 @@ const Header = ({ settings }) => {
 
   const logo = getMediaLinkByMetaName(settings, "site_logoimg_id");
 
+  // console.log("logo", logo)
+  // console.log("logo", settings)
+
   return (
     <div className=" ">
       {/* Social & Contact Section */}
@@ -124,7 +127,7 @@ const Header = ({ settings }) => {
               <Image
                 src={`https://admin.techlearnopedia.com${logo}`}
                 alt="Logo"
-                width={170}
+                width={190}
                 height={60}
               />
             ) : (

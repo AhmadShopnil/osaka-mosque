@@ -8,8 +8,6 @@ export const getMetaValueByMetaName = (data, metaName) => {
   return foundItem ? foundItem.meta_value : null;
 };
 
-
-
 export const getMetaValueFromExtraFields = (jsonData, metaName) => {
   //console.log(jsonData?.extraFields);
   const foundItem = jsonData?.extraFields?.find((item) => item.meta_name === metaName);
@@ -22,21 +20,19 @@ export const getMetaValueFromExtra_Fields = (jsonData, metaName) => {
   return foundItem ? foundItem.meta_value : null;
 };
 
-
-
 export const getMetaValueFromExtraFieldsNonCapital = (jsonData, metaName) => {
   //console.log(jsonData?.extraFields);
   const foundItem = jsonData?.extra_fields?.find((item) => item.meta_name === metaName);
   return foundItem ? foundItem.meta_value : null;
 };
 
-export const getMediaLinkByMetaName = (jsonData, metaName) => {
-  if (!jsonData?.data || !metaName) return null;
+export const getMediaLinkByMetaName = (data, metaName) => {
+  if (!data || !metaName) return null;
 
-  const item = jsonData.data.find(
+  const item = data.find(
     (dataItem) => dataItem.meta_name === metaName
   );
-
+console.log("from utils", item)
   if (item?.file_directory && item?.filename) {
     return item.file_directory + item.filename;
   }
