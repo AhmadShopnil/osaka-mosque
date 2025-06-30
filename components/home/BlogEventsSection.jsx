@@ -56,15 +56,15 @@ const BlogEventsSection = async () => {
 
         <div className="flex flex-col lg:flex-row gap-8 h-[480px]">
           {/* Blog Posts */}
-          <div className="flex flex-col gap-6 w-full lg:w-3/5 ">
-            {blogs.map((post) => (
+          <div className="flex flex-col gap-6 w-full lg:w-3/5 h-full ">
+            {blogs?.slice(0,2).map((post) => (
               <BlogCard key={post.id} post={post} />
             ))}
           </div>
 
           {/* Event */}
-          <div className="flex flex-col gap-4 w-full lg:w-2/5">
-            {events?.map((event, i) => (
+          <div className="flex flex-col gap-4 w-full lg:w-2/5 h-full">
+            {events?.slice(0,3).map((event, i) => (
               <EventSmallCard key={i} event={event} />
             ))}
           </div>

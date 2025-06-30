@@ -1,9 +1,48 @@
-import { MapPin, Mail, Facebook, Twitter, Linkedin, Globe, Calendar } from "lucide-react"
-import Link from "next/link"
+import { getBlogs, getSettings } from "@/helper/actions";
+import { getMetaValueByMetaName } from "@/helper/metaHelpers";
+import {
+  MapPin,
+  Mail,
+  Facebook,
+  Twitter,
+  Linkedin,
+  Globe,
+  Calendar,
+  Phone,
+} from "lucide-react";
+import {
+  FaTwitter,
+  FaFacebookF,
+  FaLinkedinIn,
+  FaGooglePlusG,
+  FaEnvelope,
+  FaPhoneAlt,
+  FaListUl,
+  FaTimes,
+  FaSearch,
+  FaInstagram,
+} from "react-icons/fa";
+import Link from "next/link";
+import Image from "next/image";
 
-export default function Footer() {
+export default async function Footer() {
+  const settings = await getSettings();
+  const blogs = await getBlogs();
+
+  const phone = getMetaValueByMetaName(settings, "company_phone") || "";
+  const company_email = getMetaValueByMetaName(settings, "company_email") || "";
+  const facebookLink = getMetaValueByMetaName(settings, "facebook_url") || "#";
+  const linkedinLink = getMetaValueByMetaName(settings, "linkedin_url") || "#";
+  const instagramLink =
+    getMetaValueByMetaName(settings, "instagram_url") || "#";
+  const youtubeLink = getMetaValueByMetaName(settings, "youtube_url") || "#";
+  const footer_content =
+    getMetaValueByMetaName(settings, "footer_content") || "";
+  const bottom_footer_content =
+    getMetaValueByMetaName(settings, "bottom_footer_content") || "";
+
   return (
-    <div className="bg-green-900 pt-16 relative">
+    <div className="bg-green-900 pt-16 relative z-50">
       {/* Main footer content with white background - positioned higher with negative margin */}
       <div className="max-w-7xl mx-auto px-6 py-12 bg-white -mt-64 mb-0 z-10 rounded-2xl shadow-lg">
         {/* Main footer content with 4 columns */}
@@ -12,8 +51,8 @@ export default function Footer() {
           <div>
             <h2 className="text-xl font-bold mb-4">About Us</h2>
             <p className="text-gray-700 mb-6">
-              Lorem ipsum dolor sit amet, conec tetur adipisicing elit, sed do eiusd tempor incididunt ut labore dolore
-              magna aliqua tempor.
+              Lorem ipsum dolor sit amet, conec tetur adipisicing elit, sed do
+              eiusd tempor incididunt ut labore dolore magna aliqua tempor.
             </p>
 
             {/* Google Map */}
@@ -40,34 +79,29 @@ export default function Footer() {
           <div>
             <h2 className="text-xl font-bold mb-4">Latest Blogs</h2>
             <div className="flex flex-col gap-3">
-            <div className="flex gap-3">
-              <img
-                src="/images/r1.jpg?height=60&width=60"
-                alt="Blog thumbnail"
-                className="w-[60px] h-[60px] object-cover rounded"
-              />
-              <div>
-                <h3 className="font-medium">Help the poor people</h3>
-                <p className="text-sm text-gray-600 flex items-center gap-1 mt-1">
-                  <Calendar className="h-4 w-4" />
-                  <span>March 25, 2025</span>
-                </p>
-              </div>
-            </div>
-            < div className="flex gap-3">
-              <img
-                src="/images/r2.jpg?height=60&width=60"
-                alt="Blog thumbnail"
-                className="w-[60px] h-[60px] object-cover rounded"
-              />
-              <div>
-                <h3 className="font-medium">Help the poor people</h3>
-                <p className="text-sm text-gray-600 flex items-center gap-1 mt-1">
-                  <Calendar className="h-4 w-4" />
-                  <span>March 25, 2025</span>
-                </p>
-              </div>
-            </div>
+              {blogs?.slice(0,2).map((blog, i) => (
+                <div key={i} className="flex gap-3">
+                  <div className="relative w-[60px] h-[60px]">
+                    <Image
+                      src={blog?.featured_image}
+                      alt={blog?.name}
+                      fill
+                      className="object-cover rounded"
+                    />
+                  </div>
+                  <div>
+                    <h3 className="font-medium">
+                      {blog.name.length > 20
+                        ? blog.name.slice(0, 20) + "..."
+                        : blog.name}
+                    </h3>
+                    <p className="text-sm text-green-900 flex items-center gap-1 mt-1">
+                      <Calendar className="h-4 w-4" />
+                      <span>March 25, 2025</span>
+                    </p>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
 
@@ -76,16 +110,14 @@ export default function Footer() {
             <h2 className="text-xl font-bold mb-4">Contact Info</h2>
             <ul className="space-y-6">
               <li className="flex items-center">
+                {/* <FaPhoneAlt size={13} /> */}
                 <Mail className="h-5 w-5 mr-2 text-gray-600" />
-                <span>info@example.com</span>
+                <span>{company_email}</span>
               </li>
               <li className="flex items-center">
-                <Mail className="h-5 w-5 mr-2 text-gray-600" />
-                <span>info@example.com</span>
-              </li>
-              <li className="flex items-center">
-                <Mail className="h-5 w-5 mr-2 text-gray-600" />
-                <span>info@example.com</span>
+                {/* <FaEnvelope size={13} /> */}
+                <Phone className="h-5 w-5 mr-2 text-gray-600" />
+                <span>{phone}</span>
               </li>
             </ul>
 
@@ -110,8 +142,16 @@ export default function Footer() {
           <div>
             <h2 className="text-xl font-bold mb-4">Quick Contact</h2>
             <form>
-              <input type="text" placeholder="Your Name" className="w-full border border-gray-300 rounded p-2 mb-3" />
-              <input type="email" placeholder="Your Email" className="w-full border border-gray-300 rounded p-2 mb-3" />
+              <input
+                type="text"
+                placeholder="Your Name"
+                className="w-full border border-gray-300 rounded p-2 mb-3"
+              />
+              <input
+                type="email"
+                placeholder="Your Email"
+                className="w-full border border-gray-300 rounded p-2 mb-3"
+              />
               <textarea
                 placeholder="Your Message"
                 rows="4"
@@ -129,14 +169,16 @@ export default function Footer() {
 
         {/* Copyright */}
         <div className="text-center mt-8">
-          <p>BISMILLAH© 2024 | ALL RIGHTS RESERVED</p>
+          <p>OSAKA MASJID© 2024 | ALL RIGHTS RESERVED</p>
         </div>
       </div>
 
       {/* Newsletter Section with dark green background */}
       <div className="bg-green-900 text-white py-6 mt-0">
         <div className="max-w-7xl mx-auto px-8 flex flex-col md:flex-row justify-between items-center">
-          <h2 className="text-xl font-bold mb-4 md:mb-0">Subscribe, For Weekly Updates</h2>
+          <h2 className="text-xl font-bold mb-4 md:mb-0">
+            Subscribe, For Weekly Updates
+          </h2>
           <div className="flex w-full md:w-auto">
             <input
               type="email"
@@ -154,5 +196,5 @@ export default function Footer() {
         </div>
       </div>
     </div>
-  )
+  );
 }

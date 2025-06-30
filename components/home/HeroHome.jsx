@@ -1,14 +1,17 @@
 import HomeSlider from "./HomeSlider";
 import Header from "../common/header/Header";
-import { getSliders } from "@/helper/actions";
+import { getSettings, getSliders } from "@/helper/actions";
+import { getMetaValueByMetaName } from "@/helper/metaHelpers";
 
 const HeroHome = async () => {
   const sliders = await getSliders();
+  const settings = await getSettings();
 
-  // console.log("slider", sliders)
+  // console.log("phone", phone)
+
   return (
-    <section className="relative w-full h-screen">
-      <Header />
+    <section className="relative w-full ">
+      <Header settings={settings} />
       {/* Hero Swiper */}
       <HomeSlider sliders={sliders} />
     </section>

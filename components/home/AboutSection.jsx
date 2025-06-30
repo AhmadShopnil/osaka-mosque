@@ -5,7 +5,7 @@ import Image from 'next/image';
 
 const AboutSection = () => {
   return (
-    <div className="pt-[150px] pb-[100px] bg-white">
+    <div className="pt-[90px] pb-[100px] bg-white">
       <div className="container px-4 sm:px-8 md:px-16 mx-auto">
         <div className="flex flex-col md:flex-row gap-12 md:gap-16 justify-between items-center">
           {/* Left side - Image */}

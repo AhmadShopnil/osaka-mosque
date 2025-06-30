@@ -13,7 +13,8 @@ const short_description = getMetaValueFromExtraFields(
 
 
   return (
-    <div className="group flex flex-col lg:flex-row bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-shadow duration-300">
+    <div className="group flex flex-col lg:flex-row bg-white rounded-xl overflow-hidden 
+    inset-shadow-xs h-full  duration-300">
       {/* Image Section */}
       <div className="relative w-full h-[200px] lg:w-1/2 lg:h-auto overflow-hidden">
         <Image
@@ -36,7 +37,7 @@ const short_description = getMetaValueFromExtraFields(
           <ul className="flex flex-wrap text-sm text-gray-500 gap-x-4 gap-y-1">
             <li className="flex items-center">
               <i className="far fa-calendar-alt text-green-800 mr-1" />
-              {post?.date || "No data Available"}
+              {post?.date || "No date Available"}
             </li>
             <li className="flex items-center">
               <i className="far fa-user text-green-800 mr-1" />

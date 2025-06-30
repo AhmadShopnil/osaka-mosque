@@ -1,10 +1,13 @@
 // metaHelpers.js
 
-export const getMetaValueByMetaName = (jsonData, metaName) => {
-  //console.log(jsonData?.data);
-  const foundItem = jsonData?.data?.find((item) => item.meta_name === metaName);
+
+export const getMetaValueByMetaName = (data, metaName) => {
+  // console.log("from meta helper",jsonData?.data);
+  const foundItem = data?.find((item) => item.meta_name === metaName);
+  // console.log("from meta helper", foundItem ? foundItem?.meta_value :null);
   return foundItem ? foundItem.meta_value : null;
 };
+
 
 
 export const getMetaValueFromExtraFields = (jsonData, metaName) => {
@@ -26,5 +29,21 @@ export const getMetaValueFromExtraFieldsNonCapital = (jsonData, metaName) => {
   const foundItem = jsonData?.extra_fields?.find((item) => item.meta_name === metaName);
   return foundItem ? foundItem.meta_value : null;
 };
+
+export const getMediaLinkByMetaName = (jsonData, metaName) => {
+  if (!jsonData?.data || !metaName) return null;
+
+  const item = jsonData.data.find(
+    (dataItem) => dataItem.meta_name === metaName
+  );
+
+  if (item?.file_directory && item?.filename) {
+    return item.file_directory + item.filename;
+  }
+
+  return null;
+};
+
+
 
 // {product?.extra_fields.find(field => field.meta_name === "product_model")?.meta_value}
