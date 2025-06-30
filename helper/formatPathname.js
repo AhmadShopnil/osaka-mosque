@@ -1,15 +1,17 @@
-
-
 /**
- * Formats a URL pathname by capitalizing each segment.
- * Example: "/events/upcoming" => "/Events/Upcoming"
+ * Converts a pathname like "/blog/importance-of-eid-ul-fiter"
+ * into "Home / Blog / Importance Of Eid Ul Fiter"
  */
 export function formatPathname(pathname) {
-    return pathname
-      .split('/')
-      .filter(Boolean)
-      .map(segment => segment.charAt(0).toUpperCase() + segment.slice(1))
-      .join('/')
-      .replace(/^/, '/'); // add leading slash
-  }
-  
+  const formattedSegments = pathname
+    .split('/')
+    .filter(Boolean)
+    .map(segment =>
+      segment
+        .split('-')
+        .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+        .join(' ')
+    );
+
+  return ['', ...formattedSegments].join(' / ');
+}

@@ -37,10 +37,8 @@ export default async function Footer() {
     getMetaValueByMetaName(settings, "instagram_url") || "#";
   const youtubeLink = getMetaValueByMetaName(settings, "youtube_url") || "#";
   const footer_content =
-    getMetaValueByMetaName(settings, "footer_content") || "";
-  const bottom_footer_content =
-    getMetaValueByMetaName(settings, "bottom_footer_content") || "";
-
+    getMetaValueByMetaName(settings, "site_description") || "";
+  
   return (
     <div className="bg-green-900 pt-16 relative z-50">
       {/* Main footer content with white background - positioned higher with negative margin */}
@@ -51,8 +49,7 @@ export default async function Footer() {
           <div>
             <h2 className="text-xl font-bold mb-4">About Us</h2>
             <p className="text-gray-700 mb-6">
-              Lorem ipsum dolor sit amet, conec tetur adipisicing elit, sed do
-              eiusd tempor incididunt ut labore dolore magna aliqua tempor.
+             {footer_content}
             </p>
 
             {/* Google Map */}

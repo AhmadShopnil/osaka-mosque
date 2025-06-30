@@ -1,9 +1,12 @@
-'use client';
+import React from "react";
+import Image from "next/image";
+import { getPage } from "@/helper/actions";
 
-import React from 'react';
-import Image from 'next/image';
+const AboutSection = async () => {
+  const about = await getPage("about-us");
 
-const AboutSection = () => {
+  // console.log("about", about);
+
   return (
     <div className="pt-[90px] pb-[100px] bg-white">
       <div className="container px-4 sm:px-8 md:px-16 mx-auto">
@@ -17,7 +20,8 @@ const AboutSection = () => {
               {/* Actual image */}
               <div className="absolute inset-0 z-10 rounded-md overflow-hidden">
                 <Image
-                  src="/images/abt-img2.jpg"
+                  src={about?.featured_image}
+                  // src="/images/abt-img2.jpg"
                   alt="About"
                   fill
                   className="object-cover rounded-md"
@@ -30,10 +34,13 @@ const AboutSection = () => {
           {/* Right side - Text content */}
           <div className="w-full md:w-1/2 ">
             <div className="flex flex-col">
-              <h1 className="text-[#00401A] text-[20px] pb-[5px]">Our History</h1>
-              <div>
-                <h2 className="font-[500] text-[#222] text-[40px] sm:text-[38px] md:text-[42px] lg:text-[48px] leading-11">
-                  About Islamic Center
+              <h1 className="text-[#00401A] text-[20px] pb-[5px]">
+                Our History
+              </h1>
+              <div className="mb-4">
+                <h2 className="font-[500] text-[#222] text-[40px] sm:text-[38px]
+                 md:text-[42px] lg:text-[48px] leading-11 mb-3">
+                  {about?.sub_title}
                 </h2>
                 <Image
                   className="mt-2"
@@ -44,7 +51,14 @@ const AboutSection = () => {
                 />
               </div>
 
-              <div className="text-[#555555] leading-7 text-[15px] leading-6">
+              <div
+                className="text-[#555555] leading-7 text-[15px]"
+                dangerouslySetInnerHTML={{
+                  __html: about?.description,
+                }}
+              />
+
+              {/* <div className="text-[#555555] leading-7 text-[15px] ">
                 <p className="mt-[20px]">
                   We established our center in 1954, sed do eiusmod tempor
                   incididunt ut labore et dolore magna aliqua. Ut enim ad minim
@@ -54,11 +68,11 @@ const AboutSection = () => {
                   Visit our premises sit amet, consectetur adipisicing elit, sed
                   do eiusmod tempor incididunt ut labore et dolore magna aliqua.
                 </p>
-              </div>
+              </div> */}
 
               <div className="mt-[35px]">
                 <a
-                  href="#"
+                  href="/about"
                   className="bg-[#00401A] hover:bg-[#80b918] px-[45px] py-[14px] rounded-md font-bold text-[15px] text-white transition"
                 >
                   Learn More

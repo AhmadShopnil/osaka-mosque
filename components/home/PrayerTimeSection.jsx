@@ -6,20 +6,29 @@ import Image from 'next/image';
 const PrayerTimeSection = () => {
   const [timings, setTimings] = useState(null);
 
-  // Helper to add minutes to a time string like "04:30"
+  // Converts 24-hour "HH:MM" format to 12-hour "hh:mm AM/PM"
+  const formatTime12Hour = (time) => {
+    const [hour, minute] = time.split(':').map(Number);
+    const date = new Date();
+    date.setHours(hour);
+    date.setMinutes(minute);
+    return date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+  };
+
+  // Add minutes and return time in 12-hour format
   const addMinutes = (time, minsToAdd) => {
     const [hour, minute] = time.split(':').map(Number);
     const date = new Date();
     date.setHours(hour);
     date.setMinutes(minute + minsToAdd);
-    return date.toTimeString().slice(0, 5); // Returns "HH:MM"
+    return date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
   };
 
   useEffect(() => {
     const fetchPrayerTimes = async () => {
       try {
         const response = await fetch(
-          'https://api.aladhan.com/v1/timingsByCity?city=Osaka&country=Japan&method=2'
+          'https://api.aladhan.com/v1/timingsByCity?city=Dhaka&country=Bangladesh&method=2'
         );
         const data = await response.json();
         setTimings(data.data.timings);
@@ -31,8 +40,6 @@ const PrayerTimeSection = () => {
     fetchPrayerTimes();
   }, []);
 
-
-  // console.log("time--",timings);
   const prayerNames = ['Fajr', 'Dhuhr', 'Asr', 'Maghrib', 'Isha'];
 
   return (
@@ -41,9 +48,16 @@ const PrayerTimeSection = () => {
         {/* Header */}
         <div className="text-start mb-[40px]">
           <span className="text-[#00401A] pb-[5px] text-[20px]">Select Country & City For</span>
-          <h2 className="font-semibold text-[#222] text-[28px]
-           sm:text-[38px] md:text-[42px] lg:text-[48px]">Prayer Time</h2>
-          <Image className="mt-[20px]" src="/images/pshape.png" alt="Design Shape" width={100} height={50} />
+          <h2 className="font-semibold text-[#222] text-[28px] sm:text-[38px] md:text-[42px] lg:text-[48px]">
+            Prayer Time
+          </h2>
+          <Image
+            className="mt-[20px]"
+            src="/images/pshape.png"
+            alt="Design Shape"
+            width={100}
+            height={50}
+          />
         </div>
 
         <div className="gap-8 grid grid-cols-1 md:grid-cols-5 lg:grid-cols-5 mt-3 md:mt-8">
@@ -88,7 +102,7 @@ const PrayerTimeSection = () => {
                   prayerNames.map((prayer) => (
                     <tr key={prayer} className="hover:text-[#00401A] text-center transition">
                       <td className="p-[10px] text-[18px]">{prayer}</td>
-                      <td className="p-[10px] text-[18px]">{timings[prayer]}</td>
+                      <td className="p-[10px] text-[18px]">{formatTime12Hour(timings[prayer])}</td>
                       <td className="p-[10px] text-[18px]">{addMinutes(timings[prayer], 10)}</td>
                     </tr>
                   ))
