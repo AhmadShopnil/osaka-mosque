@@ -102,7 +102,7 @@ const Header = ({ settings }) => {
             </div>
 
             {/* Contact Info */}
-            <div className="lg:block hidden  z-50 ">
+            <div className="lg:block hidden relative z-[60] ">
               <div className="flex md:flex-row flex-col items-center text-[12px] gap-4">
                 <div className="flex items-center group">
                   <FaEnvelope className="text-white mr-[10px] group-hover:text-[#80b918] duration-500" />

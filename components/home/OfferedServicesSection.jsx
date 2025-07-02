@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBookOpen } from "@fortawesome/free-solid-svg-icons";
 import { Metadata } from "next";
 import { getServices } from "@/helper/actions";
-import { getMetaValueByMetaName } from "@/helper/metaHelpers";
+import { getMetaDescriptionByMetaName, getMetaValueByMetaName } from "@/helper/metaHelpers";
 
 
 
@@ -22,6 +22,9 @@ export default async function ServicesPage({settings}) {
 
 
 const service_heading = getMetaValueByMetaName(settings, "service_heading") || "";
+const service_heading_sub_heading =
+    getMetaDescriptionByMetaName(settings, "service_heading") || "";
+
 
   return (
     <section className="z-10 pt-[100px] relative bg-white">
@@ -30,7 +33,7 @@ const service_heading = getMetaValueByMetaName(settings, "service_heading") || "
       </div>
       <div className="container px-4 md:px-8 mx-auto">
         <div className="flex flex-col items-center mb-[40px] text-center">
-          <span className="pb-[5px] text-[#00401A] text-[20px]">Our Worldwide</span>
+          <span className="pb-[5px] text-[#00401A] text-[20px]">{service_heading_sub_heading}</span>
           <h2 className="font-semibold text-[#222] text-[28px] sm:text-[38px] md:text-[42px] lg:text-[48px]">
             {service_heading}
           </h2>

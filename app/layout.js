@@ -1,17 +1,8 @@
-import { Geist, Geist_Mono, Merriweather } from "next/font/google";
+import { Merriweather } from "next/font/google";
 import "./globals.css";
 import Footer from "@/components/common/footer/Footer";
 
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+import { Toaster } from "react-hot-toast";
 
 const merriweather = Merriweather({
   subsets: ["latin"],
@@ -35,10 +26,11 @@ export default function RootLayout({ children }) {
         {/* <PayPalScriptProvider
           options={{ "client-id": "YOUR_PAYPAL_CLIENT_ID" }}
         > */}
-          <div>
-            {children}
-            <Footer />
-          </div>
+        <div>
+          {children}
+          <Footer />
+          <Toaster position="top-right" />
+        </div>
         {/* </PayPalScriptProvider> */}
       </body>
     </html>

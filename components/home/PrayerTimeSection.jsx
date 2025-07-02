@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
-import { getMetaValueByMetaName } from '@/helper/metaHelpers';
+import { getMetaDescriptionByMetaName, getMetaValueByMetaName } from '@/helper/metaHelpers';
 
 const PrayerTimeSection = ({settings}) => {
   const [timings, setTimings] = useState(null);
@@ -43,13 +43,16 @@ const PrayerTimeSection = ({settings}) => {
 
 
    const prayer_time_heading = getMetaValueByMetaName(settings, "prayer_time") || "";
+const prayer_time_sub_heading =
+    getMetaDescriptionByMetaName(settings, "prayer_time") || "Select Country & City For";
+
 
   return (
     <section className="bg-[#f8f9fa] pt-[100px] pb-[100px]">
       <div className="container px-8 mx-auto">
         {/* Header */}
         <div className="text-start mb-[40px]">
-          <span className="text-[#00401A] pb-[5px] text-[20px]">Select Country & City For</span>
+          <span className="text-[#00401A] pb-[5px] text-[20px]">{prayer_time_sub_heading}</span>
           <h2 className="font-semibold text-[#222] text-[28px] sm:text-[38px] md:text-[42px] lg:text-[48px]">
            {prayer_time_heading}
           </h2>

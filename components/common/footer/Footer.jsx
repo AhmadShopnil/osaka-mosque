@@ -25,6 +25,7 @@ import {
 import Link from "next/link";
 import Image from "next/image";
 import BlogSmallCard from "@/components/blog/BlogSmallCard";
+import QuickContact from "./QuickContact";
 
 export default async function Footer() {
   const settings = await getSettings();
@@ -120,32 +121,7 @@ export default async function Footer() {
           </div>
 
           {/* Quick Contact Form */}
-          <div>
-            <h2 className="text-xl font-bold mb-4">Quick Contact</h2>
-            <form>
-              <input
-                type="text"
-                placeholder="Your Name"
-                className="w-full border border-gray-300 rounded p-2 mb-3"
-              />
-              <input
-                type="email"
-                placeholder="Your Email"
-                className="w-full border border-gray-300 rounded p-2 mb-3"
-              />
-              <textarea
-                placeholder="Your Message"
-                rows="4"
-                className="w-full border border-gray-300 rounded p-2 mb-3"
-              ></textarea>
-              <button
-                type="submit"
-                className="bg-green-900 text-white py-2 px-4 rounded w-full hover:bg-green-800 transition-colors"
-              >
-                SUBMIT NOW
-              </button>
-            </form>
-          </div>
+          <QuickContact/>
         </div>
 
         {/* Copyright */}

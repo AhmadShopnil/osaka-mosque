@@ -1,4 +1,4 @@
-import Image from "next/image";
+
 import { getBlogs, getSingleBlog } from "@/helper/actions";
 import { notFound } from "next/navigation";
 import SingleBlog from "@/components/blog/SingleBlog";
@@ -15,7 +15,14 @@ export async function generateMetadata({ params }) {
     openGraph: {
       title: blog?.meta_title || blog?.name,
       description: blog?.meta_description || blog?.name,
-      images: [{ url: blog?.featured_image } || "/default-og.jpg"],
+      images: [
+        {
+          url: blog?.featured_image ,
+          width: 1200,
+          height: 630,
+          alt: blog?.meta_title || "Blog Image",
+        },
+      ],
     },
   };
 }

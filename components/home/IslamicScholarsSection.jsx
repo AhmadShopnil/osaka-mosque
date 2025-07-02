@@ -1,13 +1,15 @@
 import { getScholars } from "@/helper/actions";
-import { getMetaValueByMetaName } from "@/helper/metaHelpers";
+import { getMetaDescriptionByMetaName, getMetaValueByMetaName } from "@/helper/metaHelpers";
 import Image from "next/image";
 import Link from "next/link";
 
-export default async function IslamicScholarsSection({settings}) {
+export default async function IslamicScholarsSection({ settings }) {
   const scholars = await getScholars();
 
-const islamic_scholars_heading = getMetaValueByMetaName(settings, "islamic_scholars") || "";
-
+  const islamic_scholars_heading =
+    getMetaValueByMetaName(settings, "islamic_scholars") || "";
+  const islamic_scholars_sub_heading =
+    getMetaDescriptionByMetaName(settings, "islamic_scholars") || "";
 
   return (
     <section className="z-10 pt-[100px] relative bg-[#fafafa] pb-64">
@@ -24,7 +26,9 @@ const islamic_scholars_heading = getMetaValueByMetaName(settings, "islamic_schol
       <div className="container mx-auto px-4 md:px-20">
         {/* Header */}
         <div className="text-center mb-[40px]">
-          <span className="text-[#00401A] text-[20px] mb-[5px]">Our Expert</span>
+          <span className="text-[#00401A] text-[20px] mb-[5px]">
+            {islamic_scholars_sub_heading}
+          </span>
           <h2 className="mt-2 font-semibold text-[#222] text-[38px] md:text-[42px] lg:text-[48px]">
             {islamic_scholars_heading}
           </h2>
@@ -51,13 +55,17 @@ const islamic_scholars_heading = getMetaValueByMetaName(settings, "islamic_schol
                   className="rounded-lg w-full h-auto"
                 />
               </div>
-              <div className="absolute flex flex-col justify-center items-center gap-3
+              <div
+                className="absolute flex flex-col justify-center items-center gap-3
                bg-white group-hover:bg-[#00401A] mx-auto mt-[-70px] ml-[5%] px-4 py-6
-              rounded-b-lg w-[100%] max-w-[90%] text-[#222] group-hover:text-white text-center duration-600">
+              rounded-b-lg w-[100%] max-w-[90%] text-[#222] group-hover:text-white text-center duration-600"
+              >
                 <div className="flex items-center text-black group-hover:text-black leading-[30px]">
                   <i className={`text-[14px] fab mx-[10px] fa-facebook-f`} />
                 </div>
-                <h3 className="font-bold text-[18px] mt-[8px]">{scholar?.name}</h3>
+                <h3 className="font-bold text-[18px] mt-[8px]">
+                  {scholar?.name}
+                </h3>
                 <div className="bg-[#00401A] group-hover:bg-white mx-auto w-[100px] h-[2px]" />
                 <p>
                   <span className="group-hover:text-white">

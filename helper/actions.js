@@ -123,3 +123,36 @@ const API_URL =`${BASE_URL}/api/v1/post?slug=${slug}`;
 
   return json?.data || {};
 }
+
+
+
+// utils/postData.ts
+
+export async function postData(
+  url,
+  payload
+) {
+  try {
+    const res = await fetch(url, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload),
+    });
+
+    const data = await res.json();
+
+    if (!res.ok) {
+      throw new Error(data.message || "Request failed.");
+    }
+
+    return {
+      success: true,
+      message: data.message || "Success",
+    };
+  } catch (error) {
+    return {
+      success: false,
+      message: error.message || "Something went wrong",
+    };
+  }
+}

@@ -1,6 +1,14 @@
 // metaHelpers.js
 
 
+export const getMetaDescriptionByMetaName = (data, metaName) => {
+  // console.log("from meta helper",jsonData?.data);
+  const foundItem = data?.find((item) => item.meta_name === metaName);
+  // console.log("from meta helper", foundItem ? foundItem?.meta_value :null);
+  return foundItem ? foundItem.meta_description : null;
+};
+
+
 export const getMetaValueByMetaName = (data, metaName) => {
   // console.log("from meta helper",jsonData?.data);
   const foundItem = data?.find((item) => item.meta_name === metaName);

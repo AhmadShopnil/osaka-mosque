@@ -26,7 +26,7 @@ const Events = ({ events }) => {
   return (
     <div className="pb-64">
       <HeroSection heroData={heroData} />
-      <section className="pt-4 sm:pt-10 md:pt-[100px] bg-[#f8f9fa]">
+      <section className="pt-4 sm:pt-10 md:pt-[50px] bg-[#f8f9fa]">
         <div className="container mx-auto px-2 lg:px-8">
           <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3">
             {paginatedEvents.map((event, index) => (

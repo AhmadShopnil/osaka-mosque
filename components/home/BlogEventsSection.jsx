@@ -3,7 +3,7 @@ import Image from "next/image";
 import React from "react";
 import BlogCard from "../blog/BlogCard";
 import EventSmallCard from "../event/EventCardHome";
-import { getMetaValueByMetaName } from "@/helper/metaHelpers";
+import { getMetaDescriptionByMetaName, getMetaValueByMetaName } from "@/helper/metaHelpers";
 
 
 const BlogEventsSection = async ({settings}) => {
@@ -11,6 +11,7 @@ const BlogEventsSection = async ({settings}) => {
   const events = await getEvents();
 
   const our_blog_events_heading = getMetaValueByMetaName(settings, "our_blog___events") || "";
+    const our_blog_events_sub_heading = getMetaDescriptionByMetaName(settings, "our_blog___events") || "";
   // console.log("sort des", sort)
 
   return (
@@ -18,7 +19,7 @@ const BlogEventsSection = async ({settings}) => {
       <div className="container mx-auto px-4 md:px-10">
         <div className="text-center mb-[40px]">
           <span className="text-[#00401A] text-[20px]">
-            Latest Blogs & Updates
+            {our_blog_events_sub_heading}
           </span>
           <h2 className="font-semibold text-[#222] text-[28px] sm:text-[38px] md:text-[42px] lg:text-[48px]">
            {our_blog_events_heading}
