@@ -4,7 +4,6 @@ import { useState } from "react";
 import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
-import { PayPalButtons } from "@paypal/react-paypal-js";
 import "swiper/css";
 import "swiper/css/navigation";
 
@@ -45,7 +44,8 @@ const DonationSection = () => {
     };
 
     console.log("🚀 Donation Data Ready to Send:", donationData);
-    // Optional: Send to backend API here
+
+    // TODO: Send `donationData` to your API endpoint here
   };
 
   return (
@@ -58,7 +58,9 @@ const DonationSection = () => {
 
         <div className="relative grid grid-cols-1 md:grid-cols-2 items-center gap-8 z-10">
           {/* Slider */}
+          {/* Slider with Overlay */}
           <div className="relative w-full h-full">
+            {/* Black Overlay */}
             <div className="absolute inset-0 bg-black opacity-40 z-10 rounded-md" />
 
             <Swiper
@@ -67,7 +69,7 @@ const DonationSection = () => {
                 prevEl: ".swiper-button-prev-custom",
               }}
               modules={[Navigation]}
-              className="w-full h-full relative z-0"
+              className="w-full h-full relative z-0" // Ensure the slides stay below the overlay
             >
               {slideImages.map((img, index) => (
                 <SwiperSlide key={index}>
@@ -82,23 +84,31 @@ const DonationSection = () => {
               ))}
             </Swiper>
 
-            {/* Navigation */}
-            <button className="swiper-button-prev-custom absolute top-1/2 left-0 z-20 bg-green-700 hover:bg-green-900 text-white p-4 w-10 h-14 rounded-r-3xl shadow-md flex items-center justify-center text-xl">
+            {/* Custom Navigation Buttons */}
+            <button
+              className="swiper-button-prev-custom absolute top-1/2 left-0
+      z-20 bg-green-700 hover:bg-green-900 text-white p-4 w-10 h-14 rounded-r-3xl
+      shadow-md flex items-center justify-center transition-all font-semibold text-xl"
+            >
               ❯
             </button>
-            <button className="swiper-button-next-custom absolute top-1/2 right-0 z-20 bg-green-700 hover:bg-green-900 text-white p-4 w-10 h-14 rounded-l-3xl shadow-md flex items-center justify-center text-xl">
+            <button
+              className="swiper-button-next-custom absolute top-1/2 right-0
+      z-20 bg-green-700 hover:bg-green-900 text-white p-4 w-10 h-14 rounded-l-3xl 
+      shadow-md flex items-center justify-center transition-all text-xl"
+            >
               ❮
             </button>
           </div>
 
-          {/* Donation Form */}
+          {/* Donation Content */}
           <div className="py-10 text-white container mx-auto px-4">
             <form onSubmit={handleSubmit} className="flex flex-wrap gap-6">
               <div className="w-full mb-[20px]">
                 <span className="mb-[5px] text-[#00401A] text-[20px]">
                   Give Food & Shelter To Poor
                 </span>
-                <h2 className="mt-2 text-[#222] text-[38px] md:text-[42px] lg:text-[48px] leading-12">
+                <h2 className="mt-2  text-[#222] text-[38px] md:text-[42px] lg:text-[48px] leading-12">
                   Make Your Donation
                 </h2>
                 <Image
@@ -110,7 +120,7 @@ const DonationSection = () => {
                 />
               </div>
 
-              {/* Amount Buttons */}
+              {/* Donation Amount Buttons */}
               <div className="flex flex-wrap mb-[20px] gap-3">
                 {["$100", "$200", "$300", "Other"].map((amount, i) => (
                   <button
@@ -129,7 +139,7 @@ const DonationSection = () => {
                 ))}
               </div>
 
-              {/* Inputs */}
+              {/* Donation Form */}
               <div className="w-full px-2 lg:px-0 lg:w-[80%] 2xl:w-[55%]">
                 <div>
                   <div className="flex mb-4 gap-4 flex-col md:flex-row">
@@ -210,38 +220,6 @@ const DonationSection = () => {
                   >
                     Donate Now
                   </button>
-
-                  {/* PayPal Integration */}
-                  {formData.amount && (
-                    <div className="mt-6">
-                      <PayPalButtons
-                        style={{ layout: "vertical", color: "gold" }}
-                        createOrder={(data, actions) => {
-                          return actions.order.create({
-                            purchase_units: [
-                              {
-                                amount: {
-                                  value: formData.amount,
-                                },
-                              },
-                            ],
-                          });
-                        }}
-                        onApprove={(data, actions) => {
-                          return actions.order.capture().then((details) => {
-                            alert(
-                              "Donation successful! Thank you, " +
-                                details.payer.name.given_name
-                            );
-                            console.log("🧾 Payment details:", details);
-                          });
-                        }}
-                        onError={(err) => {
-                          console.error("❌ PayPal Checkout Error:", err);
-                        }}
-                      />
-                    </div>
-                  )}
                 </div>
               </div>
             </form>

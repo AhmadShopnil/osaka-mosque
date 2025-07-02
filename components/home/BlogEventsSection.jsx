@@ -1,38 +1,16 @@
 import { getBlogs, getEvents } from "@/helper/actions";
-import { getSliceDesc } from "@/helper/getSliceDesc";
 import Image from "next/image";
-import Link from "next/link";
 import React from "react";
-import BlogCard from "../shared/BlogCard";
-import EventSmallCard from "../shared/EventSmallCard";
+import BlogCard from "../blog/BlogCard";
+import EventSmallCard from "../event/EventCardHome";
+import { getMetaValueByMetaName } from "@/helper/metaHelpers";
 
-const blogPosts = [
-  {
-    id: 1,
-    title: "Is Islam a Liberal Philosophy?",
-    date: "Nov 17, 2023",
-    author: "William Blake",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipisicing elit sed do eiusmod tempor incididunt.",
-    image: "/images/post-img1-1.jpg",
-    link: "/blog-detail",
-  },
-  {
-    id: 2,
-    title: "Is Islam a Liberal Philosophy?",
-    date: "Nov 17, 2023",
-    author: "William Blake",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipisicing elit sed do eiusmod tempor incididunt.",
-    image: "/images/post-img1-1.jpg",
-    link: "/blog-detail",
-  },
-];
 
-const BlogEventsSection = async () => {
+const BlogEventsSection = async ({settings}) => {
   const blogs = await getBlogs();
   const events = await getEvents();
 
+  const our_blog_events_heading = getMetaValueByMetaName(settings, "our_blog___events") || "";
   // console.log("sort des", sort)
 
   return (
@@ -40,10 +18,10 @@ const BlogEventsSection = async () => {
       <div className="container mx-auto px-4 md:px-10">
         <div className="text-center mb-[40px]">
           <span className="text-[#00401A] text-[20px]">
-            Latest News & Updates
+            Latest Blogs & Updates
           </span>
           <h2 className="font-semibold text-[#222] text-[28px] sm:text-[38px] md:text-[42px] lg:text-[48px]">
-            Our Blog & Events
+           {our_blog_events_heading}
           </h2>
           <Image
             src="/images/pshape.png"

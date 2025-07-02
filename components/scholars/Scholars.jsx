@@ -1,6 +1,6 @@
 "use client";
 
-import HeroSection from "@/components/event/HeroSection";
+import HeroSection from "@/components/shared/HeroSection";
 import Pagination from "@/components/shared/Pagination";
 import Image from "next/image";
 import React, { useState } from "react";

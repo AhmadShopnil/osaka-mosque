@@ -1,11 +1,13 @@
+import { formatDate } from "@/helper/formatDate";
 import { getMetaValueFromExtraFields } from "@/helper/metaHelpers";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
+
 const BlogCard = ({ post }) => {
 
-
+const date=formatDate(post?.created_at)
 const short_description = getMetaValueFromExtraFields(
     post,
     "short_description"
@@ -37,7 +39,7 @@ const short_description = getMetaValueFromExtraFields(
           <ul className="flex flex-wrap text-sm text-gray-500 gap-x-4 gap-y-1">
             <li className="flex items-center">
               <i className="far fa-calendar-alt text-green-800 mr-1" />
-              {post?.date || "No date Available"}
+              {date || "No date Available"}
             </li>
             <li className="flex items-center">
               <i className="far fa-user text-green-800 mr-1" />
@@ -56,9 +58,9 @@ const short_description = getMetaValueFromExtraFields(
           <p className="text-gray-700 text-sm leading-relaxed">{short_description}</p>
         </div>
 
-        <a href={post.link} className="text-sm text-green-800 hover:underline">
+        <Link href={`/blogs/${post?.slug}`} className="text-sm text-green-800 hover:underline">
           View Details
-        </a>
+        </Link>
       </div>
     </div>
   );

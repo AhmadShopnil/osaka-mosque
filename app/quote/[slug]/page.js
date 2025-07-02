@@ -1,5 +1,5 @@
 // app/learn-more/page.tsx
-import HeroSection from "@/components/event/HeroSection";
+import HeroSection from "@/components/shared/HeroSection";
 import { getSingleSlider } from "@/helper/actions";
 import { getMetaValueFromExtra_Fields } from "@/helper/metaHelpers";
 import Image from "next/image";

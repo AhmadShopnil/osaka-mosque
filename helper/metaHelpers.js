@@ -32,7 +32,7 @@ export const getMediaLinkByMetaName = (data, metaName) => {
   const item = data.find(
     (dataItem) => dataItem.meta_name === metaName
   );
-console.log("from utils", item)
+// console.log("from utils", item)
   if (item?.file_directory && item?.filename) {
     return item.file_directory + item.filename;
   }

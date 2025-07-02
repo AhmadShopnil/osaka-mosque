@@ -24,6 +24,7 @@ import {
 } from "react-icons/fa";
 import Link from "next/link";
 import Image from "next/image";
+import BlogSmallCard from "@/components/blog/BlogSmallCard";
 
 export default async function Footer() {
   const settings = await getSettings();
@@ -38,7 +39,10 @@ export default async function Footer() {
   const youtubeLink = getMetaValueByMetaName(settings, "youtube_url") || "#";
   const footer_content =
     getMetaValueByMetaName(settings, "site_description") || "";
-  
+  const copyright_content =
+    getMetaValueByMetaName(settings, "bottom_footer_content") ||
+    "OSAKA MASJID© 2025 | ALL RIGHTS RESERVED";
+
   return (
     <div className="bg-green-900 pt-16 relative z-50">
       {/* Main footer content with white background - positioned higher with negative margin */}
@@ -48,9 +52,7 @@ export default async function Footer() {
           {/* About Us Section */}
           <div>
             <h2 className="text-xl font-bold mb-4">About Us</h2>
-            <p className="text-gray-700 mb-6">
-             {footer_content}
-            </p>
+            <p className="text-gray-700 mb-6">{footer_content}</p>
 
             {/* Google Map */}
             <div className="mb-2">
@@ -76,28 +78,10 @@ export default async function Footer() {
           <div>
             <h2 className="text-xl font-bold mb-4">Latest Blogs</h2>
             <div className="flex flex-col gap-3">
-              {blogs?.slice(0,2).map((blog, i) => (
-                <div key={i} className="flex gap-3">
-                  <div className="relative w-[60px] h-[60px]">
-                    <Image
-                      src={blog?.featured_image}
-                      alt={blog?.name}
-                      fill
-                      className="object-cover rounded"
-                    />
-                  </div>
-                  <div>
-                    <h3 className="font-medium">
-                      {blog.name.length > 20
-                        ? blog.name.slice(0, 20) + "..."
-                        : blog.name}
-                    </h3>
-                    <p className="text-sm text-green-900 flex items-center gap-1 mt-1">
-                      <Calendar className="h-4 w-4" />
-                      <span>March 25, 2025</span>
-                    </p>
-                  </div>
-                </div>
+              {blogs?.slice(0, 2).map((blog, i) => (
+                <Link key={i} href={`/blogs/${blog?.slug}`}>
+                  <BlogSmallCard blog={blog} />
+                </Link>
               ))}
             </div>
           </div>
@@ -166,7 +150,14 @@ export default async function Footer() {
 
         {/* Copyright */}
         <div className="text-center mt-8">
-          <p>OSAKA MASJID© 2024 | ALL RIGHTS RESERVED</p>
+          {/* <p>OSAKA MASJID© 2024 | ALL RIGHTS RESERVED</p> */}
+          <div
+            className=""
+            dangerouslySetInnerHTML={{
+              __html: copyright_content,
+            }}
+          />
+          {/* <p>{copyright_content}</p> */}
         </div>
       </div>
 

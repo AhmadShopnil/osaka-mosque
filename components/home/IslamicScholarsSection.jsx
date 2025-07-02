@@ -1,9 +1,13 @@
 import { getScholars } from "@/helper/actions";
+import { getMetaValueByMetaName } from "@/helper/metaHelpers";
 import Image from "next/image";
 import Link from "next/link";
 
-export default async function IslamicScholarsSection() {
+export default async function IslamicScholarsSection({settings}) {
   const scholars = await getScholars();
+
+const islamic_scholars_heading = getMetaValueByMetaName(settings, "islamic_scholars") || "";
+
 
   return (
     <section className="z-10 pt-[100px] relative bg-[#fafafa] pb-64">
@@ -22,7 +26,7 @@ export default async function IslamicScholarsSection() {
         <div className="text-center mb-[40px]">
           <span className="text-[#00401A] text-[20px] mb-[5px]">Our Expert</span>
           <h2 className="mt-2 font-semibold text-[#222] text-[38px] md:text-[42px] lg:text-[48px]">
-            Islamic Scholars
+            {islamic_scholars_heading}
           </h2>
           <Image
             width={160}

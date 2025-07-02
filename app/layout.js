@@ -1,7 +1,7 @@
-import { Geist, Geist_Mono,Merriweather } from "next/font/google";
+import { Geist, Geist_Mono, Merriweather } from "next/font/google";
 import "./globals.css";
-
 import Footer from "@/components/common/footer/Footer";
+
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -14,10 +14,10 @@ const geistMono = Geist_Mono({
 });
 
 const merriweather = Merriweather({
-  subsets: ['latin'],
-  weight: ['300', '400', '700', '900'], // choose the weights you need
-  variable: '--font-merriweather', // optional: for CSS variable
-  display: 'swap',
+  subsets: ["latin"],
+  weight: ["300", "400", "700", "900"], // choose the weights you need
+  variable: "--font-merriweather", // optional: for CSS variable
+  display: "swap",
 });
 
 export const metadata = {
@@ -32,12 +32,14 @@ export default function RootLayout({ children }) {
         // className={`${geistSans.variable} ${geistMono.variable} antialiased`}
         className={`${merriweather.variable} font-merriweather antialiased`}
       >
-        <div>
-         
-          {children}
-          <Footer/>
-        </div>
-     
+        {/* <PayPalScriptProvider
+          options={{ "client-id": "YOUR_PAYPAL_CLIENT_ID" }}
+        > */}
+          <div>
+            {children}
+            <Footer />
+          </div>
+        {/* </PayPalScriptProvider> */}
       </body>
     </html>
   );

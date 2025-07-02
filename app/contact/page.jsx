@@ -2,7 +2,7 @@
 
 import ContactDetail from "@/components/contact/ContactDetail";
 import ContactForm from "@/components/contact/ContactForm";
-import HeroSection from "@/components/event/HeroSection";
+import HeroSection from "@/components/shared/HeroSection";
 import Map from "@/components/shared/Map";
 
 export default function Contact() {

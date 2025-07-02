@@ -1,10 +1,10 @@
 import Image from "next/image";
 import React from "react";
 import { FaClock, FaLocationDot } from "react-icons/fa6";
-import HeroSection from "./HeroSection";
+import HeroSection from "../shared/HeroSection";
 import ScholarCard from "../shared/ScholarCard";
 import Map from "../shared/Map";
-import SmallCard from "../shared/SmallCard";
+import SmallCard from "./EventSmallCard";
 import {
   getMetaValueFromExtra_Fields,
   getMetaValueFromExtraFields,

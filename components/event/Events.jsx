@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import HeroSection from "./HeroSection";
+import HeroSection from "../shared/HeroSection";
 import Pagination from "../shared/Pagination";
 import EventCard from "./EventCard";
 

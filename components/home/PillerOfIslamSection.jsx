@@ -11,6 +11,7 @@ import {
   faHandHoldingHeart,
   faUtensils,
 } from '@fortawesome/free-solid-svg-icons';
+import { getMetaValueByMetaName } from '@/helper/metaHelpers';
 
 // Map of icon string to actual FontAwesome icon
 const iconMap = {
@@ -32,7 +33,10 @@ const pillars = [
   { title: 'Hajj', subtitle: '(Pilgrimage)', icon: 'faKaaba', shape: false, flip: false },
 ];
 
-const PillarOfIslamSection = () => {
+const PillarOfIslamSection = ({settings}) => {
+
+  const pillar_of_islam_heading = getMetaValueByMetaName(settings, "pillar_of_islam") || "";
+
   return (
     <section className="pt-[130px] relative z-50">
       <div
@@ -45,7 +49,7 @@ const PillarOfIslamSection = () => {
           <div className="flex flex-col items-center text-center">
             <span className="font-bold text-[#80b918] text-[20px]">About Essential</span>
             <h2 className="font-semibold text-white text-[38px] md:text-[42px] lg:text-[48px]">
-              Pillar Of Islam
+             {pillar_of_islam_heading}
             </h2>
             <Image className="mt-2" src="/images/pshape.png" alt="Design Shape" width={100} height={10} />
           </div>

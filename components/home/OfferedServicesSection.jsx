@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBookOpen } from "@fortawesome/free-solid-svg-icons";
 import { Metadata } from "next";
 import { getServices } from "@/helper/actions";
+import { getMetaValueByMetaName } from "@/helper/metaHelpers";
 
 
 
@@ -16,8 +17,11 @@ export async function generateMetadata() {
 
 // ✅ Fetching data during build time (SSG)
 
-export default async function ServicesPage() {
+export default async function ServicesPage({settings}) {
   const services = await getServices();
+
+
+const service_heading = getMetaValueByMetaName(settings, "service_heading") || "";
 
   return (
     <section className="z-10 pt-[100px] relative bg-white">
@@ -28,7 +32,7 @@ export default async function ServicesPage() {
         <div className="flex flex-col items-center mb-[40px] text-center">
           <span className="pb-[5px] text-[#00401A] text-[20px]">Our Worldwide</span>
           <h2 className="font-semibold text-[#222] text-[28px] sm:text-[38px] md:text-[42px] lg:text-[48px]">
-            Offered Services
+            {service_heading}
           </h2>
           <Image className="mt-2" src="/images/pshape.png" alt="Design Shape" width={100} height={50} />
         </div>

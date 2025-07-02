@@ -1,4 +1,4 @@
-import HeroSection from '@/components/event/HeroSection';
+import HeroSection from '@/components/shared/HeroSection';
 import { getPage } from '@/helper/actions';
 import Image from 'next/image';
 import React from 'react';

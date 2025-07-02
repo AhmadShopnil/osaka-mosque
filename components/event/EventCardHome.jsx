@@ -4,7 +4,7 @@ import React from "react";
 import { FaMapMarkerAlt, FaClock } from "react-icons/fa";
 
 
-const EventSmallCard = ({ event }) => {
+const EventCardHome = ({ event }) => {
   const day = getMetaValueFromExtraFields(event, "day");
   const month = getMetaValueFromExtraFields(event, "month");
   const time = getMetaValueFromExtraFields(event, "time");
@@ -56,4 +56,4 @@ const EventSmallCard = ({ event }) => {
   );
 };
 
-export default EventSmallCard;
+export default EventCardHome;

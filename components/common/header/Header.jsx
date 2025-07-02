@@ -140,13 +140,7 @@ const Header = ({ settings }) => {
             )}
           </Link>
 
-          {/* <Link href="/" className=" ">
-            <img
-              className="lg:w-[173px] w-[160px] lg:py-[15px] py-[10px] object-cover"
-              src="/images/logo1.png"
-              alt="logo"
-            />
-          </Link> */}
+       
 
           {/* Mobile Toggle */}
           <button
@@ -207,6 +201,7 @@ const Header = ({ settings }) => {
                   </li>
                 </ul>
               </li>
+               <Link href="/blogs">Blogs</Link>
               <Link href="/scholars">Scholars</Link>
               <Link href="/contact">Contact</Link>
             </ul>

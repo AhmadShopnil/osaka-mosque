@@ -3,7 +3,7 @@ import { faCalendarDays } from "@fortawesome/free-solid-svg-icons";
 import React from "react";
 import { getMetaValueFromExtraFields } from "@/helper/metaHelpers";
 
-const SmallCard= ({ event }) => {
+const EventSmallCard= ({ event }) => {
 
 
   const day = getMetaValueFromExtraFields(event, "day");
@@ -25,11 +25,11 @@ const SmallCard= ({ event }) => {
         </h4>
         <div className="text-orange-400 text-sm flex items-center mt-1">
           <FontAwesomeIcon icon={faCalendarDays} className="w-3 h-3 mr-2" />
-          {day} {month} {year}
+          {day} {month} {year} 
         </div>
       </div>
     </div>
   );
 };
 
-export default SmallCard;
+export default EventSmallCard;
