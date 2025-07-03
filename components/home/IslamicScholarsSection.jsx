@@ -12,7 +12,7 @@ export default async function IslamicScholarsSection({ settings }) {
     getMetaDescriptionByMetaName(settings, "islamic_scholars") || "";
 
   return (
-    <section className="z-10 pt-[100px] relative bg-[#fafafa] pb-64">
+    <section className="z-10 pt-[50px] lg:pt-[100px] relative bg-[#fafafa] pb-64">
       {/* Left Background Image */}
       <div className="absolute left-0 -z-10 -bottom-25 opacity-[0.65]">
         <Image

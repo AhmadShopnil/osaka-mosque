@@ -49,7 +49,7 @@ const ContactForm = () => {
     const result = await postForm("/contacts/create", payload); 
 
     if (result.success) {
-      toast.success(`Successfully Message Send`);
+      toast.success(`Your Message sent Successfully`);
       setFormData({
         name: "",
         email: "",

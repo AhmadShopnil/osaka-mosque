@@ -15,7 +15,7 @@ const BlogEventsSection = async ({settings}) => {
   // console.log("sort des", sort)
 
   return (
-    <section className="bg-[#f8f9fa] py-[100px]">
+    <section className="bg-[#f8f9fa] pt-[60px] pb-[80px] ">
       <div className="container mx-auto px-4 md:px-10">
         <div className="text-center mb-[40px]">
           <span className="text-[#00401A] text-[20px]">
@@ -33,7 +33,7 @@ const BlogEventsSection = async ({settings}) => {
           />
         </div>
 
-        <div className="flex flex-col lg:flex-row gap-8 h-[480px]">
+        <div className="flex flex-col lg:flex-row gap-8 md:h-[480px]">
           {/* Blog Posts */}
           <div className="flex flex-col gap-6 w-full lg:w-3/5 h-full ">
             {blogs?.slice(0,2).map((post) => (

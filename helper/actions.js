@@ -125,6 +125,20 @@ const API_URL =`${BASE_URL}/api/v1/post?slug=${slug}`;
 }
 
 
+export async function getPillarOfIslam() {
+const API_URL =`${BASE_URL}/api/v1/posts?term_type=pillar_of_islam`;
+
+  const res = await fetch(API_URL, {
+    next: { revalidate: 30 }, 
+  });
+  const json = await res.json();
+  return json?.data || [];
+}
+
+
+
+
+
 
 // utils/postData.ts
 

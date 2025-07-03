@@ -48,7 +48,7 @@ const prayer_time_sub_heading =
 
 
   return (
-    <section className="bg-[#f8f9fa] pt-[100px] pb-[100px]">
+    <section className="bg-[#f8f9fa] pt-[50px] lg:pt-[100px] pb-[100px]">
       <div className="container px-8 mx-auto">
         {/* Header */}
         <div className="text-start mb-[40px]">

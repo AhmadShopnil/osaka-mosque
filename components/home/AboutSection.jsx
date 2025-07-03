@@ -1,14 +1,22 @@
 import React from "react";
 import Image from "next/image";
 import { getPage } from "@/helper/actions";
+import { getMetaValueFromExtra_Fields } from "@/helper/metaHelpers";
 
 const AboutSection = async () => {
   const about = await getPage("about-us");
 
-  // console.log("about", about);
+  const short_description = getMetaValueFromExtra_Fields(
+    about,
+    "short_description"
+  );
+
+
+
+  // console.log("about", short_description);
 
   return (
-    <div className="pt-[90px] pb-[100px] bg-white">
+    <div className="py-[40px] lg:py-[90px]  bg-white">
       <div className="container px-4 sm:px-8 md:px-16 mx-auto">
         <div className="flex flex-col md:flex-row gap-12 md:gap-16 justify-between items-center">
           {/* Left side - Image */}
@@ -37,9 +45,11 @@ const AboutSection = async () => {
               <h1 className="text-[#00401A] text-[20px] pb-[5px]">
                 Our History
               </h1>
-              <div className="mb-4">
-                <h2 className="font-[500] text-[#222] text-[40px] sm:text-[38px]
-                 md:text-[42px] lg:text-[48px] leading-11 mb-3">
+              <div className="mb-1">
+                <h2
+                  className="font-[500] text-[#222] text-[40px] sm:text-[38px]
+                 md:text-[42px] lg:text-[48px] leading-11 mb-3"
+                >
                   {about?.sub_title}
                 </h2>
                 <Image
@@ -51,24 +61,19 @@ const AboutSection = async () => {
                 />
               </div>
 
+              <div className="text-[#555555] leading-7 text-[15px] ">
+                <p className="mt-[20px]">{short_description}</p>
+              </div>
+
+              {/* 
               <div
                 className="text-[#555555] leading-7 text-[15px]"
                 dangerouslySetInnerHTML={{
                   __html: about?.description,
                 }}
-              />
+              /> */}
 
-              {/* <div className="text-[#555555] leading-7 text-[15px] ">
-                <p className="mt-[20px]">
-                  We established our center in 1954, sed do eiusmod tempor
-                  incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-                  veniam, quis nostrud exercitation ullamco laboris.
-                </p>
-                <p className="mt-[20px]">
-                  Visit our premises sit amet, consectetur adipisicing elit, sed
-                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                </p>
-              </div> */}
+              
 
               <div className="mt-[35px]">
                 <a

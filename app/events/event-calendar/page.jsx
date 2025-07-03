@@ -14,7 +14,7 @@ const events=await getEvents()
 // console.log("events", events)
 
   return (
-    <div className="pb-96">
+    <div className="pb-64">
         <HeroSection heroData={heroData} />
       <div className="container mx-auto px-2 lg:px-8 pt-8">
         <EventCalendar events={events} />

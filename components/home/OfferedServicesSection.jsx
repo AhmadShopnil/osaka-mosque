@@ -27,7 +27,7 @@ const service_heading_sub_heading =
 
 
   return (
-    <section className="z-10 pt-[100px] relative bg-white">
+    <section className="z-10 py-[40px] lg:pt-[90px] relative bg-white">
       <div className="absolute right-0 -z-10 -bottom-25 opacity-[0.65]">
         <Image src="/images/bg-vector-3.png" alt="Background Vector" width={500} height={500} />
       </div>
@@ -40,7 +40,7 @@ const service_heading_sub_heading =
           <Image className="mt-2" src="/images/pshape.png" alt="Design Shape" width={100} height={50} />
         </div>
 
-        <div className="gap-8 grid offer-grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 mb-[-30px]">
+        <div className="gap-8 grid offer-grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 mb-[-60px]">
           {services.map((service) => (
             <div key={service.id} className="group flex flex-col items-center gap-4">
               <div className="text-center">

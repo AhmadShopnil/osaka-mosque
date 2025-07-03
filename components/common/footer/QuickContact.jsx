@@ -50,7 +50,7 @@ const QuickContact = () => {
     console.log("response from", result);
 
     if (result.success) {
-      toast.success("Message sent successfully!");
+      toast.success(`Your Message sent Successfully`);
       setFormData({ name: "", email: "", message: "" });
     } else {
       toast.error(`Error: ${result.message}`);

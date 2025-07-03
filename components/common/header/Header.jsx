@@ -115,9 +115,9 @@ const Header = ({ settings }) => {
                   <FaPhoneAlt className="text-white mr-[10px]" />
                   <span>{phone}</span>
                 </div>
-                <div className="z-50">
+                {/* <div className="z-50">
                   <GoogleTranslateDropdown />
-                </div>
+                </div> */}
                 {/* <GoogleTranslate /> */}
               </div>
             </div>

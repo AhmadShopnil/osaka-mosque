@@ -28,6 +28,7 @@ import Link from "next/link";
 import Image from "next/image";
 import BlogSmallCard from "@/components/blog/BlogSmallCard";
 import QuickContact from "./QuickContact";
+import GoogleTranslate from "@/components/shared/GoogleTranslate";
 
 export default async function Footer() {
   const settings = await getSettings();
@@ -59,7 +60,8 @@ export default async function Footer() {
 
             {/* Google Map */}
             <div className="mb-2">
-              <iframe
+              <GoogleTranslate/>
+              {/* <iframe
                 src="https://www.google.com/maps?q=4-12-16+Owada,+Nishiyodogawa+Ward,+Osaka,+555-0032&output=embed"
                 width="100%"
                 height="150"
@@ -68,13 +70,13 @@ export default async function Footer() {
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
                 className="rounded"
-              ></iframe>
+              ></iframe> */}
             </div>
 
-            <div className="flex items-center mt-2">
+            {/* <div className="flex items-center mt-2">
               <MapPin className="h-5 w-5 mr-2" />
               <p>Find us on Map</p>
-            </div>
+            </div> */}
           </div>
 
           {/* Latest Blogs Section */}
