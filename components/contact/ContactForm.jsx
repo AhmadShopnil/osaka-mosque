@@ -63,9 +63,9 @@ const ContactForm = () => {
   };
 
   return (
-    <div className="py-16 flex flex-col items-center">
+    <div className="py-8 flex flex-col items-center">
       <div className="text-center mb-10">
-        <h2 className="text-orange-500 font-medium mb-2">Contact us</h2>
+        {/* <h2 className="text-orange-500 font-medium mb-2">Contact us</h2> */}
         <h1 className="text-4xl md:text-5xl font-bold text-gray-800">
           Get In Touch
         </h1>

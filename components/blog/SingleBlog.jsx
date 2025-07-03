@@ -1,14 +1,13 @@
 import Image from "next/image";
 import Link from "next/link";
 import { FaCalendarAlt, FaUser } from "react-icons/fa";
-import SmallCard from "../event/EventSmallCard"; // Reuse your existing SmallCard component
 import HeroSection from "../shared/HeroSection";
 import BlogSmallCard from "./BlogSmallCard";
+
 
 const SingleBlog = ({ blog, blogs }) => {
   // Extracting date parts
   const [day, month] = (blog?.post_date || "01 Jan").split(" ");
-
   const heroData = {
     title: blog?.name || "Blog",
   };

@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
@@ -8,18 +8,38 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { formatPathname } from "@/helper/formatPathname";
 import Header from "../common/header/Header";
+import { getSettings } from "@/helper/getSettings";
+import axiosInstance from "@/helper/axiosInstance";
 
-const HeroSection = ({ heroData }) => {
+const HeroSection = ({ heroData , }) => {
+   const [settings, setSettings] = useState([]);
   const { title } = heroData;
-
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [eventDropdownOpen, setEventDropdownOpen] = useState(false);
   const pathname = usePathname();
   const prettyPath = formatPathname(pathname);
   
+
+  
+  useEffect(() => {
+    axiosInstance
+      .get("/frontend/settings")
+      .then((response) => {
+        setSettings(response.data?.data);
+      })
+      .catch((error) => {
+        console.error("Error fetching settings:", error);
+      });
+
+   
+  }, []);
+// const settings=getSettings()
+  
+console.log("settings",settings)
+
   return (
     <section className="relative w-full h-[420px]">
-      <Header />
+      <Header settings={settings} />
       {/* Hero Slider */}
       <Swiper className="w-full h-full">
         <SwiperSlide>

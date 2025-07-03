@@ -9,6 +9,8 @@ import {
   Globe,
   Calendar,
   Phone,
+  Instagram,
+  Youtube,
 } from "lucide-react";
 import {
   FaTwitter,
@@ -58,7 +60,7 @@ export default async function Footer() {
             {/* Google Map */}
             <div className="mb-2">
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3671.908319249823!2d72.5539!3d23.0334!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjPCsDAyJzAwLjIiTiA3MsKwMzMnMTQuMCJF!5e0!3m2!1sen!2sin!4v1650956095161!5m2!1sen!2sin"
+                src="https://www.google.com/maps?q=4-12-16+Owada,+Nishiyodogawa+Ward,+Osaka,+555-0032&output=embed"
                 width="100%"
                 height="150"
                 style={{ border: 0 }}
@@ -105,17 +107,21 @@ export default async function Footer() {
 
             {/* Social Media Icons */}
             <div className="flex gap-4 mt-6">
-              <Link href="#" className="hover:text-gray-600">
+              <Link href={facebookLink} className="hover:text-gray-600">
                 <Facebook className="h-5 w-5" />
+                
               </Link>
-              <Link href="#" className="hover:text-gray-600">
-                <Twitter className="h-5 w-5" />
+              <Link href={linkedinLink} className="hover:text-gray-600">
+                <Instagram className="h-5 w-5" />
+               
               </Link>
-              <Link href="#" className="hover:text-gray-600">
+              <Link href={linkedinLink} className="hover:text-gray-600">
                 <Linkedin className="h-5 w-5" />
+                
               </Link>
-              <Link href="#" className="hover:text-gray-600">
-                <Globe className="h-5 w-5" />
+              <Link href={youtubeLink} className="hover:text-gray-600">
+                <Youtube className="h-5 w-5" />
+             
               </Link>
             </div>
           </div>

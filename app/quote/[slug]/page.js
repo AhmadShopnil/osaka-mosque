@@ -1,6 +1,6 @@
 // app/learn-more/page.tsx
 import HeroSection from "@/components/shared/HeroSection";
-import { getSingleSlider } from "@/helper/actions";
+import { getSettings, getSingleSlider } from "@/helper/actions";
 import { getMetaValueFromExtra_Fields } from "@/helper/metaHelpers";
 import Image from "next/image";
 import Link from "next/link";
@@ -14,6 +14,7 @@ export const metadata = {
 export default async function LearnMorePage({ params }) {
   const { slug } = await params;
   const slide = await getSingleSlider(slug);
+  const settings = await getSettings();
 
   const short_description = getMetaValueFromExtra_Fields(
     slide,
