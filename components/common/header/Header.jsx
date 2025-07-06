@@ -126,22 +126,22 @@ const Header = ({ settings }) => {
 
       {/* Navbar */}
       <div className="absolute top-[38px] lg:top-[60px] bg-black/20 right-0 left-0 z-30 ">
-        <div className="container mx-auto flex justify-between items-center py-4 px-4">
+        <div className="container mx-auto flex justify-between items-center  px-4">
           {/* Logo */}
-          <Link href="/" className="cursor-pointer ">
+          <Link href="/" className="cursor-pointer overflow-hidden  ">
             {logo ? (
               <Image
                 src={`https://admin.osakamasjid.org${logo}`}
                 alt="Logo"
-                width={190}
-                height={60}
+                width={130}
+                height={20}
               />
             ) : (
               <Image
                 src="/images/logo1.png"
                 alt="Logo"
                 width={170}
-                height={60}
+                height={30}
               />
             )}
           </Link>
