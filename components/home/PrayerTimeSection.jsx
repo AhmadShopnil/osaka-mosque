@@ -81,6 +81,30 @@ const PrayerTimeSection = async ({ settings }) => {
                       />
                     </div>
                   </th>
+                    <th className="p-[10px] text-[18px] text-center">
+                    Start Time
+                    <div className="flex justify-center">
+                      <Image
+                        className="mt-2"
+                        src="/images/pshape.png"
+                        alt="Design Shape"
+                        width={100}
+                        height={50}
+                      />
+                    </div>
+                  </th>
+                    <th className="p-[10px] text-[18px] text-center">
+                    End Time
+                    <div className="flex justify-center">
+                      <Image
+                        className="mt-2"
+                        src="/images/pshape.png"
+                        alt="Design Shape"
+                        width={100}
+                        height={50}
+                      />
+                    </div>
+                  </th>
                 </tr>
               </thead>
 
@@ -93,6 +117,12 @@ const PrayerTimeSection = async ({ settings }) => {
                     <td className="p-[10px] text-[18px]">{prayer?.name}</td>
                     <td className="p-[10px] text-[18px]">
                       {getMetaValueFromExtraFields(prayer, "time")}
+                    </td>
+                     <td className="p-[10px] text-[18px]">
+                      {getMetaValueFromExtraFields(prayer, "start_time")}
+                    </td>
+                     <td className="p-[10px] text-[18px]">
+                      {getMetaValueFromExtraFields(prayer, "end_time")}
                     </td>
                   </tr>
                 ))}

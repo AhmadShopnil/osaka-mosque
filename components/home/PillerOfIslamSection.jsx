@@ -82,7 +82,7 @@ const PillarOfIslamSection = ({ settings }) => {
           {pillar_of_islam_sub_heading}
         </div>
 
-        <div className="z-10 relative container mx-auto px-4">
+        <div className="z-10 relative container  mx-auto px-4">
           <div className="flex flex-col items-center text-center">
             <span className="font-bold text-[#80b918] text-[20px]">
               About Essential
@@ -114,7 +114,7 @@ const PillarOfIslamSection = ({ settings }) => {
                       icon={iconMap[pillar.icon]}
                       className="text-white text-[50px]"
                     />
-                    {pillar.shape && (
+                    {/* {pillar.shape && (
                       <div
                         className={`absolute hidden md:flex -right-24 ${
                           pillar.flip ? "transform rotate-x-180" : ""
@@ -127,7 +127,7 @@ const PillarOfIslamSection = ({ settings }) => {
                           height={100}
                         />
                       </div>
-                    )}
+                    )} */}
                   </div>
                   <h5 className="mt-4 font-[400] text-[24px] text-white">
                     {pillar.title}
