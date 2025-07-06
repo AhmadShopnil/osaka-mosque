@@ -49,7 +49,7 @@ const DonationSection = () => {
   };
 
   return (
-    <section className="relative">
+    <section className="relative" >
       <div
         className="relative bg-cover bg-no-repeat bg-center bg-fixed"
         style={{ backgroundImage: "url('/images/parallax3.jpg')" }}

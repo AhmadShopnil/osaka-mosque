@@ -1,4 +1,3 @@
-
 import AboutSection from "@/components/home/AboutSection";
 import BlogEventsSection from "@/components/home/BlogEventsSection";
 import DonationPage from "@/components/home/DonationPage";
@@ -9,14 +8,13 @@ import PillarOfIslamSection from "@/components/home/PillerOfIslamSection";
 import PrayerTimeSection from "@/components/home/PrayerTimeSection";
 import { getSettings } from "@/helper/actions";
 
-
 export default async function Home() {
-const settings = await getSettings();
+  const settings = await getSettings();
 
   return (
     <div>
       {/* <GoogleTranslateDropdown /> */}
-      <HeroHome/>
+      <HeroHome />
       {/* <HeroSectionHome /> */}
       <AboutSection />
       {/* <PrayerTimes/> */}
@@ -25,10 +23,10 @@ const settings = await getSettings();
       <PillarOfIslamSection settings={settings} />
       <BlogEventsSection settings={settings} />
       {/* <DonationSection /> */}
-      <DonationPage settings={settings}/>
-      <IslamicScholarsSection  settings={settings}/>
-     
-      
+      <div id="donation">
+        <DonationPage settings={settings} />
+      </div>
+      <IslamicScholarsSection settings={settings} />
     </div>
   );
 }

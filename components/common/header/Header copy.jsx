@@ -131,7 +131,7 @@ const Header = ({ settings }) => {
           <Link href="/" className="cursor-pointer ">
             {logo ? (
               <Image
-                src={`https://admin.techlearnopedia.com${logo}`}
+                src={`https://admin.osakamasjid.org${logo}`}
                 alt="Logo"
                 width={190}
                 height={60}

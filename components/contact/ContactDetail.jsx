@@ -12,7 +12,7 @@ const ContactDetail = async () => {
     getMetaValueByMetaName(settings, "office_location") || "";
   const fax = getMetaValueByMetaName(settings, "fax") || "";
   const Image = getMediaLinkByMetaName(settings, "masjid_image");
-  const img = `https://admin.techlearnopedia.com${Image}`;
+  const img = `https://admin.osakamasjid.org${Image}`;
 
   return (
     <div className="py-16 relative overflow-hidden">

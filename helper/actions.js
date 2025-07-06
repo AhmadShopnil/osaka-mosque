@@ -137,6 +137,17 @@ const API_URL =`${BASE_URL}/api/v1/posts?term_type=pillar_of_islam`;
 
 
 
+export async function getPryerTime() {
+const API_URL =`${BASE_URL}/api/v1/posts?term_type=prayer_time`;
+
+  const res = await fetch(API_URL, {
+    next: { revalidate: 30 }, 
+  });
+  const json = await res.json();
+  return json?.data || [];
+}
+
+
 
 
 

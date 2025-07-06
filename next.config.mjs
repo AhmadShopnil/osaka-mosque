@@ -4,13 +4,13 @@ const nextConfig = {
     BASE_URL: process.env.BASE_URL || "http://localhost:3000",
   },
   images: {
-    domains: ["mathmozocms.test", "techlearnopedia.com","admin.techlearnopedia.com"],
+    domains: ["mathmozocms.test", "techlearnopedia.com","admin.techlearnopedia.com","admin.osakamasjid.org","osakamasjid.org"],
   },
   async rewrites() {
     return [
       {
         source: "/api/:path*",
-        destination: "https://admin.techlearnopedia.com/api/v1/:path*",
+        destination: "https://admin.osakamasjid.org/api/v1/:path*",
       },
     ];
   },

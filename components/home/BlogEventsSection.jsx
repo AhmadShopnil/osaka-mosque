@@ -33,7 +33,7 @@ const BlogEventsSection = async ({settings}) => {
           />
         </div>
 
-        <div className="flex flex-col lg:flex-row gap-8 md:h-[480px]">
+        <div className="flex flex-col lg:flex-row gap-8 lg:h-[480px]">
           {/* Blog Posts */}
           <div className="flex flex-col gap-6 w-full lg:w-3/5 h-full ">
             {blogs?.slice(0,2).map((post) => (

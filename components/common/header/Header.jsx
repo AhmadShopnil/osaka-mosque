@@ -26,7 +26,7 @@ const Header = ({ settings }) => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [eventDropdownOpen, setEventDropdownOpen] = useState(false);
 
- const phone = getMetaValueByMetaName(settings, "company_phone") || "";
+  const phone = getMetaValueByMetaName(settings, "company_phone") || "";
   const company_email = getMetaValueByMetaName(settings, "company_email") || "";
   const facebookLink = getMetaValueByMetaName(settings, "facebook_url") || "#";
   const linkedinLink = getMetaValueByMetaName(settings, "linkedin_url") || "#";
@@ -73,7 +73,6 @@ const Header = ({ settings }) => {
                 >
                   <FaInstagram />
                 </a>
-                
               </div>
             </div>
 
@@ -132,7 +131,7 @@ const Header = ({ settings }) => {
           <Link href="/" className="cursor-pointer ">
             {logo ? (
               <Image
-                src={`https://admin.techlearnopedia.com${logo}`}
+                src={`https://admin.osakamasjid.org${logo}`}
                 alt="Logo"
                 width={190}
                 height={60}
@@ -160,20 +159,29 @@ const Header = ({ settings }) => {
             <ul className="flex gap-8 text-white text-md ">
               {/* Home */}
               <li className="relative group">
-                <Link href="/" className="relative px-1 py-2 inline-block
-                 hover:text-green-800 transition-all duration-500">
+                <Link
+                  href="/"
+                  className="relative px-1 py-2 inline-block
+                 hover:text-green-800 transition-all duration-500"
+                >
                   <span className="relative z-10">Home</span>
-                  <span className="absolute top-0 left-0 w-0 h-[2px]
-                   bg-green-800 group-hover:w-full transition-all duration-500"></span>
-                  <span className="absolute bottom-0 right-0 w-0 h-[2px] bg-green-800
-                   group-hover:w-full transition-all duration-500"></span>
+                  <span
+                    className="absolute top-0 left-0 w-0 h-[2px]
+                   bg-green-800 group-hover:w-full transition-all duration-500"
+                  ></span>
+                  <span
+                    className="absolute bottom-0 right-0 w-0 h-[2px] bg-green-800
+                   group-hover:w-full transition-all duration-500"
+                  ></span>
                 </Link>
               </li>
 
               {/* Event Dropdown */}
               <li className="relative group">
                 <button className="relative px-1 py-2 inline-flex items-center gap-1">
-                  <span className="relative z-10 hover:text-green-800 transition-all duration-500">Event</span>
+                  <span className="relative z-10 hover:text-green-800 transition-all duration-500">
+                    Event
+                  </span>
                   <svg
                     className="w-4 h-4 group-hover:rotate-180 transition-transform"
                     xmlns="http://www.w3.org/2000/svg"
@@ -219,12 +227,19 @@ const Header = ({ settings }) => {
 
               {/* Blogs */}
               <li className="relative group">
-                <Link href="/blogs" className="relative px-1 py-2 inline-block hover:text-green-800 transition-all duration-500">
+                <Link
+                  href="/blogs"
+                  className="relative px-1 py-2 inline-block hover:text-green-800 transition-all duration-500"
+                >
                   <span className="relative z-10">Blogs</span>
-                  <span className="absolute top-0 left-0 w-0 h-[2px] bg-green-800
-                   group-hover:w-full transition-all duration-500"></span>
-                  <span className="absolute bottom-0 right-0 w-0 h-[2px] bg-green-800
-                   group-hover:w-full transition-all duration-500"></span>
+                  <span
+                    className="absolute top-0 left-0 w-0 h-[2px] bg-green-800
+                   group-hover:w-full transition-all duration-500"
+                  ></span>
+                  <span
+                    className="absolute bottom-0 right-0 w-0 h-[2px] bg-green-800
+                   group-hover:w-full transition-all duration-500"
+                  ></span>
                 </Link>
               </li>
 
@@ -235,13 +250,27 @@ const Header = ({ settings }) => {
                   className="relative px-1 py-2 inline-block hover:text-green-800 transition-all duration-500"
                 >
                   <span className="relative z-10">Scholars</span>
-                  <span className="absolute top-0 left-0 w-0 h-[2px]
-                   bg-green-800 group-hover:w-full transition-all duration-500"></span>
-                  <span className="absolute bottom-0 right-0 w-0 h-[2px]
-                   bg-green-800 group-hover:w-full transition-all duration-500"></span>
+                  <span
+                    className="absolute top-0 left-0 w-0 h-[2px]
+                   bg-green-800 group-hover:w-full transition-all duration-500"
+                  ></span>
+                  <span
+                    className="absolute bottom-0 right-0 w-0 h-[2px]
+                   bg-green-800 group-hover:w-full transition-all duration-500"
+                  ></span>
                 </Link>
               </li>
 
+              <li className="relative group">
+                <Link
+                  href="/#donation"
+                  className="relative px-1 py-2 inline-block hover:text-green-800 transition-all duration-500"
+                >
+                  <span className="relative z-10">Dontaion</span>
+                  <span className="absolute top-0 left-0 w-0 h-[2px] bg-green-800 group-hover:w-full transition-all duration-500"></span>
+                  <span className="absolute bottom-0 right-0 w-0 h-[2px] bg-green-800 group-hover:w-full transition-all duration-500"></span>
+                </Link>
+              </li>
               {/* Contact */}
               <li className="relative group">
                 <Link
