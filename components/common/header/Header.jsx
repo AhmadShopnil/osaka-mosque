@@ -342,6 +342,11 @@ const Header = ({ settings }) => {
             </Link>
           </li>
           <li>
+            <Link href="/#donation" className="hover:text-red-500">
+              Donation
+            </Link>
+          </li>
+          <li>
             <Link href="/contact" className="hover:text-red-500">
               Contact
             </Link>

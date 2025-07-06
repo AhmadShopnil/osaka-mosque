@@ -32,7 +32,7 @@ const EventCard = ({ event }) => {
           <div className="z-[-33] absolute inset-0 bg-[#00401A] opacity-60" />
           <span className="flex flex-col items-center font-[500] text-[22px]">
             {day}
-            <i className="text-[16px] block font-[400]">{month}</i>
+            <i className="text-[16px] block font-[400]">{month?.slice(0,3)}</i>
           </span>
         </div>
 
@@ -42,9 +42,9 @@ const EventCard = ({ event }) => {
             {countdownItems.map((item, idx) => (
               <li key={idx} className="relative flex items-center">
                 <div className="text-center">
-                  <span className="text-white">{item.value}</span>
+                  <span className="text-white">{item?.value}</span>
                   <p>
-                    <span className="text-white">{item.label}</span>
+                    <span className="text-white">{item?.label}</span>
                   </p>
                 </div>
                 {idx !== 3 && (
@@ -76,12 +76,18 @@ const EventCard = ({ event }) => {
           </li>
         </ul>
 
-        <div
+      {
+description ?
+
+  <div
           className=""
           dangerouslySetInnerHTML={{
-            __html: `${description.slice(0, 100)}...`,
+            __html: `${description?.slice(0, 100)}...`,
           }}
         />
+        :
+      <p>No Description</p>
+      }
 
         {/* <p>{description}</p> */}
         <Link

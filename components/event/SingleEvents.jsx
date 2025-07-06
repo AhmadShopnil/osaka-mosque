@@ -37,6 +37,7 @@ const scholars = [
 const SingleEvents = async ({ event }) => {
   const events = await getEvents();
 
+  const speakers = getMetaValueFromExtra_Fields(event, "speakers");
   const day = getMetaValueFromExtra_Fields(event, "day");
   const month = getMetaValueFromExtra_Fields(event, "month");
   const time = getMetaValueFromExtra_Fields(event, "time");
@@ -78,7 +79,7 @@ const SingleEvents = async ({ event }) => {
               <div className="z-[-33] absolute inset-0 bg-[#53765B] opacity-60" />
               <span className="flex flex-col items-center font-[500] text-[22px]">
                 {day}
-                <i className="text-[16px] block font-[400]">{month}</i>
+                <i className="text-[16px] block font-[400]">{month?.slice(0,3)}</i>
               </span>
             </div>
 
@@ -113,12 +114,21 @@ const SingleEvents = async ({ event }) => {
             </span>
           </div>
           {/* <p className="text-[#666] text-[16px]">{description}</p> */}
-          <div
-            className="text-[#666] text-[16px]"
-            dangerouslySetInnerHTML={{
-              __html: event?.description,
-            }}
-          />
+
+          {event?.description ? (
+            <div
+              className="text-[#666] text-[16px]"
+              dangerouslySetInnerHTML={{
+                __html: event?.description,
+              }}
+            />
+          ) : (
+            <p>No Description</p>
+          )}
+
+          <p className=" mt-6">
+            <span className="font-semibold">Speakers:</span> {speakers}
+          </p>
           {/* Speakers section start */}
           {/* <div>
             <h1 className="text-3xl py-5">Speakers</h1>

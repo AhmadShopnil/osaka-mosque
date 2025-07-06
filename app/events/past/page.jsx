@@ -1,6 +1,7 @@
 import React from "react";
 import Events from "@/components/event/Events";
 import { getEvents } from "@/helper/actions";
+import { filterEventsByType } from "@/helper/filterEventsByType";
 
 // ✅ Metadata generation
 export async function generateMetadata() {
@@ -14,9 +15,11 @@ export async function generateMetadata() {
 const Page = async () => {
   const events = await getEvents();
 
+const pastEvents = filterEventsByType(events, "recent");
+
   return (
     <div>
-      <Events events={events} />
+      <Events events={pastEvents} />
     </div>
   );
 };
