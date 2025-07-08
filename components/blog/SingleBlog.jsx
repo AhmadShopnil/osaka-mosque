@@ -18,7 +18,7 @@ const SingleBlog = ({ blog, blogs }) => {
     <div className="pb-64">
       {/* Hero Section */}
       <HeroSection heroData={heroData} />
-      <div className="container mx-auto px-2 lg:px-8   flex flex-col md:flex-row gap-8 mt-14">
+      <div className="container mx-auto px-2 lg:px-8   flex flex-col md:flex-row gap-8 mt-10">
         {/* Left Content */}
         <div className="w-full md:w-3/4 min-h-screen">
           {/* Blog Image */}

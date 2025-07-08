@@ -1,88 +1,50 @@
-"use client";
-
 import Image from "next/image";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  faBookOpen,
-  faKaaba,
-  faPersonPraying,
-  faPrayingHands,
-  faCircleUser,
-  faHandHoldingHeart,
-  faUtensils,
-} from "@fortawesome/free-solid-svg-icons";
-import { getMetaDescriptionByMetaName, getMetaValueByMetaName } from "@/helper/metaHelpers";
+  BookOpen,
+  Landmark,
+  UserPlus,
+  Handshake,
+  UserCircle,
+  HeartHandshake,
+  UtensilsCrossed,
+} from "lucide-react";
 
-// Map of icon string to actual FontAwesome icon
-const iconMap = {
-  faBookOpen: faBookOpen,
-  faKaaba: faKaaba,
-  faPersonPraying: faPersonPraying,
-  faPrayingHands: faPrayingHands,
-  faCircleUser: faCircleUser,
-  faHandHoldingHeart: faHandHoldingHeart,
-  faUtensils: faUtensils,
+import {
+  getMetaDescriptionByMetaName,
+  getMetaValueByMetaName,
+} from "@/helper/metaHelpers";
+import { getPillarOfIslam } from "@/helper/actions";
+import Link from "next/link";
+
+// Map of string to Lucide icons
+const lucideIconMap = {
+  faBookOpen: BookOpen,
+  Hajj: Landmark,
+  Salah: UserPlus,
+  Zakat: Handshake,
+  Shahada: UserCircle,
+  faHandHoldingHeart: HeartHandshake,
+  Sawm: UtensilsCrossed,
 };
 
-// Pillars data
-const pillars = [
-  {
-    title: "Shahada",
-    subtitle: "(Faith)",
-    icon: "faCircleUser",
-    shape: true,
-    flip: false,
-  },
-  {
-    title: "Salah",
-    subtitle: "(Prayer)",
-    icon: "faPersonPraying",
-    shape: true,
-    flip: true,
-  },
-  {
-    title: "Zakat",
-    subtitle: "(Charity)",
-    icon: "faHandHoldingHeart",
-    shape: true,
-    flip: false,
-  },
-  {
-    title: "Sawm",
-    subtitle: "(Fasting)",
-    icon: "faUtensils",
-    shape: true,
-    flip: true,
-  },
-  {
-    title: "Hajj",
-    subtitle: "(Pilgrimage)",
-    icon: "faKaaba",
-    shape: false,
-    flip: false,
-  },
-];
+const PillarOfIslamSection = async ({ settings }) => {
+  const pillar_of_islam = await getPillarOfIslam();
 
-const PillarOfIslamSection = ({ settings }) => {
   const pillar_of_islam_heading =
     getMetaValueByMetaName(settings, "pillar_of_islam") || "";
   const pillar_of_islam_sub_heading =
-    getMetaDescriptionByMetaName(settings, "pillar_of_islam") || "About Essential";
+    getMetaDescriptionByMetaName(settings, "pillar_of_islam") ||
+    "About Essential";
 
-
-
-    
   return (
     <section className="pt-[130px] relative z-50">
       <div
         className="relative bg-cover bg-no-repeat bg-center bg-fixed py-[100px]"
         style={{ backgroundImage: `url('/images/parallax2.jpg')` }}
       >
-        <div className="absolute inset-0 bg-black opacity-70">
-          {pillar_of_islam_sub_heading}
-        </div>
+        <div className="absolute inset-0 bg-black opacity-70"></div>
 
-        <div className="z-10 relative container  mx-auto px-4">
+        <div className="z-10 relative container mx-auto px-4">
           <div className="flex flex-col items-center text-center">
             <span className="font-bold text-[#80b918] text-[20px]">
               About Essential
@@ -100,44 +62,38 @@ const PillarOfIslamSection = ({ settings }) => {
           </div>
 
           <div className="gap-[10px] grid pillar-grid grid-cols-1 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 mt-8">
-            {pillars.map((pillar, index) => (
-              <div
-                key={index}
-                className="group flex flex-col items-center gap-4"
-              >
-                <div className="text-center">
-                  <div
-                    className="bg-[#00401A] flex items-center justify-center w-[160px] h-[160px]
-                   relative border-2 border-white rounded-full "
-                  >
-                    <FontAwesomeIcon
-                      icon={iconMap[pillar.icon]}
-                      className="text-white text-[50px]"
-                    />
-                    {/* {pillar.shape && (
-                      <div
-                        className={`absolute hidden md:flex -right-24 ${
-                          pillar.flip ? "transform rotate-x-180" : ""
-                        }`}
-                      >
-                        <Image
-                          src="/images/pilr-shp.png"
-                          alt="Shape"
-                          width={100}
-                          height={100}
-                        />
-                      </div>
-                    )} */}
+            {pillar_of_islam?.map((pillar, index) => {
+              const LucideIcon = lucideIconMap[pillar?.name];
+
+              return (
+                <Link
+                href={`/pillar-of-islam/${pillar?.slug}`}
+                  key={index}
+                  className="group flex flex-col items-center gap-4"
+                >
+                  <div className="text-center">
+                    <div
+                      className="bg-[#00401A] flex items-center justify-center w-[120px] h-[120px]
+                        relative border-2 border-white rounded-full overflow-hidden mx-auto"
+                    >
+                      {LucideIcon ? (
+                        <LucideIcon className="text-white w-8 h-8 md:w-10 md:h-10" />
+                      ) : (
+                        <BookOpen className="text-white w-10 h-10" />
+                      )}
+
+                    
+                    </div>
+                    <h5 className="mt-4 font-[400] text-[24px] text-white">
+                      {pillar?.name}
+                    </h5>
+                    <span className="text-[#80b918] text-[18px]">
+                      {pillar?.sub_title}
+                    </span>
                   </div>
-                  <h5 className="mt-4 font-[400] text-[24px] text-white">
-                    {pillar.title}
-                  </h5>
-                  <span className="text-[#80b918] text-[18px]">
-                    {pillar.subtitle}
-                  </span>
-                </div>
-              </div>
-            ))}
+                </Link>
+              );
+            })}
           </div>
         </div>
       </div>
