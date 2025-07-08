@@ -50,7 +50,8 @@ export default async function Footer() {
   return (
     <div className="bg-green-900 pt-16 relative z-50">
       {/* Main footer content with white background - positioned higher with negative margin */}
-      <div className="max-w-7xl mx-auto px-6 py-12 bg-white -mt-64 mb-0 z-10 rounded-2xl shadow-lg">
+      <div className="container mx-auto px-2 lg:px-8  py-12 bg-white -mt-64 mb-0 
+      z-10 rounded-2xl shadow-lg">
         {/* Main footer content with 4 columns */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* About Us Section */}
