@@ -19,7 +19,7 @@ const AllBlogs = ({ blogs }) => {
 
   return (
     <section className="bg-[#f9f9f9] pt-10 ">
-      <div className="container mx-auto  ">
+      <div className="container mx-auto px-2 lg:px-8 ">
         {/* Header */}
         {/* <div className="text-center mb-16 max-w-3xl mx-auto">
           <h1 className="text-4xl font-bold text-[#00401A]">{featuredBlog?.name}</h1>
