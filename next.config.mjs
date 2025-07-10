@@ -4,7 +4,7 @@ const nextConfig = {
     BASE_URL: process.env.BASE_URL || "http://localhost:3000",
   },
   images: {
-    domains: ["mathmozocms.test", "techlearnopedia.com","admin.techlearnopedia.com","admin.osakamasjid.org","osakamasjid.org"],
+    domains: ["mathmozocms.test", "www.admin.osakamasjid.org","admin.osakamasjid.org","osakamasjid.org"],
   },
   async rewrites() {
     return [

@@ -6,10 +6,10 @@ import DonationSection from "./DonationSection";
 
 
 
-export default function DonationPage() {
+export default function DonationPage({make_your_donation}) {
   return (
     <PayPalWrapper>
-     <DonationSection/>
+     <DonationSection make_your_donation={make_your_donation}/>
     </PayPalWrapper>
   );
 }

@@ -9,7 +9,7 @@ import Link from "next/link";
 
 const slides = [1, 2, 3]; // Your slides data
 
-const HomeSlider = ({sliders}) => {
+const HomeSlider = ({ sliders }) => {
   const prevRef = useRef(null);
   const nextRef = useRef(null);
 
@@ -47,13 +47,18 @@ const HomeSlider = ({sliders}) => {
         {sliders.map((slide, i) => (
           <SwiperSlide key={i}>
             <div className="relative w-full h-[700px]">
+              {/* ✅ Dark Overlay */}
+              <div className="absolute inset-0 bg-black/20 z-[1]"></div>
+
               <Image
                 src={slide?.featured_image}
                 alt={`Slide ${i + 1}`}
                 layout="fill"
                 objectFit="cover"
+                className="z-0"
               />
-              <div className="absolute inset-0 flex flex-col justify-center items-center pt-[250px] pb-[200px] text-white text-center">
+
+              <div className="absolute inset-0 flex flex-col justify-center items-center pt-[250px] pb-[200px] text-white text-center z-[2]">
                 <div className="w-[80%] lg:max-w-[50%] flex flex-col items-center pt-[100px]">
                   <Image
                     src="/images/bsml-txt.png"

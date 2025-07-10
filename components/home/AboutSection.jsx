@@ -16,7 +16,7 @@ const AboutSection = async () => {
   // console.log("about", short_description);
 
   return (
-    <div className="py-[40px] lg:py-[90px]  bg-white">
+    <div className="py-[40px] lg:py-[60px]  bg-white">
       <div className="container px-4 sm:px-8 md:px-16 mx-auto">
         <div className="flex flex-col md:flex-row gap-12 md:gap-16 justify-between items-center">
           {/* Left side - Image */}

@@ -5,29 +5,30 @@ import {
   getMetaValueFromExtraFields,
 } from "@/helper/metaHelpers";
 import { getPryerTime } from "@/helper/actions";
+import { getImageUrl } from "@/helper/getImageUrl";
 
-const PrayerTimeSection = async ({ settings }) => {
+const PrayerTimeSection = async ({ settings, prayer_time }) => {
   const prayerTime = await getPryerTime();
+  const image = getImageUrl(prayer_time?.image_media);
 
-  // const time = getMetaValueFromExtraFields(prayerTime, "time");
-  const prayer_time_heading =
-    getMetaValueByMetaName(settings, "prayer_time") || "";
-  const prayer_time_sub_heading =
-    getMetaDescriptionByMetaName(settings, "prayer_time") ||
-    "Select Country & City For";
 
-  // console.log("time", prayerTime);
+  // const prayer_time_heading =
+  //   getMetaValueByMetaName(settings, "prayer_time") || "";
+  // const prayer_time_sub_heading =
+  //   getMetaDescriptionByMetaName(settings, "prayer_time") ||
+  //   "Select Country & City For";
+  // console.log("time", prayer_time);
 
   return (
-    <section className="bg-[#f8f9fa] pt-[50px] lg:pt-[100px] pb-[100px]">
-      <div className="container px-8 mx-auto">
+    <section className="bg-[#f8f9fa] pt-[50px] lg:pt-[80px] pb-[100px]">
+      <div className="container px-8 mx-auto ">
         {/* Header */}
         <div className="text-start mb-[40px]">
           <span className="text-[#00401A] pb-[5px] text-[20px]">
-            {prayer_time_sub_heading}
+            {prayer_time?.sub_title}
           </span>
           <h2 className="font-semibold text-[#222] text-[28px] sm:text-[38px] md:text-[42px] lg:text-[48px]">
-            {prayer_time_heading}
+            {prayer_time?.title}
           </h2>
           <Image
             className="mt-[20px]"
@@ -38,11 +39,12 @@ const PrayerTimeSection = async ({ settings }) => {
           />
         </div>
 
-        <div className="gap-8 grid grid-cols-1 md:grid-cols-5 lg:grid-cols-5 mt-3 md:mt-8">
+        <div className=" gap-8 grid grid-cols-1 md:grid-cols-5
+         lg:grid-cols-5 mt-3 md:mt-8">
           <div className="w-full md:col-span-2">
             <Image
               className="md:block hidden w-full h-full object-center object-cover"
-              src="/images/prayer-time-mockp.png"
+              src={image}
               alt="Prayer Time Image"
               width={500}
               height={300}
@@ -81,7 +83,7 @@ const PrayerTimeSection = async ({ settings }) => {
                       />
                     </div>
                   </th>
-                    <th className="p-[10px] text-[18px] text-center">
+                  <th className="p-[10px] text-[18px] text-center">
                     Start Time
                     <div className="flex justify-center">
                       <Image
@@ -93,7 +95,7 @@ const PrayerTimeSection = async ({ settings }) => {
                       />
                     </div>
                   </th>
-                    <th className="p-[10px] text-[18px] text-center">
+                  <th className="p-[10px] text-[18px] text-center">
                     End Time
                     <div className="flex justify-center">
                       <Image
@@ -118,10 +120,10 @@ const PrayerTimeSection = async ({ settings }) => {
                     <td className="p-[10px] text-[18px]">
                       {getMetaValueFromExtraFields(prayer, "time")}
                     </td>
-                     <td className="p-[10px] text-[18px]">
+                    <td className="p-[10px] text-[18px]">
                       {getMetaValueFromExtraFields(prayer, "start_time")}
                     </td>
-                     <td className="p-[10px] text-[18px]">
+                    <td className="p-[10px] text-[18px]">
                       {getMetaValueFromExtraFields(prayer, "end_time")}
                     </td>
                   </tr>

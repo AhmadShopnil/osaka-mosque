@@ -17,25 +17,25 @@ export async function generateMetadata() {
 
 // ✅ Fetching data during build time (SSG)
 
-export default async function ServicesPage({settings}) {
+export default async function ServicesPage({settings, offered_services}) {
   const services = await getServices();
 
 
-const service_heading = getMetaValueByMetaName(settings, "service_heading") || "";
-const service_heading_sub_heading =
-    getMetaDescriptionByMetaName(settings, "service_heading") || "";
+// const service_heading = getMetaValueByMetaName(settings, "service_heading") || "";
+// const service_heading_sub_heading =
+//     getMetaDescriptionByMetaName(settings, "service_heading") || "";
 
 
   return (
-    <section className="z-10 py-[40px] lg:pt-[90px] relative bg-white">
+    <section className="z-10 py-[40px] lg:pt-[60px] relative bg-white">
       <div className="absolute right-0 -z-10 -bottom-25 opacity-[0.65]">
         <Image src="/images/bg-vector-3.png" alt="Background Vector" width={500} height={500} />
       </div>
       <div className="container px-4 md:px-8 mx-auto">
         <div className="flex flex-col items-center mb-[40px] text-center">
-          <span className="pb-[5px] text-[#00401A] text-[20px]">{service_heading_sub_heading}</span>
+          <span className="pb-[5px] text-[#00401A] text-[20px]">{offered_services?.sub_title}</span>
           <h2 className="font-semibold text-[#222] text-[28px] sm:text-[38px] md:text-[42px] lg:text-[48px]">
-            {service_heading}
+            {offered_services?.title}
           </h2>
           <Image className="mt-2" src="/images/pshape.png" alt="Design Shape" width={100} height={50} />
         </div>
@@ -59,7 +59,7 @@ const service_heading_sub_heading =
                 <div className="relative">
                   <div
                     className="inset-0 pt-[20px] pr-[25px] pb-[25px] bg-[#00401A] group-hover:bg-[#80b918] mt-4 p-4 rounded-md text-white transition z-50 group-hover:z-50"
-                    dangerouslySetInnerHTML={{ __html: service.description }}
+                    dangerouslySetInnerHTML={{ __html: service?.description.slice(0,105) }}
                   />
                 </div>
               </div>
