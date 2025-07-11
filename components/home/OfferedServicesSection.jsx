@@ -17,13 +17,13 @@ export async function generateMetadata() {
 
 // ✅ Fetching data during build time (SSG)
 
-export default async function ServicesPage({settings, offered_services}) {
+export default async function ServicesPage({ settings, offered_services }) {
   const services = await getServices();
 
 
-// const service_heading = getMetaValueByMetaName(settings, "service_heading") || "";
-// const service_heading_sub_heading =
-//     getMetaDescriptionByMetaName(settings, "service_heading") || "";
+  // const service_heading = getMetaValueByMetaName(settings, "service_heading") || "";
+  // const service_heading_sub_heading =
+  //     getMetaDescriptionByMetaName(settings, "service_heading") || "";
 
 
   return (
@@ -43,26 +43,31 @@ export default async function ServicesPage({settings, offered_services}) {
         <div className="gap-8 grid offer-grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 mb-[-60px]">
           {services.map((service) => (
             <div key={service.id} className="group flex flex-col items-center gap-4">
-              <div className="text-center">
-                <FontAwesomeIcon
-                  icon={faBookOpen}
-                  className="text-[#00401A] text-[70px] group-hover:text-[#80b918] transition mx-auto"
-                />
-                <h5 className="mt-4 font-[500] text-[#222] text-[18px]">
-                  <a href={`/services/${service.slug}`}>{service.name}</a>
-                </h5>
+              <div key={service.id} className="group flex flex-col items-center gap-4 h-full">
+                <div className="text-center min-h-[160px] flex flex-col justify-start w-36">
+                  <FontAwesomeIcon
+                    icon={faBookOpen}
+                    className="text-[#00401A] text-[70px] group-hover:text-[#80b918] transition mx-auto"
+                  />
+                  <h5 className="mt-4 font-[500] text-[#222] text-[18px] min-h-[48px] flex items-center justify-center">
+                    <a href={`/services/${service.slug}`}>{service.name}</a>
+                  </h5>
+                </div>
               </div>
+
 
               <div className="relative mt-4">
                 <div className="top-[-6px] right-0 left-0 absolute bg-[#00401A] group-hover:bg-[#80b918] rounded-[10px] h-[40px] pt-[20px] pr-[25px] pb-[25px] -rotate-5 duration-600"></div>
                 <div className="top-[-6px] right-0 left-0 absolute group-hover:invisible visible group-hover:z-10 bg-[#00401A] group-hover:bg-[#80b918] rounded-[10px] pt-[20px] pr-[25px] pb-[25px] -rotate-5 duration-700"></div>
                 <div className="relative">
                   <div
-                    className="inset-0 pt-[20px] pr-[25px] pb-[25px] bg-[#00401A] group-hover:bg-[#80b918] mt-4 p-4 rounded-md text-white transition z-50 group-hover:z-50"
-                    dangerouslySetInnerHTML={{ __html: service?.description.slice(0,105) }}
+                    className="inset-0 pt-[20px] pr-[25px] pb-[25px] bg-[#00401A] group-hover:bg-[#80b918] mt-4 p-4 rounded-md text-white transition z-50 min-h-[150px] group-hover:z-50"
+                    dangerouslySetInnerHTML={{ __html: service?.description.slice(0, 90) }}
                   />
                 </div>
               </div>
+
+
             </div>
           ))}
         </div>

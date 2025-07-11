@@ -4,6 +4,7 @@ import React from "react";
 import BlogCard from "../blog/BlogCard";
 import EventSmallCard from "../event/EventCardHome";
 import { getMetaDescriptionByMetaName, getMetaValueByMetaName } from "@/helper/metaHelpers";
+import BlogSlider from "./BlogSlider";
 
 
 const BlogEventsSection = async ({ settings, our_blog_events }) => {
@@ -35,10 +36,13 @@ const BlogEventsSection = async ({ settings, our_blog_events }) => {
 
         <div className="flex flex-col lg:flex-row gap-8 lg:h-[480px]">
           {/* Blog Posts */}
-          <div className="flex flex-col gap-6 w-full lg:w-3/5 h-full ">
+          <div className="lg:hidden flex flex-col gap-6 w-full  h-full ">
             {blogs?.slice(0, 2).map((post) => (
               <BlogCard key={post.id} post={post} />
             ))}
+          </div>
+          <div className="hidden lg:flex  w-full lg:w-3/5 h-full ">
+            <BlogSlider blogs={blogs} />
           </div>
 
           {/* Event */}

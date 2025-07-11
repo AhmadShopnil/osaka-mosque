@@ -10,7 +10,7 @@ import {
   FaListUl,
   FaTimes,
   FaSearch,
-  FaInstagram
+  FaInstagram,
 } from "react-icons/fa";
 import "swiper/css";
 import Link from "next/link";
@@ -19,7 +19,7 @@ import {
   getMetaValueByMetaName,
 } from "@/helper/metaHelpers";
 import Image from "next/image";
-import GoogleTranslate from "@/components/shared/GoogleTranslate";
+
 import GoogleTranslateDropdown from "@/components/shared/GoogleTranslateDropdown ";
 
 const Header = ({ settings }) => {
@@ -40,42 +40,44 @@ const Header = ({ settings }) => {
 
   const logo = getMediaLinkByMetaName(settings, "site_logoimg_id");
 
-  // console.log("logo", logo)
-  // console.log("logo", settings)
+  // console.log("phone", phone)
+  // console.log("facebookLink", facebookLink)
 
   return (
     <div className=" ">
       {/* Social & Contact Section */}
-      <div className="absolute top-0 right-0 left-0 z-10 flex md:flex-row flex-col justify-center
-       items-center h-[38px] lg:h-auto lg:py-[15px] text-white text-center">
+      <div
+        className="absolute top-0 right-0 left-0 z-50 flex md:flex-row flex-col justify-center
+       items-center h-[38px] lg:h-auto lg:py-[15px] text-white text-center"
+      >
         <div className="container mx-auto px-4">
           <div className="flex md:flex-row flex-col justify-between lg:items-center gap-2 md:gap-4 h-full">
             {/* Mobile Social + Search */}
-            <div className="block lg:hidden w-full">
+            <div className="block md:hidden w-full">
               <div className="flex items-center text-[14px] leading-[30px]">
-                {[FaTwitter, FaFacebookF, FaLinkedinIn, FaGooglePlusG].map(
-                  (Icon, idx) => (
-                    <a
-                      key={idx}
-                      href="#"
-                      className="h-[38px] w-[38px] px-2 flex justify-center items-center
-                     bg-[rgb(61,61,61)] mr-[1px] hover:bg-[#80b918]"
-                    >
-                      <Icon size={12} className="text-white" />
-                    </a>
-                  )
-                )}
-                <input
-                  className="outline-none text-[12px] italic text-white px-2 border-none h-full w-full bg-transparent"
-                  placeholder="Enter your keyword"
-                  type="text"
-                />
-                <FaSearch size={12} className="text-white ml-2" />
+                <a
+                  href={facebookLink}
+                  className="mx-[10px] hover:text-[#80b918] duration-500"
+                >
+                  <FaFacebookF />
+                </a>
+                <a
+                  href={linkedinLink}
+                  className="mx-[10px] hover:text-[#80b918] duration-500"
+                >
+                  <FaLinkedinIn />
+                </a>
+                <a
+                  href={instagramLink}
+                  className="mx-[10px] hover:text-[#80b918] duration-500"
+                >
+                  <FaInstagram />
+                </a>
               </div>
             </div>
 
             {/* Desktop Social Icons */}
-            <div className="lg:block hidden">
+            <div className="md:block hidden">
               <div className="flex items-center text-[14px] leading-[30px]">
                 <span className="mr-[15px]">Follow us:</span>
                 <a
@@ -96,13 +98,11 @@ const Header = ({ settings }) => {
                 >
                   <FaInstagram />
                 </a>
-
-               
               </div>
             </div>
 
             {/* Contact Info */}
-            <div className="lg:block hidden relative z-[60] ">
+            <div className="md:block hidden z-50 ">
               <div className="flex md:flex-row flex-col items-center text-[12px] gap-4">
                 <div className="flex items-center group">
                   <FaEnvelope className="text-white mr-[10px] group-hover:text-[#80b918] duration-500" />
@@ -114,9 +114,9 @@ const Header = ({ settings }) => {
                   <FaPhoneAlt className="text-white mr-[10px]" />
                   <span>{phone}</span>
                 </div>
-                  <div className="z-50">
-                    <GoogleTranslateDropdown />
-                  </div>
+                {/* <div className="z-50">
+                  <GoogleTranslateDropdown />
+                </div> */}
                 {/* <GoogleTranslate /> */}
               </div>
             </div>
@@ -126,27 +126,25 @@ const Header = ({ settings }) => {
 
       {/* Navbar */}
       <div className="absolute top-[38px] lg:top-[60px] bg-black/20 right-0 left-0 z-30 ">
-        <div className="container mx-auto flex justify-between items-center py-4 px-4">
+        <div className="container mx-auto flex justify-between items-center  px-4">
           {/* Logo */}
-          <Link href="/" className="cursor-pointer ">
+          <Link href="/" className="cursor-pointer overflow-hidden  ">
             {logo ? (
               <Image
                 src={`https://admin.osakamasjid.org${logo}`}
                 alt="Logo"
-                width={190}
-                height={60}
+                width={100}
+                height={20}
               />
             ) : (
               <Image
                 src="/images/logo1.png"
                 alt="Logo"
                 width={170}
-                height={60}
+                height={30}
               />
             )}
           </Link>
-
-      
 
           {/* Mobile Toggle */}
           <button
@@ -157,16 +155,33 @@ const Header = ({ settings }) => {
           </button>
 
           {/* Desktop Nav */}
-          <nav className="hidden md:flex ">
-            <ul className="flex gap-6 text-white text-sm">
-              <li>
-                <a href="/" className="hover:text-red-400">
-                  Home
-                </a>
-              </li>
+          <nav className="hidden md:flex">
+            <ul className="flex gap-8 text-white text-md ">
+              {/* Home */}
               <li className="relative group">
-                <button className="flex items-center gap-1">
-                  Event
+                <Link
+                  href="/"
+                  className="relative px-1 py-2 inline-block
+                 hover:text-green-800 transition-all duration-500"
+                >
+                  <span className="relative z-10">Home</span>
+                  <span
+                    className="absolute top-0 left-0 w-0 h-[2px]
+                   bg-green-800 group-hover:w-full transition-all duration-500"
+                  ></span>
+                  <span
+                    className="absolute bottom-0 right-0 w-0 h-[2px] bg-green-800
+                   group-hover:w-full transition-all duration-500"
+                  ></span>
+                </Link>
+              </li>
+
+              {/* Event Dropdown */}
+              <li className="relative group">
+                <button className="relative px-1 py-2 inline-flex items-center gap-1">
+                  <span className="relative z-10 hover:text-green-800 transition-all duration-500">
+                    Event
+                  </span>
                   <svg
                     className="w-4 h-4 group-hover:rotate-180 transition-transform"
                     xmlns="http://www.w3.org/2000/svg"
@@ -179,12 +194,14 @@ const Header = ({ settings }) => {
                       clipRule="evenodd"
                     />
                   </svg>
+                  <span className="absolute top-0 left-0 w-0 h-[2px] bg-green-800 group-hover:w-full transition-all duration-500"></span>
+                  <span className="absolute bottom-0 right-0 w-0 h-[2px] bg-green-800 group-hover:w-full transition-all duration-500"></span>
                 </button>
-                <ul className="absolute opacity-0 invisible group-hover:visible group-hover:opacity-100 duration-500 mt-2 bg-white text-black min-w-[180px] shadow-lg transition-all">
+                <ul className="absolute opacity-0 invisible group-hover:visible group-hover:opacity-100 duration-500 mt-2 bg-white text-black min-w-[180px] shadow-lg transition-all z-50">
                   <li>
                     <Link
                       href="/events/upcoming"
-                      className="block px-4 py-2 hover:text-[#00401A]"
+                      className="block px-4 py-2 hover:text-green-700"
                     >
                       Upcoming Events
                     </Link>
@@ -192,21 +209,79 @@ const Header = ({ settings }) => {
                   <li>
                     <Link
                       href="/events/past"
-                      className="block px-4 py-2 hover:text-[#00401A]"
+                      className="block px-4 py-2 hover:text-green-700"
                     >
                       Past Events
                     </Link>
                   </li>
                   <li>
-                   <Link href="/events/event-calendar" className="block py-1">
-                    Event Calendar
-                  </Link>
+                    <Link
+                      href="/events/event-calendar"
+                      className="block px-4 py-2 hover:text-green-700"
+                    >
+                      Event Calendar
+                    </Link>
                   </li>
                 </ul>
               </li>
-               <Link href="/blogs">Blogs</Link>
-              <Link href="/scholars">Scholars</Link>
-              <Link href="/contact">Contact</Link>
+
+              {/* Blogs */}
+              <li className="relative group">
+                <Link
+                  href="/blogs"
+                  className="relative px-1 py-2 inline-block hover:text-green-800 transition-all duration-500"
+                >
+                  <span className="relative z-10">Blogs</span>
+                  <span
+                    className="absolute top-0 left-0 w-0 h-[2px] bg-green-800
+                   group-hover:w-full transition-all duration-500"
+                  ></span>
+                  <span
+                    className="absolute bottom-0 right-0 w-0 h-[2px] bg-green-800
+                   group-hover:w-full transition-all duration-500"
+                  ></span>
+                </Link>
+              </li>
+
+              {/* Scholars */}
+              <li className="relative group">
+                <Link
+                  href="/scholars"
+                  className="relative px-1 py-2 inline-block hover:text-green-800 transition-all duration-500"
+                >
+                  <span className="relative z-10">Scholars</span>
+                  <span
+                    className="absolute top-0 left-0 w-0 h-[2px]
+                   bg-green-800 group-hover:w-full transition-all duration-500"
+                  ></span>
+                  <span
+                    className="absolute bottom-0 right-0 w-0 h-[2px]
+                   bg-green-800 group-hover:w-full transition-all duration-500"
+                  ></span>
+                </Link>
+              </li>
+
+              <li className="relative group">
+                <Link
+                  href="/#donation"
+                  className="relative px-1 py-2 inline-block hover:text-green-800 transition-all duration-500"
+                >
+                  <span className="relative z-10">Dontaion</span>
+                  <span className="absolute top-0 left-0 w-0 h-[2px] bg-green-800 group-hover:w-full transition-all duration-500"></span>
+                  <span className="absolute bottom-0 right-0 w-0 h-[2px] bg-green-800 group-hover:w-full transition-all duration-500"></span>
+                </Link>
+              </li>
+              {/* Contact */}
+              <li className="relative group">
+                <Link
+                  href="/contact"
+                  className="relative px-1 py-2 inline-block hover:text-green-800 transition-all duration-500"
+                >
+                  <span className="relative z-10">Contact</span>
+                  <span className="absolute top-0 left-0 w-0 h-[2px] bg-green-800 group-hover:w-full transition-all duration-500"></span>
+                  <span className="absolute bottom-0 right-0 w-0 h-[2px] bg-green-800 group-hover:w-full transition-all duration-500"></span>
+                </Link>
+              </li>
             </ul>
           </nav>
         </div>
@@ -214,23 +289,24 @@ const Header = ({ settings }) => {
 
       {/* Sidebar */}
       <div
-        className={`fixed top-0 right-0 z-50 w-64 h-full bg-black shadow-lg transition-all duration-300 ${
+        className={`fixed top-0 right-0 z-50 w-64 h-full bg-black shadow-lg transition-all duration-500 ${
           sidebarOpen ? "right-0" : "right-[-100%]"
         }`}
       >
         <div className="flex justify-end px-6 py-4 border-b">
           <button
             onClick={() => setSidebarOpen(false)}
-            className="text-2xl text-white ml-auto duration-700 h-[40px] w-[40px] hover:bg-[#6a994e] bg-[#303030] flex items-center justify-center"
+            className="text-2xl text-white ml-auto duration-700 h-[40px] w-[40px]
+             hover:bg-[#6a994e] bg-[#303030] flex items-center justify-center"
           >
             <FaTimes size={13} />
           </button>
         </div>
         <ul className="flex flex-col gap-4 p-6 text-white">
           <li>
-            <a href="/" className="hover:text-red-500">
+            <Link href="/" className="hover:text-red-500">
               Home
-            </a>
+            </Link>
           </li>
           <li>
             <button
@@ -263,6 +339,11 @@ const Header = ({ settings }) => {
           <li>
             <Link href="/scholars" className="hover:text-red-500">
               Scholars
+            </Link>
+          </li>
+          <li>
+            <Link href="/#donation" className="hover:text-red-500">
+              Donation
             </Link>
           </li>
           <li>

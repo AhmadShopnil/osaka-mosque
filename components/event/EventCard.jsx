@@ -28,7 +28,7 @@ const EventCard = ({ event }) => {
           src={`/images/event-img1.jpg`}
           alt={name}
         />
-        <div className="top-0 left-0 z-[77] py-[8px] px-[5px] leading-[22px] absolute w-[60px] text-white">
+        <div className="top-0 left-0 z-50 py-[8px] px-[5px] leading-[22px] absolute w-[60px] text-white">
           <div className="z-[-33] absolute inset-0 bg-[#00401A] opacity-60" />
           <span className="flex flex-col items-center font-[500] text-[22px]">
             {day}

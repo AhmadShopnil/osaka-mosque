@@ -37,7 +37,7 @@ const PillarOfIslamSection = async ({ settings,pillar_of_islam_info }) => {
   //   "About Essential";
 
   return (
-    <section className="pt-[130px] relative z-50">
+    <section className="pt-[130px] relative z-40">
       <div
         className="relative bg-cover bg-no-repeat bg-center bg-fixed py-[100px]"
         style={{ backgroundImage: `url('/images/parallax2.jpg')` }}

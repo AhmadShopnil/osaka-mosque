@@ -31,7 +31,7 @@ export default async function LearnMorePage({ params }) {
     <main className="min-h-screen bg-white text-gray-900 pb-64">
       <HeroSection heroData={heroData} />
       {/* Header Section */}
-      <section className="relative bg-gradient-to-br from-teal-50 to-white py-20 px-6 md:px-12">
+      <section className="relative bg-gradient-to-br from-teal-50 to-white py-10 px-6 md:px-12">
         <div className="max-w-4xl mx-auto text-center">
           <h1 className="text-4xl md:text-5xl font-bold text-teal-700 mb-6">
             “{slide?.name}”
@@ -45,7 +45,7 @@ export default async function LearnMorePage({ params }) {
       </section>
 
       {/* Interpretation Section */}
-      <section className="py-16 px-6 md:px-12 bg-gray-50">
+      <section className="py-10 px-6 md:px-12 bg-gray-50">
         <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-10 items-center">
           <Image
             src="/images/abt-img2.jpg"
