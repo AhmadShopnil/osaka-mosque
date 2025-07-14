@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import { getMetaDescriptionByMetaName, getMetaValueByMetaName } from '@/helper/metaHelpers';
 
-const PrayerTimeSection = ({settings}) => {
+const PrayerTimeSection = ({ settings }) => {
   const [timings, setTimings] = useState(null);
   // Converts 24-hour "HH:MM" format to 12-hour "hh:mm AM/PM"
   const formatTime12Hour = (time) => {
@@ -42,8 +42,8 @@ const PrayerTimeSection = ({settings}) => {
   const prayerNames = ['Fajr', 'Dhuhr', 'Asr', 'Maghrib', 'Isha'];
 
 
-   const prayer_time_heading = getMetaValueByMetaName(settings, "prayer_time") || "";
-const prayer_time_sub_heading =
+  const prayer_time_heading = getMetaValueByMetaName(settings, "prayer_time") || "";
+  const prayer_time_sub_heading =
     getMetaDescriptionByMetaName(settings, "prayer_time") || "Select Country & City For";
 
 
@@ -54,7 +54,7 @@ const prayer_time_sub_heading =
         <div className="text-start mb-[40px]">
           <span className="text-[#00401A] pb-[5px] text-[20px]">{prayer_time_sub_heading}</span>
           <h2 className="font-semibold text-[#222] text-[28px] sm:text-[38px] md:text-[42px] lg:text-[48px]">
-           {prayer_time_heading}
+            {prayer_time_heading}
           </h2>
           <Image
             className="mt-[20px]"

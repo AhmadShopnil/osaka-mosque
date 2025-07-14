@@ -4,10 +4,17 @@ import { useState } from "react";
 import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
+import { PayPalButtons } from "@paypal/react-paypal-js";
 import "swiper/css";
 import "swiper/css/navigation";
+import { getImageUrl } from "@/helper/getImageUrl";
 
-const DonationSection = () => {
+const DonationSection = ({make_your_donation}) => {
+
+ const image = getImageUrl(make_your_donation?.image_media);
+
+// console.log("image--", image)
+
   const slideImages = [
     "/images/car-img1-2.jpg",
     "/images/car-img1-2.jpg",
@@ -44,12 +51,14 @@ const DonationSection = () => {
     };
 
     console.log("🚀 Donation Data Ready to Send:", donationData);
-
-    // TODO: Send `donationData` to your API endpoint here
+    // Optional: Send to backend API here
   };
 
+
+
+
   return (
-    <section className="relative">
+    <section className="relative" >
       <div
         className="relative bg-cover bg-no-repeat bg-center bg-fixed"
         style={{ backgroundImage: "url('/images/parallax3.jpg')" }}
@@ -58,9 +67,7 @@ const DonationSection = () => {
 
         <div className="relative grid grid-cols-1 md:grid-cols-2 items-center gap-8 z-10">
           {/* Slider */}
-          {/* Slider with Overlay */}
           <div className="relative w-full h-full">
-            {/* Black Overlay */}
             <div className="absolute inset-0 bg-black opacity-40 z-10 rounded-md" />
 
             <Swiper
@@ -69,12 +76,12 @@ const DonationSection = () => {
                 prevEl: ".swiper-button-prev-custom",
               }}
               modules={[Navigation]}
-              className="w-full h-full relative z-0" // Ensure the slides stay below the overlay
+              className="w-full h-full relative z-0"
             >
               {slideImages.map((img, index) => (
                 <SwiperSlide key={index}>
                   <Image
-                    src={img}
+                    src={image}
                     alt={`Slide ${index + 1}`}
                     width={800}
                     height={600}
@@ -84,32 +91,24 @@ const DonationSection = () => {
               ))}
             </Swiper>
 
-            {/* Custom Navigation Buttons */}
-            <button
-              className="swiper-button-prev-custom absolute top-1/2 left-0
-      z-20 bg-green-700 hover:bg-green-900 text-white p-4 w-10 h-14 rounded-r-3xl
-      shadow-md flex items-center justify-center transition-all font-semibold text-xl"
-            >
+            {/* Navigation */}
+            {/* <button className="swiper-button-prev-custom absolute top-1/2 left-0 z-20 bg-green-700 hover:bg-green-900 text-white p-4 w-10 h-14 rounded-r-3xl shadow-md flex items-center justify-center text-xl">
               ❯
             </button>
-            <button
-              className="swiper-button-next-custom absolute top-1/2 right-0
-      z-20 bg-green-700 hover:bg-green-900 text-white p-4 w-10 h-14 rounded-l-3xl 
-      shadow-md flex items-center justify-center transition-all text-xl"
-            >
+            <button className="swiper-button-next-custom absolute top-1/2 right-0 z-20 bg-green-700 hover:bg-green-900 text-white p-4 w-10 h-14 rounded-l-3xl shadow-md flex items-center justify-center text-xl">
               ❮
-            </button>
+            </button> */}
           </div>
 
-          {/* Donation Content */}
+          {/* Donation Form */}
           <div className="py-10 text-white container mx-auto px-4">
             <form onSubmit={handleSubmit} className="flex flex-wrap gap-6">
               <div className="w-full mb-[20px]">
                 <span className="mb-[5px] text-[#00401A] text-[20px]">
-                  Give Food & Shelter To Poor
+                  {make_your_donation?.sub_title}
                 </span>
-                <h2 className="mt-2  text-[#222] text-[38px] md:text-[42px] lg:text-[48px] leading-12">
-                  Make Your Donation
+                <h2 className="mt-2 text-[#222] text-[38px] md:text-[42px] lg:text-[48px] leading-12">
+                {make_your_donation?.title}
                 </h2>
                 <Image
                   className="mt-4"
@@ -120,7 +119,7 @@ const DonationSection = () => {
                 />
               </div>
 
-              {/* Donation Amount Buttons */}
+              {/* Amount Buttons */}
               <div className="flex flex-wrap mb-[20px] gap-3">
                 {["$100", "$200", "$300", "Other"].map((amount, i) => (
                   <button
@@ -139,7 +138,7 @@ const DonationSection = () => {
                 ))}
               </div>
 
-              {/* Donation Form */}
+              {/* Inputs */}
               <div className="w-full px-2 lg:px-0 lg:w-[80%] 2xl:w-[55%]">
                 <div>
                   <div className="flex mb-4 gap-4 flex-col md:flex-row">
@@ -220,6 +219,38 @@ const DonationSection = () => {
                   >
                     Donate Now
                   </button>
+
+                  {/* PayPal Integration */}
+                  {formData.amount && (
+                    <div className="mt-6">
+                      <PayPalButtons
+                        style={{ layout: "vertical", color: "gold" }}
+                        createOrder={(data, actions) => {
+                          return actions.order.create({
+                            purchase_units: [
+                              {
+                                amount: {
+                                  value: formData.amount,
+                                },
+                              },
+                            ],
+                          });
+                        }}
+                        onApprove={(data, actions) => {
+                          return actions.order.capture().then((details) => {
+                            alert(
+                              "Donation successful! Thank you, " +
+                                details.payer.name.given_name
+                            );
+                            console.log("🧾 Payment details:", details);
+                          });
+                        }}
+                        onError={(err) => {
+                          console.error("❌ PayPal Checkout Error:", err);
+                        }}
+                      />
+                    </div>
+                  )}
                 </div>
               </div>
             </form>

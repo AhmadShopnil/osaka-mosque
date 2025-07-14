@@ -47,7 +47,7 @@ const QuickContact = () => {
 
     const result = await postForm("/contacts/create", payload);
 
-    console.log("response from", result);
+    // console.log("response from", result);
 
     if (result.success) {
       toast.success("Message sent successfully!");

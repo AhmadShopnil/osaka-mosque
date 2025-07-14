@@ -4,14 +4,15 @@ import React from "react";
 import BlogCard from "../blog/BlogCard";
 import EventSmallCard from "../event/EventCardHome";
 import { getMetaDescriptionByMetaName, getMetaValueByMetaName } from "@/helper/metaHelpers";
+import BlogSlider from "./BlogSlider";
 
 
-const BlogEventsSection = async ({settings}) => {
+const BlogEventsSection = async ({ settings, our_blog_events }) => {
   const blogs = await getBlogs();
   const events = await getEvents();
 
-  const our_blog_events_heading = getMetaValueByMetaName(settings, "our_blog___events") || "";
-    const our_blog_events_sub_heading = getMetaDescriptionByMetaName(settings, "our_blog___events") || "";
+  // const our_blog_events_heading = getMetaValueByMetaName(settings, "our_blog___events") || "";
+  //   const our_blog_events_sub_heading = getMetaDescriptionByMetaName(settings, "our_blog___events") || "";
   // console.log("sort des", sort)
 
   return (
@@ -19,10 +20,10 @@ const BlogEventsSection = async ({settings}) => {
       <div className="container mx-auto px-4 md:px-10">
         <div className="text-center mb-[40px]">
           <span className="text-[#00401A] text-[20px]">
-            {our_blog_events_sub_heading}
+            {our_blog_events?.sub_title}
           </span>
           <h2 className="font-semibold text-[#222] text-[28px] sm:text-[38px] md:text-[42px] lg:text-[48px]">
-           {our_blog_events_heading}
+            {our_blog_events?.title}
           </h2>
           <Image
             src="/images/pshape.png"
@@ -35,15 +36,18 @@ const BlogEventsSection = async ({settings}) => {
 
         <div className="flex flex-col lg:flex-row gap-8 lg:h-[480px]">
           {/* Blog Posts */}
-          <div className="flex flex-col gap-6 w-full lg:w-3/5 h-full ">
-            {blogs?.slice(0,2).map((post) => (
+          <div className="lg:hidden flex flex-col gap-6 w-full  h-full ">
+            {blogs?.slice(0, 2).map((post) => (
               <BlogCard key={post.id} post={post} />
             ))}
+          </div>
+          <div className="hidden lg:flex  w-full lg:w-3/5 h-full ">
+            <BlogSlider blogs={blogs} />
           </div>
 
           {/* Event */}
           <div className="flex flex-col gap-4 w-full lg:w-2/5 h-full">
-            {events?.slice(0,3).map((event, i) => (
+            {events?.slice(0, 3).map((event, i) => (
               <EventSmallCard key={i} event={event} />
             ))}
           </div>

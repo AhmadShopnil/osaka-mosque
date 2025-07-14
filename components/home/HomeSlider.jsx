@@ -9,7 +9,7 @@ import Link from "next/link";
 
 const slides = [1, 2, 3]; // Your slides data
 
-const HomeSlider = ({sliders}) => {
+const HomeSlider = ({ sliders }) => {
   const prevRef = useRef(null);
   const nextRef = useRef(null);
 
@@ -47,28 +47,37 @@ const HomeSlider = ({sliders}) => {
         {sliders.map((slide, i) => (
           <SwiperSlide key={i}>
             <div className="relative w-full h-[700px]">
+              {/* ✅ Dark Overlay */}
+              <div className="absolute inset-0 bg-black/40 z-[1]"></div>
+
               <Image
                 src={slide?.featured_image}
                 alt={`Slide ${i + 1}`}
                 layout="fill"
                 objectFit="cover"
+                className="z-0"
               />
-              <div className="absolute inset-0 flex flex-col justify-center items-center pt-[250px] pb-[200px] text-white text-center">
+
+              <div className="absolute inset-0 flex flex-col justify-center items-center pt-[250px] pb-[200px] text-white text-center z-[2]">
                 <div className="w-[80%] lg:max-w-[50%] flex flex-col items-center pt-[100px]">
-                  <Image
+                  {/* <Image
                     src="/images/bsml-txt.png"
                     alt="Bismillah"
                     width={200}
                     height={40}
-                  />
-                  <div className="mt-2">
+                  /> */}
+                  {/* <div className="mt-2">
                     <Image
                       src="/images/ayat-txt.png"
                       alt="Ayat"
                       width={250}
                       height={50}
                     />
-                  </div>
+                  </div> */}
+                  
+                  <h3 className="text-[35px] mt-1">
+                    {slide?.name}
+                  </h3>
                   <Image
                     src="/images/pshape.png"
                     alt="shape"
@@ -76,9 +85,6 @@ const HomeSlider = ({sliders}) => {
                     width={100}
                     height={15}
                   />
-                  <h3 className="text-[35px] mt-1">
-                    {slide?.name}
-                  </h3>
                   <span className="font-semibold text-[18px] mt-4">
                     {slide?.sub_title}
                   </span>

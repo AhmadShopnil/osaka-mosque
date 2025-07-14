@@ -27,17 +27,17 @@ const lucideIconMap = {
   Sawm: UtensilsCrossed,
 };
 
-const PillarOfIslamSection = async ({ settings }) => {
+const PillarOfIslamSection = async ({ settings,pillar_of_islam_info }) => {
   const pillar_of_islam = await getPillarOfIslam();
 
-  const pillar_of_islam_heading =
-    getMetaValueByMetaName(settings, "pillar_of_islam") || "";
-  const pillar_of_islam_sub_heading =
-    getMetaDescriptionByMetaName(settings, "pillar_of_islam") ||
-    "About Essential";
+  // const pillar_of_islam_heading =
+  //   getMetaValueByMetaName(settings, "pillar_of_islam") || "";
+  // const pillar_of_islam_sub_heading =
+  //   getMetaDescriptionByMetaName(settings, "pillar_of_islam") ||
+  //   "About Essential";
 
   return (
-    <section className="pt-[130px] relative z-50">
+    <section className="pt-[130px] relative z-40">
       <div
         className="relative bg-cover bg-no-repeat bg-center bg-fixed py-[100px]"
         style={{ backgroundImage: `url('/images/parallax2.jpg')` }}
@@ -47,10 +47,10 @@ const PillarOfIslamSection = async ({ settings }) => {
         <div className="z-10 relative container mx-auto px-4">
           <div className="flex flex-col items-center text-center">
             <span className="font-bold text-[#80b918] text-[20px]">
-              About Essential
+              {pillar_of_islam_info?.sub_title}
             </span>
             <h2 className="font-semibold text-white text-[38px] md:text-[42px] lg:text-[48px]">
-              {pillar_of_islam_heading}
+              {pillar_of_islam_info?.title}
             </h2>
             <Image
               className="mt-2"

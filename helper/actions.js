@@ -1,8 +1,6 @@
 import { BASE_URL } from "./baseUrl";
 
 
-
-
 export async function getSettings() {
   const API_URL = `${BASE_URL}/api/v1/frontend/settings`;
 
@@ -12,7 +10,6 @@ export async function getSettings() {
   const json = await res.json();
   return json?.data || [];
 }
-
 
 export async function getServices() {
   const API_URL = `${BASE_URL}/api/v1/posts?term_type=services`;
@@ -24,6 +21,18 @@ export async function getServices() {
   return json?.data || [];
 }
 
+export async function getSingleService(slug) {
+  const API_URL = `${BASE_URL}/api/v1/post?slug=${slug}`;
+
+  // console.log("from action slug", slug)
+  const res = await fetch(API_URL, {
+    next: { revalidate: 30 },
+  });
+  const json = await res.json();
+  // console.log("from action", json)
+
+  return json?.data || {};
+}
 
 export async function getEvents() {
   const API_URL = `${BASE_URL}/api/v1/posts?term_type=events`;
@@ -34,7 +43,6 @@ export async function getEvents() {
   const json = await res.json();
   return json?.data || [];
 }
-
 
 export async function getSingleEvent(slug) {
   const API_URL = `${BASE_URL}/api/v1/post?slug=${slug}`;
@@ -48,7 +56,6 @@ export async function getSingleEvent(slug) {
 
   return json?.data || {};
 }
-
 
 export async function getSliders() {
   const API_URL = `${BASE_URL}/api/v1/posts?term_type=slider`;
@@ -73,7 +80,6 @@ export async function getSingleSlider(slug) {
   return json?.data || {};
 }
 
-
 export async function getScholars() {
   const API_URL = `${BASE_URL}/api/v1/posts?term_type=scholars`;
 
@@ -84,7 +90,6 @@ export async function getScholars() {
   return json?.data || [];
 }
 
-
 export async function getBlogs() {
   const API_URL = `${BASE_URL}/api/v1/posts?term_type=post`;
 
@@ -94,7 +99,6 @@ export async function getBlogs() {
   const json = await res.json();
   return json?.data || [];
 }
-
 
 export async function getSingleBlog(slug) {
   const API_URL = `${BASE_URL}/api/v1/post?slug=${slug}`;
@@ -109,8 +113,6 @@ export async function getSingleBlog(slug) {
   return json?.data || {};
 }
 
-
-
 export async function getPage(slug) {
   const API_URL = `${BASE_URL}/api/v1/post?slug=${slug}`;
 
@@ -123,7 +125,6 @@ export async function getPage(slug) {
 
   return json?.data || {};
 }
-
 
 export async function getPillarOfIslam() {
   const API_URL = `${BASE_URL}/api/v1/posts?term_type=pillar_of_islam`;
@@ -148,7 +149,6 @@ export async function getSinglePillarOfIslam(slug) {
   return json?.data || {};
 }
 
-
 export async function getPryerTime() {
   const API_URL = `${BASE_URL}/api/v1/posts?term_type=prayer_time`;
 
@@ -159,8 +159,26 @@ export async function getPryerTime() {
   return json?.data || [];
 }
 
+export async function getDonationsMethods() {
+  const API_URL = `${BASE_URL}/api/v1/posts?term_type=donations`;
+
+  const res = await fetch(API_URL, {
+    next: { revalidate: 30 },
+  });
+  const json = await res.json();
+  return json?.data || [];
+}
 
 
+export async function getQuran_Hadith() {
+  const API_URL = `${BASE_URL}/api/v1/posts?term_type=quran_hadith`;
+
+  const res = await fetch(API_URL, {
+    next: { revalidate: 30 },
+  });
+  const json = await res.json();
+  return json?.data || [];
+}
 
 
 // utils/postData.ts
