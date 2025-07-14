@@ -13,7 +13,7 @@ import { getDonationsMethods, getPage, getQuran_Hadith, getSettings } from "@/he
 export default async function Home() {
   const donationMethods = await getDonationsMethods();
   const settings = await getSettings();
-  const homePage = await getPage("home-")
+  const homePage = await getPage("home-sections-heading-management")
   const quotes = await getQuran_Hadith()
   const sections = homePage.sections_on_api;
   // console.log("sections", sections)
@@ -24,7 +24,7 @@ export default async function Home() {
   const make_your_donation = sections.find((s) => s.title_slug === "make-your-donation");
   const islamic_scholars = sections.find((s) => s.title_slug === "islamic-scholars");
   const quran_hadith_heading = sections.find((s) => s.title_slug === "quran-hadith");
-  //  console.log("offered_services", prayer_time)
+  //  console.log("prayer_time", prayer_time)
 
   return (
     <div>

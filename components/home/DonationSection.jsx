@@ -11,7 +11,7 @@ import { getImageUrl } from "@/helper/getImageUrl";
 const DonationSection = ({ make_your_donation,donationMethods }) => {
   const image = getImageUrl(make_your_donation?.image_media);
 
-console.log("donationMethods----",donationMethods)
+// console.log("donationMethods----",donationMethods)
 
 
   const slideImages = [

@@ -14,9 +14,15 @@ function formatTime(time24) {
 }
 
 const PrayerTimeSection = async ({ settings, prayer_time }) => {
+  const startTime = prayer_time?.custom_information.find((item) => item.label === "Start Time");
+  const nameOfSalat = prayer_time?.custom_information.find((item) => item.label === "Name of Salat");
+  const prayerTime = prayer_time?.custom_information.find((item) => item.label === "Prayer Time");
+  const endTime = prayer_time?.custom_information.find((item) => item.label === "End Time");
+
+  // console.log("startTime", startTime)
+
   const image = getImageUrl(prayer_time?.image_media);
   const localPrayers = await getPryerTime();
-
   const city = "Osaka";
   const country = "Japan";
   const apiUrl = `https://api.aladhan.com/v1/timingsByCity?city=${encodeURIComponent(
@@ -86,14 +92,39 @@ const PrayerTimeSection = async ({ settings, prayer_time }) => {
             <table className="w-full rounded-lg border-collapse">
               <thead>
                 <tr>
-                  {["Name of Salat", "Prayer Time", "Start Time", "End Time"].map((h, i) => (
+                  {/* {[, "Prayer Time", "Start Time", "End Time"].map((h, i) => (
                     <th key={i} className="p-3 text-center text-lg">
                       {h}
                       <div className="flex justify-center mt-2">
                         <Image src="/images/pshape.png" alt="Design Shape" width={100} height={50} />
                       </div>
                     </th>
-                  ))}
+                  ))} */}
+                  <th className="p-3 text-center text-lg">
+                    {nameOfSalat?.value}
+                    <div className="flex justify-center mt-2">
+                      <Image src="/images/pshape.png" alt="Design Shape" width={100} height={50} />
+                    </div>
+                  </th>
+                  <th className="p-3 text-center text-lg">
+                    {prayerTime?.value}
+                    <div className="flex justify-center mt-2">
+                      <Image src="/images/pshape.png" alt="Design Shape" width={100} height={50} />
+                    </div>
+                  </th>
+                  <th className="p-3 text-center text-lg">
+                    {startTime?.value}
+                    <div className="flex justify-center mt-2">
+                      <Image src="/images/pshape.png" alt="Design Shape" width={100} height={50} />
+                    </div>
+                  </th>
+                  <th className="p-3 text-center text-lg">
+                    {endTime?.value}
+                    <div className="flex justify-center mt-2">
+                      <Image src="/images/pshape.png" alt="Design Shape" width={100} height={50} />
+                    </div>
+                  </th>
+
                 </tr>
               </thead>
               <tbody>

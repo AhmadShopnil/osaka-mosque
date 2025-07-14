@@ -35,7 +35,7 @@ const HeroSection = ({ heroData , }) => {
   }, []);
 // const settings=getSettings()
   
-console.log("settings",settings)
+// console.log("settings",settings)
 
   return (
     <section className="relative w-full h-[420px]">
