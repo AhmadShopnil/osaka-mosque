@@ -165,10 +165,12 @@ const Header = ({ settings }) => {
                 <GoogleTranslate />
               </li> */}
               {/* <GoogleTranslate/> */}
-              
+
             </ul>
-            <div className=""><GoogleTranslateCustom /></div>
-            
+
+            <div className="flex items-center">
+              <GoogleTranslateCustom />
+            </div>
           </nav>
         </div>
       </div>
