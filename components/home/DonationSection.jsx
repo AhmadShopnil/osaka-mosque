@@ -93,7 +93,6 @@ const DonationSection = ({ make_your_donation,donationMethods }) => {
               ))}
               
             </div>
-
             {/* Bank Info */}
             <div className="mt-6 bg-white rounded-md shadow p-6 border border-gray-100 text-[#222]">
               <h4 className="text-xl font-bold mb-4 text-[#00401A]">

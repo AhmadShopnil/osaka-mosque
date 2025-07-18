@@ -61,7 +61,7 @@ export default async function Footer() {
 
             {/* Google Map */}
             <div className="mb-2">
-              <GoogleTranslate/>
+              
               {/* <iframe
                 src="https://www.google.com/maps?q=4-12-16+Owada,+Nishiyodogawa+Ward,+Osaka,+555-0032&output=embed"
                 width="100%"

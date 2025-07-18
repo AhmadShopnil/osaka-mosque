@@ -15,7 +15,8 @@ import {
   getMetaValueByMetaName,
 } from "@/helper/metaHelpers";
 import Image from "next/image";
-import Marquee from "@/components/shared/Marquee";
+import GoogleTranslate from "@/components/shared/GoogleTranslate";
+import GoogleTranslateCustom from "@/components/shared/GoogleTranslateCustom";
 
 const Header = ({ settings }) => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -41,7 +42,7 @@ const Header = ({ settings }) => {
 
   return (
     <div>
-      
+
       {/* Top Contact & Social */}
       <div className="absolute top-0 right-0 left-0 z-50 flex md:flex-row flex-col justify-center items-center h-[38px] lg:h-auto lg:py-[15px] text-white text-center">
         <div className="container mx-auto px-4">
@@ -80,9 +81,8 @@ const Header = ({ settings }) => {
       {/* Navbar */}
       <div
         ref={navbarRef}
-        className={`right-0 left-0 z-60 transition-all duration-300 ${
-          isSticky ? "fixed top-0 shadow-md  bg-[#00401A]" : "absolute top-[38px] lg:top-[60px] bg-black/20"
-        }`}
+        className={`right-0 left-0 z-60 transition-all duration-300 ${isSticky ? "fixed top-0 shadow-md  bg-[#00401A]" : "absolute top-[38px] lg:top-[60px] bg-black/20"
+          }`}
       >
         <div className="container mx-auto flex justify-between items-center px-4">
           {/* Logo */}
@@ -160,16 +160,23 @@ const Header = ({ settings }) => {
                   <span className="absolute bottom-0 right-0 w-0 h-[2px] bg-green-800 group-hover:w-full transition-all duration-500"></span>
                 </Link>
               </li>
+
+              {/* <li className="">
+                <GoogleTranslate />
+              </li> */}
+              {/* <GoogleTranslate/> */}
+              
             </ul>
+            <div className=""><GoogleTranslateCustom /></div>
+            
           </nav>
         </div>
       </div>
 
-{/* Mobile Sidebar */}
-<div
-        className={`fixed top-0 right-0 z-80 w-64 h-full bg-black shadow-lg transition-all duration-500 ${
-          sidebarOpen ? "right-0" : "right-[-100%]"
-        }`}
+      {/* Mobile Sidebar */}
+      <div
+        className={`fixed top-0 right-0 z-80 w-64 h-full bg-black shadow-lg transition-all duration-500 ${sidebarOpen ? "right-0" : "right-[-100%]"
+          }`}
       >
         <div className="flex justify-end px-6 py-4 border-b">
           <button
