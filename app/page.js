@@ -21,11 +21,11 @@ export default async function Home() {
   const prayer_time = sections.find((s) => s.title_slug === "prayer-time");
   const offered_services = sections.find((s) => s.title_slug === "offered-services");
   const pillar_of_islam_info = sections.find((s) => s.title_slug === "pillar-of-islam");
-  const our_blog_events = sections.find((s) => s.title_slug === "our-blog-events");
+  const our_blog_events = sections.find((s) => s.title_slug === "islamic-blogs-and-events");
   const make_your_donation = sections.find((s) => s.title_slug === "make-your-donation");
   const islamic_scholars = sections.find((s) => s.title_slug === "islamic-scholars");
   const quran_hadith_heading = sections.find((s) => s.title_slug === "quran-hadith");
-  //  console.log("about", about)
+  //  console.log("our_blog_events", our_blog_events)
 
   return (
     <div>
