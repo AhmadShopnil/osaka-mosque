@@ -1,10 +1,9 @@
-import React from "react";
+
 import Image from "next/image";
-import { getPage } from "@/helper/actions";
 import { getMetaValueFromExtra_Fields } from "@/helper/metaHelpers";
 
-const AboutSection = async () => {
-  const about = await getPage("about-us");
+const AboutSection = async ({about}) => {
+  // const about = await getPage("about-us");
 
   const short_description = getMetaValueFromExtra_Fields(
     about,
