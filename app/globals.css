@@ -36,93 +36,99 @@ html {
 
 
 
-
-
-
-
-
-#google_translate_element {
-  position: absolute;
-  bottom: calc(53px + 16px);
-  right: 16px!important;
-
-}
-.goog-te-gadget {
-  font-family: Roboto, 'Open Sans', sans-serif!important;
-  text-transform: uppercase;
-}
-.goog-te-gadget-simple  {
-  background-color: rgba(255,255,255,0.20)!important;
-  border: 1px solid rgba(255,255,255,0.50) !important;
-  padding: 8px!important;
-  border-radius: 4px!important;
-  font-size: 1rem!important;
-  line-height:2rem!important;
-  display: inline-block;
+.goog-te-gadget-simple {
+  display: inline-flex !important;
+  align-items: center !important;   /* vertical center all children */
+  gap: 6px;                         /* space between children */
+  white-space: nowrap !important;
   cursor: pointer;
-  zoom: 1;
-}
-.goog-te-menu2 {
-  max-width: 100%;
-}
-.goog-te-menu-value {
+  padding: 8px 12px !important;
+  background-color: rgba(255, 255, 255, 0.2) !important;
+  border: 1px solid rgba(255, 255, 255, 0.5) !important;
+  border-radius: 4px !important;
+  font-family: 'Roboto', 'Open Sans', sans-serif !important;
   color: #fff !important;
-    &:before {
-    font-family: 'Material Icons';
-    content: "\E927";
-    margin-right: 16px;
-    font-size: 2rem;
-    vertical-align: -10px;
-  
-  } 
+  user-select: none;
+  zoom: 1;
+  box-sizing: border-box;
 }
-.goog-te-menu-value span:nth-child(5) {
-  display:none;
+
+.goog-te-gadget-simple img.goog-te-gadget-icon {
+  width: 20px !important;
+  height: 20px !important;
+  background-position: -65px 0 !important;
+  vertical-align: middle !important;
+  margin-right: 6px;
+  flex-shrink: 0;
+  display: none !important; /* Hide the default icon */
 }
-.goog-te-menu-value span:nth-child(3) {
-  border:none!important;
+
+.goog-te-gadget-simple > span {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 4px;
+}
+
+.goog-te-gadget-simple > span a {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 4px;
+  color: inherit !important;
+  text-decoration: none;
+}
+
+.goog-te-gadget-simple > span a span,
+.goog-te-gadget-simple > span a img {
+  vertical-align: middle !important;
+}
+
+.goog-te-gadget-simple > span a span[aria-hidden="true"] {
+  font-size: 1rem;
+  color: #767676 !important;
+  line-height: 1;
+}
+
+
+
+.goog-te-menu-value {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 6px;                                  /* space between text and icon */
+  color: inherit !important;
+  position: relative;
+  padding-left: 24px;                        /* space for left icon if any */
+  flex-grow: 1;                             /* take available space */
+}
+
+/* Left icon (optional) */
+.goog-te-menu-value:before {
+  content: "\E927"; /* Material Icons 'translate' icon */
   font-family: 'Material Icons';
-  &:after {
-    font-family: 'Material Icons';
-    content: "\E5C5";
-    font-size: 1.5rem;
-    vertical-align: -6px;
-  }  
+  font-size: 20px;
+  position: absolute;
+  left: 6px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  color: white;
 }
 
-.goog-te-gadget-icon {
-    background-image: url(https://placehold.it/32)!important;
-    background-position: 0px 0px;
-    height: 32px!important;
-    width: 32px!important;
-    margin-right: 8px!important;
-   
+/* Right dropdown arrow */
+.goog-te-menu-value span:nth-child(3) {
+  position: relative;
+  font-family: 'Material Icons';
+  border: none !important;
+  padding-left: 18px;
 }
 
-
-.goog-te-banner-frame.skiptranslate {display: none!important;} 
-body {top: 0px!important;}
-
-/* ================================== *\
-    Mediaqueries
-\* ================================== */
-@media (max-width: 667px) {
-	#google_translate_element {
-		bottom: calc(100% - 50% - 53px);
-		left: 16px!important;
-		width: 100%!important;
-		goog-te-gadget {
-			width:100%!important;
-		}
-		.skiptranslate {
-			width:100%!important;			
-		}
-		.goog-te-gadget-simple {
-			width: calc(100% - 32px)!important;
-			text-align: center;
-		}	
-	}
+.goog-te-menu-value span:nth-child(3)::after {
+  content: "\E5C5"; /* down arrow */
+  font-family: 'Material Icons';
+  font-size: 18px;
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  color: white;
+  pointer-events: none;
 }
-
-
-
