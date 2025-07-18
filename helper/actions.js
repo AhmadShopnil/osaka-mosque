@@ -118,7 +118,8 @@ export async function getPage(slug) {
 
   // console.log("from action slug", slug)
   const res = await fetch(API_URL, {
-    next: { revalidate: 30 },
+    cache: "no-store",
+    // next: { revalidate: 30 },
   });
   const json = await res.json();
   // console.log("from action", json)

@@ -11,6 +11,7 @@ import Quran_Hadith_Section from "@/components/home/Quran_Hadith_Section ";
 import { getDonationsMethods, getPage, getQuran_Hadith, getSettings } from "@/helper/actions";
 
 export default async function Home() {
+   const about = await getPage("about-us");
   const donationMethods = await getDonationsMethods();
   const settings = await getSettings();
   const homePage = await getPage("home-sections-heading-management")
@@ -24,14 +25,15 @@ export default async function Home() {
   const make_your_donation = sections.find((s) => s.title_slug === "make-your-donation");
   const islamic_scholars = sections.find((s) => s.title_slug === "islamic-scholars");
   const quran_hadith_heading = sections.find((s) => s.title_slug === "quran-hadith");
-  //  console.log("prayer_time", prayer_time)
+  //  console.log("about", about)
 
   return (
     <div>
       {/* <GoogleTranslateDropdown /> */}
       <HeroHome />
       {/* <HeroSectionHome /> */}
-      <AboutSection />
+      {about?.slug && <AboutSection about={about} />}
+      
       <Quran_Hadith_Section quotes={quotes}  quran_hadith_heading={quran_hadith_heading}/>
       <PrayerTimeSection settings={settings} prayer_time={prayer_time} />
       <OfferedServicesSection settings={settings} offered_services={offered_services} />

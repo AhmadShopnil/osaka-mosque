@@ -14,10 +14,10 @@ function formatTime(time24) {
 }
 
 const PrayerTimeSection = async ({ settings, prayer_time }) => {
-  const startTime = prayer_time?.custom_information.find((item) => item.label === "Start Time");
-  const nameOfSalat = prayer_time?.custom_information.find((item) => item.label === "Name of Salat");
-  const prayerTime = prayer_time?.custom_information.find((item) => item.label === "Prayer Time");
-  const endTime = prayer_time?.custom_information.find((item) => item.label === "End Time");
+  const startTime = prayer_time?.custom_information.find((item) => item.label === "start_time");
+  const nameOfSalat = prayer_time?.custom_information.find((item) => item.label === "name_of_salat");
+  const prayerTime = prayer_time?.custom_information.find((item) => item.label === "prayer_time");
+  const endTime = prayer_time?.custom_information.find((item) => item.label === "end_time");
 
   // console.log("startTime", startTime)
 

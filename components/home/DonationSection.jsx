@@ -20,38 +20,6 @@ const DonationSection = ({ make_your_donation,donationMethods }) => {
     "/images/car-img1-2.jpg",
   ];
 
-  const donationTabs = [
-    {
-      label: "For Masjid",
-      bankInfo: {
-        accountName: "Osaka Masjid Trust",
-        accountNumber: "123456789",
-        bankName: "Islami Bank Bangladesh Ltd.",
-        branch: "Tangail Branch",
-        swiftCode: "IBBLBDDH",
-      },
-    },
-    {
-      label: "For Imam",
-      bankInfo: {
-        accountName: "Osaka Imam Support",
-        accountNumber: "987654321",
-        bankName: "Dutch Bangla Bank",
-        branch: "Tangail Sadar",
-        swiftCode: "DBBLBDDH",
-      },
-    },
-    {
-      label: "For Zakat",
-      bankInfo: {
-        accountName: "Osaka Zakat Fund",
-        accountNumber: "567890123",
-        bankName: "Al-Arafah Islami Bank",
-        branch: "Tangail",
-        swiftCode: "AIBLBDDH",
-      },
-    },
-  ];
 
   const [activeTab, setActiveTab] = useState(donationMethods[0]);
 
@@ -123,6 +91,7 @@ const DonationSection = ({ make_your_donation,donationMethods }) => {
                   {tab?.name}
                 </button>
               ))}
+              
             </div>
 
             {/* Bank Info */}

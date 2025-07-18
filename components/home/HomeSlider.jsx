@@ -1,26 +1,26 @@
 "use client";
+
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation } from "swiper/modules";
+import { Navigation, Autoplay } from "swiper/modules"; // ✅ Include Autoplay module
 import "swiper/css";
 import "swiper/css/navigation";
+
 import { useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
-
-const slides = [1, 2, 3]; // Your slides data
 
 const HomeSlider = ({ sliders }) => {
   const prevRef = useRef(null);
   const nextRef = useRef(null);
 
   return (
-    <div className="relative ">
-      {/* Custom Arrow Buttons */}
+    <div className="relative">
+      {/* Custom Navigation Buttons */}
       <button
         ref={prevRef}
         className="hidden md:flex absolute z-10 top-1/2 left-0 -translate-y-1/2 
-  bg-[#00401A] text-white w-12 h-20 justify-center items-center rounded-r-[50px] 
-  shadow-md hover:bg-green-900 transition"
+        bg-[#00401A] text-white w-12 h-20 justify-center items-center rounded-r-[50px] 
+        shadow-md hover:bg-green-900 transition"
       >
         <span className="text-2xl">{"‹"}</span>
       </button>
@@ -28,26 +28,31 @@ const HomeSlider = ({ sliders }) => {
       <button
         ref={nextRef}
         className="hidden md:flex absolute z-10 top-1/2 right-0 -translate-y-1/2 
-  bg-[#00401A] text-white w-12 h-20 justify-center items-center rounded-l-[50px] 
-  shadow-md hover:bg-green-900 transition"
+        bg-[#00401A] text-white w-12 h-20 justify-center items-center rounded-l-[50px] 
+        shadow-md hover:bg-green-900 transition"
       >
         <span className="text-2xl">{"›"}</span>
       </button>
 
       <Swiper
-        modules={[Navigation]}
+        modules={[Navigation, Autoplay]} // ✅ Add Autoplay
         onInit={(swiper) => {
           swiper.params.navigation.prevEl = prevRef.current;
           swiper.params.navigation.nextEl = nextRef.current;
           swiper.navigation.init();
           swiper.navigation.update();
         }}
+        autoplay={{
+          delay: 5000, // 5 seconds
+          disableOnInteraction: false, // Keeps autoplay running after manual navigation
+        }}
+        loop={true} // ✅ Recommended for autoplay
         className="w-full h-full"
       >
         {sliders.map((slide, i) => (
           <SwiperSlide key={i}>
-            <div className="relative w-full h-[700px]">
-              {/* ✅ Dark Overlay */}
+            <div className="relative w-full h-[500px] lg:h-[650px]">
+              {/* Overlay */}
               <div className="absolute inset-0 bg-black/40 z-[1]"></div>
 
               <Image
@@ -60,24 +65,7 @@ const HomeSlider = ({ sliders }) => {
 
               <div className="absolute inset-0 flex flex-col justify-center items-center pt-[250px] pb-[200px] text-white text-center z-[2]">
                 <div className="w-[80%] lg:max-w-[50%] flex flex-col items-center pt-[100px]">
-                  {/* <Image
-                    src="/images/bsml-txt.png"
-                    alt="Bismillah"
-                    width={200}
-                    height={40}
-                  /> */}
-                  {/* <div className="mt-2">
-                    <Image
-                      src="/images/ayat-txt.png"
-                      alt="Ayat"
-                      width={250}
-                      height={50}
-                    />
-                  </div> */}
-                  
-                  <h3 className="text-[35px] mt-1">
-                    {slide?.name}
-                  </h3>
+                  <h3 className="text-[35px] mt-1">{slide?.name}</h3>
                   <Image
                     src="/images/pshape.png"
                     alt="shape"
