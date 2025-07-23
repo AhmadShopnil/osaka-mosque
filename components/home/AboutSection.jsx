@@ -41,8 +41,8 @@ const AboutSection = async ({about}) => {
           {/* Right side - Text content */}
           <div className="w-full md:w-1/2 ">
             <div className="flex flex-col">
-              <h1 className="text-[#00401A] text-[20px] pb-[5px]">
-                Our History
+              <h1 className="text-[#00401A] text-[20px] pb-[8px]">
+                {about?.name}
               </h1>
               <div className="mb-1">
                 <h2
@@ -64,22 +64,13 @@ const AboutSection = async ({about}) => {
                 <p className="mt-[20px]">{short_description}</p>
               </div>
 
-              {/* 
-              <div
-                className="text-[#555555] leading-7 text-[15px]"
-                dangerouslySetInnerHTML={{
-                  __html: about?.description,
-                }}
-              /> */}
-
-              
-
               <div className="mt-[35px]">
                 <a
                   href="/about"
                   className="bg-[#00401A] hover:bg-[#80b918] px-[45px] py-[14px] rounded-md font-bold text-[15px] text-white transition"
                 >
-                  Learn More
+                 もっと詳しく知る
+
                 </a>
               </div>
             </div>

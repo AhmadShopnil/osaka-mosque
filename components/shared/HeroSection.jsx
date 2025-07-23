@@ -51,8 +51,8 @@ const HeroSection = ({ heroData , }) => {
             />
             <div className="absolute inset-0 flex flex-col justify-center items-center mt-40 p-6 text-white text-center">
               <h1 className="text-[48px] ">{title}</h1>
-              <div className="bg-[#6a994e] my-4 w-[70px] h-[2px]"></div>
-              <ol className="flex items-center gap-2 text-[16px] leading-[30px]">
+              {/* <div className="bg-[#6a994e] my-4 w-[70px] h-[2px]"></div> */}
+              {/* <ol className="flex items-center gap-2 text-[16px] leading-[30px]">
                 <li>
                   <a href="/">Home</a>
                 </li>
@@ -62,7 +62,7 @@ const HeroSection = ({ heroData , }) => {
                     {prettyPath}
                   </a>
                 </li>
-              </ol>
+              </ol> */}
             </div>
           </div>
         </SwiperSlide>

@@ -182,6 +182,17 @@ export async function getQuran_Hadith() {
 }
 
 
+export async function getFatwa() {
+  const API_URL = `${BASE_URL}/api/v1/posts?term_type=fatwa`;
+
+  const res = await fetch(API_URL, {
+    next: { revalidate: 30 },
+  });
+  const json = await res.json();
+  return json?.data || [];
+}
+
+
 // utils/postData.ts
 
 export async function postData(

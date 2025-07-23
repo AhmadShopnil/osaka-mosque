@@ -15,7 +15,7 @@ import {
   getMetaValueByMetaName,
 } from "@/helper/metaHelpers";
 import Image from "next/image";
-import GoogleTranslate from "@/components/shared/GoogleTranslate";
+
 import GoogleTranslateCustom from "@/components/shared/GoogleTranslateCustom";
 
 const Header = ({ settings }) => {
@@ -56,7 +56,7 @@ const Header = ({ settings }) => {
             </div>
             <div className="hidden md:block">
               <div className="flex items-center text-[14px] leading-[30px]">
-                <span className="mr-[15px]">Follow us:</span>
+                <span className="mr-[15px]">私たちに従ってください：:</span>
                 <a href={facebookLink} className="mx-[10px] hover:text-[#80b918] duration-500"><FaFacebookF /></a>
                 <a href={linkedinLink} className="mx-[10px] hover:text-[#80b918] duration-500"><FaLinkedinIn /></a>
                 <a href={instagramLink} className="mx-[10px] hover:text-[#80b918] duration-500"><FaInstagram /></a>
@@ -165,7 +165,7 @@ const Header = ({ settings }) => {
                 <GoogleTranslate />
               </li> */}
               {/* <GoogleTranslate/> */}
-
+              
             </ul>
             <div className="ml-3"><GoogleTranslateCustom /></div>
             

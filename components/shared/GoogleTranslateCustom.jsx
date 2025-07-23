@@ -6,7 +6,6 @@ export default function GoogleTranslateCustom() {
   const containerRef = useRef(null);
 
   useEffect(() => {
-    // Load Google Translate script
     if (!window.google || !window.google.translate) {
       const script = document.createElement('script');
       script.src =
@@ -30,47 +29,36 @@ export default function GoogleTranslateCustom() {
       const iframe = document.querySelector('iframe.goog-te-menu-frame');
       if (!iframe) return;
 
-      const iframeDoc = iframe.contentDocument || iframe.contentWindow?.document;
-      if (!iframeDoc) return;
-
       iframe.style.boxShadow =
         '0 16px 24px 2px rgba(0,0,0,0.14), 0 6px 30px 5px rgba(0,0,0,0.12), 0 8px 10px -5px rgba(0,0,0,0.3)';
-      iframe.style.height = '100%';
-      iframe.style.width = '100%';
-      iframe.style.top = '0px';
+      iframe.style.top = '40px';
+      iframe.style.zIndex = '9999';
     };
 
-    const interval = setInterval(() => {
+    const styleInterval = setInterval(() => {
       const iframe = document.querySelector('iframe.goog-te-menu-frame');
       if (iframe) {
         applyCustomStyles();
-        clearInterval(interval);
+        clearInterval(styleInterval);
       }
     }, 500);
 
-    // 👉 Close language list on outside click
+    // ✅ Click outside detection (no iframe access)
     const handleClickOutside = (event) => {
-      const iframe = document.querySelector('iframe.goog-te-menu-frame');
-      if (!iframe) return;
-
-      const buttonContainer = containerRef.current;
-      const target = event.target;
-
-      const clickedInsideWidget =
-        buttonContainer?.contains(target) ||
-        iframe.contains(target) ||
-        iframe === target;
-
-      if (!clickedInsideWidget) {
-        iframe.style.display = 'none'; // manually hide dropdown
+      const container = containerRef.current;
+      if (container && !container.contains(event.target)) {
+        const iframe = document.querySelector('iframe.goog-te-menu-frame');
+        if (iframe) {
+          iframe.style.display = 'none'; // force-hide the dropdown
+        }
       }
     };
 
-    document.addEventListener('click', handleClickOutside);
+    document.addEventListener('mousedown', handleClickOutside);
 
     return () => {
-      clearInterval(interval);
-      document.removeEventListener('click', handleClickOutside);
+      clearInterval(styleInterval);
+      document.removeEventListener('mousedown', handleClickOutside);
     };
   }, []);
 

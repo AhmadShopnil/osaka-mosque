@@ -1,9 +1,9 @@
 import { Merriweather } from "next/font/google";
 import "./globals.css";
 import Footer from "@/components/common/footer/Footer";
-
 import { Toaster } from "react-hot-toast";
 import Marquee from "@/components/shared/Marquee";
+import FatWaWrapper from "@/components/shared/FatWaWrapper";
 
 const merriweather = Merriweather({
   subsets: ["latin"],
@@ -28,7 +28,8 @@ export default function RootLayout({ children }) {
           options={{ "client-id": "YOUR_PAYPAL_CLIENT_ID" }}
         > */}
         <div>
-          <Marquee text={"Test"}/>
+          <Marquee />
+          <FatWaWrapper/>
           {children}
           <Footer />
           <Toaster position="top-right" />

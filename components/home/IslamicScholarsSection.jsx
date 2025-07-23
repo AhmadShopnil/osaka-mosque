@@ -83,7 +83,7 @@ export default async function IslamicScholarsSection({ settings }) {
             href="/scholars"
             className="bg-[#00401A] hover:bg-[#80b918] px-[45px] py-[14px] rounded-md font-bold text-[15px] text-white transition"
           >
-            View More
+            もっと見る
           </Link>
         </div>
       </div>

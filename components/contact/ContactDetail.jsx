@@ -25,9 +25,9 @@ const ContactDetail = async () => {
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 relative z-10">
         <div className="px-4">
-          <h2 className="text-orange-500 font-medium mb-2">Get Information</h2>
+          <h2 className="text-orange-500 font-medium mb-2">情報を取得する</h2>
           <h1 className="text-4xl font-bold text-gray-800 mb-10">
-            Contact Details
+            連絡先の詳細
           </h1>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-x-4 gap-y-10">

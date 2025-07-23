@@ -11,7 +11,7 @@ import { getImageUrl } from "@/helper/getImageUrl";
 const DonationSection = ({ make_your_donation,donationMethods }) => {
   const image = getImageUrl(make_your_donation?.image_media);
 
-// console.log("donationMethods----",donationMethods)
+console.log("make_your_donation----",make_your_donation)
 
 
   const slideImages = [
@@ -96,7 +96,7 @@ const DonationSection = ({ make_your_donation,donationMethods }) => {
             {/* Bank Info */}
             <div className="mt-6 bg-white rounded-md shadow p-6 border border-gray-100 text-[#222]">
               <h4 className="text-xl font-bold mb-4 text-[#00401A]">
-                Bank Information
+                銀行情報
               </h4>
               <div
               className="text-[#666] text-[16px]"

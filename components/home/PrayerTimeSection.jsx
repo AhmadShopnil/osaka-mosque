@@ -2,6 +2,7 @@ import Image from "next/image";
 import { getMetaValueFromExtraFields } from "@/helper/metaHelpers";
 import { getPryerTime } from "@/helper/actions";
 import { getImageUrl } from "@/helper/getImageUrl";
+import { formatDateTime } from "@/helper/formatDateTime";
 
 // Convert 24-hour time to 12-hour format (e.g., 04:20 AM)
 function formatTime(time24) {
@@ -19,7 +20,7 @@ const PrayerTimeSection = async ({ settings, prayer_time }) => {
   const prayerTime = prayer_time?.custom_information.find((item) => item.label === "prayer_time");
   const endTime = prayer_time?.custom_information.find((item) => item.label === "end_time");
 
-  // console.log("startTime", startTime)
+  // console.log("prayer_time", prayer_time)
 
   const image = getImageUrl(prayer_time?.image_media);
   const localPrayers = await getPryerTime();
@@ -86,9 +87,13 @@ const PrayerTimeSection = async ({ settings, prayer_time }) => {
           </div>
 
           <div className="md:col-span-3">
-            <h4 className="text-center text-xl font-medium mb-6">
-              Namaz Timings of Osaka Mosque
+            <h4 className="text-center text-xl font-medium mb-3">
+             {prayer_time?.short_description}
             </h4>
+            <h5 className="text-center text-sm font-medium mb-6">
+             Last updated: {formatDateTime(prayer_time?.updated_at)}
+            
+            </h5>
             <table className="w-full rounded-lg border-collapse">
               <thead>
                 <tr>

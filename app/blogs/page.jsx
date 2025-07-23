@@ -12,8 +12,8 @@ const BlogPage = async () => {
   const blogs = await getBlogs();
 
   const heroData = {
-    title: "Latest Blogs",
-    subtitle: "Explore our latest articles and reflections.",
+    title: "",
+    subtitle: "",
   };
 
   return (

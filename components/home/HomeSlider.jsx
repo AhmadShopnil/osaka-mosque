@@ -80,7 +80,7 @@ const HomeSlider = ({ sliders }) => {
                     href={`/quote/${slide?.slug}`}
                     className="bg-[#00401A] hover:bg-[#80b918] mt-6 px-10 py-3 rounded-md font-bold text-sm transition"
                   >
-                    Learn More
+                   もっと詳しく知る
                   </Link>
                 </div>
               </div>

@@ -56,7 +56,7 @@ const Quran_Hadith_Section = ({ quotes,quran_hadith_heading }) => {
             href="/quote"
             className="bg-[#00401A] hover:bg-[#80B918] text-white px-6 py-3 rounded-full text-sm font-semibold shadow-md transition duration-300"
           >
-            See All Quotes
+           すべて見る
           </Link>
         </div>
       </div>

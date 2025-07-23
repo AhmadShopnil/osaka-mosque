@@ -8,7 +8,7 @@ import Map from "@/components/shared/Map";
 export default function Contact() {
 
 const heroData={
-  title:"Contact Us"
+  title:"お問い合わせ"
 }
 
   return (
