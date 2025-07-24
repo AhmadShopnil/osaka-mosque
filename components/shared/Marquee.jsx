@@ -5,7 +5,7 @@ import React from "react";
 
 
 
-const Marquee = async({ text, speed = 5 }) => {
+const Marquee = async({  speed = 5 }) => {
   const settings = await getSettings();
    const slogan = getMetaValueByMetaName(settings, "slogan") || "";
   return (

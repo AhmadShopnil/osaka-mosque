@@ -1,10 +1,11 @@
 'use client';
 
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 
 export default function GoogleTranslateCustom() {
+  const containerRef = useRef(null);
+
   useEffect(() => {
-    // Load Google Translate script dynamically
     if (!window.google || !window.google.translate) {
       const script = document.createElement('script');
       script.src =
@@ -13,7 +14,6 @@ export default function GoogleTranslateCustom() {
       document.body.appendChild(script);
     }
 
-    // Create the callback function required by Google Translate
     window.googleTranslateElementInit = () => {
       new window.google.translate.TranslateElement(
         {
@@ -29,69 +29,48 @@ export default function GoogleTranslateCustom() {
       const iframe = document.querySelector('iframe.goog-te-menu-frame');
       if (!iframe) return;
 
-      const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
-      if (!iframeDoc) return;
-
-      const items = iframeDoc.querySelectorAll(
-        '.goog-te-menu2-item div, .goog-te-menu2 *'
-      );
-      items.forEach((item) => {
-        item.style.color = '#544F4B';
-        item.style.fontFamily = 'Roboto';
-        item.style.width = '100%';
-      });
-
-      const selectedItem = iframeDoc.querySelector('.goog-te-menu2-item-selected');
-      if (selectedItem) selectedItem.style.display = 'none';
-
-      const menu = iframeDoc.querySelector('.goog-te-menu2');
-      if (menu) {
-        menu.style.padding = '0px';
-        menu.style.border = 'none';
-        menu.style.height = '100%';
-        menu.style.width = '100%';
-      }
-
-      iframeDoc.querySelectorAll('.goog-te-menu2-item div').forEach((div) => {
-        div.style.padding = '20px';
-
-        div.onmouseenter = () => {
-          div.style.backgroundColor = '#4385F5';
-          const span = div.querySelector('span.text');
-          if (span) span.style.color = 'white';
-        };
-        div.onmouseleave = () => {
-          div.style.backgroundColor = 'white';
-          const span = div.querySelector('span.text');
-          if (span) span.style.color = '#544F4B';
-        };
-      });
-
       iframe.style.boxShadow =
         '0 16px 24px 2px rgba(0,0,0,0.14), 0 6px 30px 5px rgba(0,0,0,0.12), 0 8px 10px -5px rgba(0,0,0,0.3)';
-      iframe.style.height = '100%';
-      iframe.style.width = '100%';
-      iframe.style.top = '0px';
+      iframe.style.top = '40px';
+      iframe.style.zIndex = '9999';
     };
 
-    const interval = setInterval(() => {
+    const styleInterval = setInterval(() => {
       const iframe = document.querySelector('iframe.goog-te-menu-frame');
       if (iframe) {
         applyCustomStyles();
+        clearInterval(styleInterval);
       }
     }, 500);
 
+    // ✅ Click outside detection (no iframe access)
+    const handleClickOutside = (event) => {
+      const container = containerRef.current;
+      if (container && !container.contains(event.target)) {
+        const iframe = document.querySelector('iframe.goog-te-menu-frame');
+        if (iframe) {
+          iframe.style.display = 'none'; // force-hide the dropdown
+        }
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+
     return () => {
-      clearInterval(interval);
+      clearInterval(styleInterval);
+      document.removeEventListener('mousedown', handleClickOutside);
     };
   }, []);
 
   return (
-    <div>
-      <div
-        id="google_translate_element"
-        style={{ cursor: 'pointer' }}
-      />
-    </div>
+    <div
+      ref={containerRef}
+      id="google_translate_element"
+      className="text-white"
+      style={{
+        display: 'inline-block',
+        verticalAlign: 'middle',
+      }}
+    />
   );
 }

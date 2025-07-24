@@ -20,7 +20,7 @@ const Events = ({ events }) => {
   const paginatedEvents = events.slice(startIndex, startIndex + eventsPerPage);
 
   const heroData = {
-    title: "Events",
+    title: "イベント",
   };
 
   return (

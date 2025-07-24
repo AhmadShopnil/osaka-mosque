@@ -17,7 +17,7 @@ const postForm = async (endpoint, formData) => {
   }
 };
 
-const QuickContact = () => {
+const QuickContact = ({title}) => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -47,7 +47,7 @@ const QuickContact = () => {
 
     const result = await postForm("/contacts/create", payload);
 
-    console.log("response from", result);
+    // console.log("response from", result);
 
     if (result.success) {
       toast.success(`Your Message sent Successfully`);
@@ -59,7 +59,7 @@ const QuickContact = () => {
 
   return (
     <div>
-      <h2 className="text-xl font-bold mb-4">Quick Contact</h2>
+      <h2 className="text-xl font-bold mb-4">{title}</h2>
 
       {/* ✅ Set onSubmit on the form, not the button */}
       <form onSubmit={handleSubmit}>
@@ -103,7 +103,7 @@ const QuickContact = () => {
           type="submit" // ✅ This is essential
           className="bg-green-900 text-white py-2 px-4 rounded w-full hover:bg-green-800 transition-colors"
         >
-          SUBMIT NOW
+         提出する
         </button>
       </form>
     </div>

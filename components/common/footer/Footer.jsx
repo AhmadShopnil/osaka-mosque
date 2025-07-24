@@ -12,23 +12,10 @@ import {
   Instagram,
   Youtube,
 } from "lucide-react";
-import {
-  FaTwitter,
-  FaFacebookF,
-  FaLinkedinIn,
-  FaGooglePlusG,
-  FaEnvelope,
-  FaPhoneAlt,
-  FaListUl,
-  FaTimes,
-  FaSearch,
-  FaInstagram,
-} from "react-icons/fa";
 import Link from "next/link";
-import Image from "next/image";
 import BlogSmallCard from "@/components/blog/BlogSmallCard";
 import QuickContact from "./QuickContact";
-import GoogleTranslate from "@/components/shared/GoogleTranslate";
+
 
 export default async function Footer() {
   const settings = await getSettings();
@@ -47,6 +34,16 @@ export default async function Footer() {
     getMetaValueByMetaName(settings, "bottom_footer_content") ||
     "OSAKA MASJID© 2025 | ALL RIGHTS RESERVED";
 
+
+// sectionTittles
+const section_1_title = getMetaValueByMetaName(settings, "section_1_title") || "";
+const section_2_title = getMetaValueByMetaName(settings, "section_2_title") || "";
+const section_3_title = getMetaValueByMetaName(settings, "section_3_title") || "";
+const section_4_title = getMetaValueByMetaName(settings, "section_4_title") || "";
+
+
+
+
   return (
     <div className="bg-green-900 pt-16 relative z-50">
       {/* Main footer content with white background - positioned higher with negative margin */}
@@ -56,33 +53,13 @@ export default async function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* About Us Section */}
           <div>
-            <h2 className="text-xl font-bold mb-4">About Us</h2>
+            <h2 className="text-xl font-bold mb-4">{section_1_title}</h2>
             <p className="text-gray-700 mb-6">{footer_content}</p>
-
-            {/* Google Map */}
-            <div className="mb-2">
-              
-              {/* <iframe
-                src="https://www.google.com/maps?q=4-12-16+Owada,+Nishiyodogawa+Ward,+Osaka,+555-0032&output=embed"
-                width="100%"
-                height="150"
-                style={{ border: 0 }}
-                allowFullScreen=""
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                className="rounded"
-              ></iframe> */}
-            </div>
-
-            {/* <div className="flex items-center mt-2">
-              <MapPin className="h-5 w-5 mr-2" />
-              <p>Find us on Map</p>
-            </div> */}
           </div>
 
           {/* Latest Blogs Section */}
           <div>
-            <h2 className="text-xl font-bold mb-4">Latest Blogs</h2>
+            <h2 className="text-xl font-bold mb-4">{section_2_title}</h2>
             <div className="flex flex-col gap-3">
               {blogs?.slice(0, 2).map((blog, i) => (
                 <Link key={i} href={`/blogs/${blog?.slug}`}>
@@ -94,7 +71,7 @@ export default async function Footer() {
 
           {/* Contact Info Section */}
           <div>
-            <h2 className="text-xl font-bold mb-4">Contact Info</h2>
+            <h2 className="text-xl font-bold mb-4">{section_3_title}</h2>
             <ul className="space-y-6">
               <li className="flex items-center">
                 {/* <FaPhoneAlt size={13} /> */}
@@ -130,42 +107,22 @@ export default async function Footer() {
           </div>
 
           {/* Quick Contact Form */}
-          <QuickContact/>
+          <QuickContact title={section_4_title}/>
         </div>
 
-        {/* Copyright */}
-        <div className="text-center mt-8">
-          {/* <p>OSAKA MASJID© 2024 | ALL RIGHTS RESERVED</p> */}
-          <div
-            className=""
+      </div>
+
+  
+      <div className="bg-green-900 text-white py-6 mt-0">
+        <div className="max-w-7xl mx-auto px-8  items-center">
+           <div
+            className="text-white text-center"
             dangerouslySetInnerHTML={{
               __html: copyright_content,
             }}
           />
-          {/* <p>{copyright_content}</p> */}
-        </div>
-      </div>
-
-      {/* Newsletter Section with dark green background */}
-      <div className="bg-green-900 text-white py-6 mt-0">
-        <div className="max-w-7xl mx-auto px-8 flex flex-col md:flex-row justify-between items-center">
-          <h2 className="text-xl font-bold mb-4 md:mb-0">
-            Subscribe, For Weekly Updates
-          </h2>
-          <div className="flex w-full md:w-auto">
-            <input
-              type="email"
-              placeholder="Enter your email address"
-              className="py-3 pl-6 rounded-l-full w-full md:w-80 text-black bg-white"
-            />
-            <button
-              type="submit"
-              className="bg-orange-700 hover:bg-orange-800 text-white px-6 py-3
-               rounded-r-full transition-colors text-xs"
-            >
-              SIGN UP
-            </button>
-          </div>
+        
+          
         </div>
       </div>
     </div>

@@ -19,7 +19,7 @@ const Scholars = ({ scholars }) => {
   const paginatedScholars = scholars.slice(startIndex, startIndex + scholarsPerPage);
 
   const heroData = {
-    title: "Scholars",
+    title: "学者",
   };
 
   return (
