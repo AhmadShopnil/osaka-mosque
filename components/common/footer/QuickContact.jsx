@@ -17,7 +17,7 @@ const postForm = async (endpoint, formData) => {
   }
 };
 
-const QuickContact = () => {
+const QuickContact = ({title}) => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -59,7 +59,7 @@ const QuickContact = () => {
 
   return (
     <div>
-      <h2 className="text-xl font-bold mb-4">クイックコンタクト</h2>
+      <h2 className="text-xl font-bold mb-4">{title}</h2>
 
       {/* ✅ Set onSubmit on the form, not the button */}
       <form onSubmit={handleSubmit}>

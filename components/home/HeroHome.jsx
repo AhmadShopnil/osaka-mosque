@@ -7,13 +7,14 @@ const HeroHome = async () => {
   const sliders = await getSliders();
   const settings = await getSettings();
 
+
   // console.log("phone", phone)
 
   return (
     <section className="relative w-full ">
       <Header settings={settings} />
       {/* Hero Swiper */}
-      <HomeSlider sliders={sliders} />
+      <HomeSlider sliders={sliders} settings={settings} />
     </section>
   );
 };

@@ -1,7 +1,8 @@
 // app/hadith/page.tsx
+import NoticeList from "@/components/notice/NoticeList";
 import QuoteList from "@/components/quote/QuoteList";
 import HeroSection from "@/components/shared/HeroSection";
-import { getQuran_Hadith } from "@/helper/actions";
+import { getNotices, getQuran_Hadith } from "@/helper/actions";
 
 const heroData = {
   title: "",
@@ -9,12 +10,12 @@ const heroData = {
 
 
 export default async function HadithPage({quran_Hadith}) {
-  const quotes = await getQuran_Hadith()
+  const notices = await getNotices()
 
   return (
     <div className="pb-64">
       <HeroSection heroData={heroData} />
-      {/* <QuoteList quotes={quotes}/> */}
+      <NoticeList notices={notices}/>
     </div>
   );
 }

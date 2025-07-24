@@ -60,15 +60,15 @@ const SingleEvents = async ({ event }) => {
   //    console.log("time", time)
 
   return (
-    <div className="pb-96">
+    <div className="pb-52 md:pb-64 ">
       <HeroSection heroData={heroData} />
-      <div className="w-full px-2 sm:px-4 md:px-20 flex flex-col md:flex-row gap-8 mt-14">
+      <div className="w-full px-2 sm:px-4 md:px-20 flex flex-col md:flex-row gap-8 mt-14 ">
         {/* Left side */}
         <div className="w-full md:w-3/4 min-h-screen">
           {/* Image section  start*/}
-          <div className="relative">
+          <div className="relative bg-gray-200">
             <Image
-              src="/images/event-img.jpg"
+              src={event?.featured_image }
               alt="hero"
               width={1000}
               height={1000}
@@ -140,20 +140,20 @@ const SingleEvents = async ({ event }) => {
           </div> */}
 
           {/* Location section start */}
-          <div className="mt-24 ">
+          {/* <div className="mt-24 ">
             <h1 className="text-3xl py-5">Location</h1>
             <Map />
-          </div>
+          </div> */}
         </div>
 
         {/* right side */}
-        <div className="w-full md:w-1/4  min-h-screen ">
+        <div className="w-full md:w-1/4  ">
           <div className=" bg-white  w-full max-w-md">
-            <h3 className="text-xl font-bold text-gray-800 mb-4">
+            <h3 className="text-xl font-bold text-gray-800 ">
               Recent Events
             </h3>
             {events?.slice(0, 4).map((event, index) => (
-              <Link key={index} href={`/event/${event?.slug}`}>
+              <Link key={index} href={`/events/${event?.slug}`}>
                 <SmallCard event={event} />
               </Link>
             ))}

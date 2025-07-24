@@ -1,7 +1,5 @@
 "use client";
-
 import React, { useEffect, useState } from "react";
-
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import Link from "next/link";
@@ -10,6 +8,7 @@ import { formatPathname } from "@/helper/formatPathname";
 import Header from "../common/header/Header";
 import { getSettings } from "@/helper/getSettings";
 import axiosInstance from "@/helper/axiosInstance";
+import { getImageUrl } from "@/helper/getImageUrl";
 
 const HeroSection = ({ heroData , }) => {
    const [settings, setSettings] = useState([]);
@@ -18,8 +17,11 @@ const HeroSection = ({ heroData , }) => {
   const [eventDropdownOpen, setEventDropdownOpen] = useState(false);
   const pathname = usePathname();
   const prettyPath = formatPathname(pathname);
-  
 
+  const data=settings.find((item)=>item?.meta_name=="masjid_image")
+// console.log("data",data)
+const image = getImageUrl(data);
+// console.log("imageUrl",image)
   
   useEffect(() => {
     axiosInstance
@@ -45,24 +47,13 @@ const HeroSection = ({ heroData , }) => {
         <SwiperSlide>
           <div className="relative w-full h-full">
             <img
-              src="/images/slide-4.jpg"
+              src={image}
               className="w-full h-full object-cover"
               alt="Slide 1"
             />
             <div className="absolute inset-0 flex flex-col justify-center items-center mt-40 p-6 text-white text-center">
               <h1 className="text-[48px] ">{title}</h1>
-              {/* <div className="bg-[#6a994e] my-4 w-[70px] h-[2px]"></div> */}
-              {/* <ol className="flex items-center gap-2 text-[16px] leading-[30px]">
-                <li>
-                  <a href="/">Home</a>
-                </li>
-
-                <li>
-                  <a href="#" className="text-[#6a994e]">
-                    {prettyPath}
-                  </a>
-                </li>
-              </ol> */}
+            
             </div>
           </div>
         </SwiperSlide>

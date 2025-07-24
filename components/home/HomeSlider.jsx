@@ -8,10 +8,13 @@ import "swiper/css/navigation";
 import { useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { getMetaValueByMetaName } from "@/helper/metaHelpers";
 
-const HomeSlider = ({ sliders }) => {
+const HomeSlider = ({ sliders,settings }) => {
   const prevRef = useRef(null);
   const nextRef = useRef(null);
+
+const slider_button = getMetaValueByMetaName(settings, "slider_button") || "Details";
 
   return (
     <div className="relative">
@@ -53,7 +56,7 @@ const HomeSlider = ({ sliders }) => {
           <SwiperSlide key={i}>
             <div className="relative w-full h-[500px] lg:h-[650px]">
               {/* Overlay */}
-              <div className="absolute inset-0 bg-black/40 z-[1]"></div>
+              <div className="absolute inset-0 bg-black/50 z-[1]"></div>
 
               <Image
                 src={slide?.featured_image}
@@ -80,7 +83,7 @@ const HomeSlider = ({ sliders }) => {
                     href={`/quote/${slide?.slug}`}
                     className="bg-[#00401A] hover:bg-[#80b918] mt-6 px-10 py-3 rounded-md font-bold text-sm transition"
                   >
-                   もっと詳しく知る
+                   {slider_button}
                   </Link>
                 </div>
               </div>

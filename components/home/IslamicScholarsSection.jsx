@@ -3,14 +3,15 @@ import { getMetaDescriptionByMetaName, getMetaValueByMetaName } from "@/helper/m
 import Image from "next/image";
 import Link from "next/link";
 
-export default async function IslamicScholarsSection({ settings }) {
+export default async function IslamicScholarsSection({ settings,islamic_scholars }) {
   const scholars = await getScholars();
+  // const islamic_scholars_heading =
+  //   getMetaValueByMetaName(settings, "islamic_scholars") || "";
+  // const islamic_scholars_sub_heading =
+  //   getMetaDescriptionByMetaName(settings, "islamic_scholars") || "";
 
-  const islamic_scholars_heading =
-    getMetaValueByMetaName(settings, "islamic_scholars") || "";
-  const islamic_scholars_sub_heading =
-    getMetaDescriptionByMetaName(settings, "islamic_scholars") || "";
-
+const scholars_button = getMetaValueByMetaName(settings, "scholars_button") || "See More";
+// console.log("scholars", )
   return (
     <section className="z-10 pt-[50px] lg:pt-[100px] relative bg-[#fafafa] pb-64">
       {/* Left Background Image */}
@@ -27,10 +28,10 @@ export default async function IslamicScholarsSection({ settings }) {
         {/* Header */}
         <div className="text-center mb-[40px]">
           <span className="text-[#00401A] text-[20px] mb-[5px]">
-            {islamic_scholars_sub_heading}
+            {islamic_scholars?.sub_title}
           </span>
           <h2 className="mt-2 font-semibold text-[#222] text-[38px] md:text-[42px] lg:text-[48px]">
-            {islamic_scholars_heading}
+            {islamic_scholars?.title}
           </h2>
           <Image
             width={160}
@@ -83,7 +84,7 @@ export default async function IslamicScholarsSection({ settings }) {
             href="/scholars"
             className="bg-[#00401A] hover:bg-[#80b918] px-[45px] py-[14px] rounded-md font-bold text-[15px] text-white transition"
           >
-            もっと見る
+            {scholars_button}
           </Link>
         </div>
       </div>

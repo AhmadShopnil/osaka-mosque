@@ -4,6 +4,7 @@ import React from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay } from 'swiper/modules';
 import 'swiper/css';
+import Link from 'next/link';
 
 
 const fatwas = [
@@ -34,13 +35,14 @@ const fatwas = [
   },
 ];
 
-const FatwaSwiper = ({fatwas}) => {
+const FatwaSwiper = ({fatwas,fatwa_heading_bar}) => {
 
 
 
   return (
-    <div className="bg-yellow-100 py-2 overflow-hidden ">
-      <Swiper
+    <div className=" overflow-hidden flex ">
+      <div className='overflow-hidden bg-white py-2'>
+        <Swiper
         modules={[Autoplay]}
         spaceBetween={50}
         slidesPerView="auto"
@@ -59,12 +61,18 @@ const FatwaSwiper = ({fatwas}) => {
             style={{ width: 'auto' }}
             className="!w-auto px-4 flex items-center"
           >
-            <span className="text-sm font-medium text-gray-800 whitespace-nowrap">
-              🕋 <strong>{fatwa?.title}:</strong> {fatwa?.sub_title}
-            </span>
+            <Link 
+            href={`/fatwa/${fatwa?.slug}`}
+            className="text-sm font-medium text-gray-800 whitespace-nowrap ">
+              🕋 <strong>{fatwa?.name}:</strong> {fatwa?.sub_title}
+            </Link>
           </SwiperSlide>
         ))}
       </Swiper>
+      </div>
+      <div className='bg-[#0D542B] text-white py-2 px-3'>
+        <span> {fatwa_heading_bar}</span>
+      </div>
     </div>
   );
 };

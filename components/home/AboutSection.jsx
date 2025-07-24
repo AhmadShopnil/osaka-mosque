@@ -1,8 +1,8 @@
 
 import Image from "next/image";
-import { getMetaValueFromExtra_Fields } from "@/helper/metaHelpers";
+import { getMetaValueByMetaName, getMetaValueFromExtra_Fields } from "@/helper/metaHelpers";
 
-const AboutSection = async ({about}) => {
+const AboutSection = async ({about,settings }) => {
   // const about = await getPage("about-us");
 
   const short_description = getMetaValueFromExtra_Fields(
@@ -10,7 +10,7 @@ const AboutSection = async ({about}) => {
     "short_description"
   );
 
-
+const about_button = getMetaValueByMetaName(settings, "about_button") || "Details";
 
   // console.log("about", short_description);
 
@@ -69,7 +69,7 @@ const AboutSection = async ({about}) => {
                   href="/about"
                   className="bg-[#00401A] hover:bg-[#80b918] px-[45px] py-[14px] rounded-md font-bold text-[15px] text-white transition"
                 >
-                 もっと詳しく知る
+                 {about_button}
 
                 </a>
               </div>

@@ -34,6 +34,16 @@ export default async function Footer() {
     getMetaValueByMetaName(settings, "bottom_footer_content") ||
     "OSAKA MASJID© 2025 | ALL RIGHTS RESERVED";
 
+
+// sectionTittles
+const section_1_title = getMetaValueByMetaName(settings, "section_1_title") || "";
+const section_2_title = getMetaValueByMetaName(settings, "section_2_title") || "";
+const section_3_title = getMetaValueByMetaName(settings, "section_3_title") || "";
+const section_4_title = getMetaValueByMetaName(settings, "section_4_title") || "";
+
+
+
+
   return (
     <div className="bg-green-900 pt-16 relative z-50">
       {/* Main footer content with white background - positioned higher with negative margin */}
@@ -43,13 +53,13 @@ export default async function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* About Us Section */}
           <div>
-            <h2 className="text-xl font-bold mb-4">私たちについて</h2>
+            <h2 className="text-xl font-bold mb-4">{section_1_title}</h2>
             <p className="text-gray-700 mb-6">{footer_content}</p>
           </div>
 
           {/* Latest Blogs Section */}
           <div>
-            <h2 className="text-xl font-bold mb-4">最新のブログ</h2>
+            <h2 className="text-xl font-bold mb-4">{section_2_title}</h2>
             <div className="flex flex-col gap-3">
               {blogs?.slice(0, 2).map((blog, i) => (
                 <Link key={i} href={`/blogs/${blog?.slug}`}>
@@ -61,7 +71,7 @@ export default async function Footer() {
 
           {/* Contact Info Section */}
           <div>
-            <h2 className="text-xl font-bold mb-4">連絡先情報</h2>
+            <h2 className="text-xl font-bold mb-4">{section_3_title}</h2>
             <ul className="space-y-6">
               <li className="flex items-center">
                 {/* <FaPhoneAlt size={13} /> */}
@@ -97,21 +107,14 @@ export default async function Footer() {
           </div>
 
           {/* Quick Contact Form */}
-          <QuickContact/>
+          <QuickContact title={section_4_title}/>
         </div>
 
-        {/* Copyright */}
-        <div className="text-center mt-8">
-          {/* <p>OSAKA MASJID© 2024 | ALL RIGHTS RESERVED</p> */}
-          
-       
-        </div>
       </div>
 
   
       <div className="bg-green-900 text-white py-6 mt-0">
         <div className="max-w-7xl mx-auto px-8  items-center">
-        
            <div
             className="text-white text-center"
             dangerouslySetInnerHTML={{
