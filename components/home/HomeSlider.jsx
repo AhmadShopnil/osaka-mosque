@@ -67,8 +67,8 @@ const slider_button = getMetaValueByMetaName(settings, "slider_button") || "Deta
               />
 
               <div className="absolute inset-0 flex flex-col justify-center items-center pt-[250px] pb-[200px] text-white text-center z-[2]">
-                <div className="w-[80%] lg:max-w-[50%] flex flex-col items-center pt-[100px]">
-                  <h3 className="text-[35px] mt-1">{slide?.name}</h3>
+                <div className="w-[80%] lg:max-w-[70%] flex flex-col items-center pt-[100px]">
+                  <h3 className="text-[40px] mt-1">{slide?.name}</h3>
                   <Image
                     src="/images/pshape.png"
                     alt="shape"
@@ -76,12 +76,12 @@ const slider_button = getMetaValueByMetaName(settings, "slider_button") || "Deta
                     width={100}
                     height={15}
                   />
-                  <span className="font-semibold text-[18px] mt-4">
+                  <span className="font-semibold text-[20px] mt-4">
                     {slide?.sub_title}
                   </span>
                   <Link
                     href={`/quote/${slide?.slug}`}
-                    className="bg-[#00401A] hover:bg-[#80b918] mt-6 px-10 py-3 rounded-md font-bold text-sm transition"
+                    className="bg-[#00401A] hover:bg-[#80b918] mt-6 px-6 py-3 rounded-md font-bold text-sm transition"
                   >
                    {slider_button}
                   </Link>

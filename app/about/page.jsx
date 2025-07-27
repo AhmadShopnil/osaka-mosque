@@ -1,10 +1,12 @@
+import BackToHomeButton from "@/components/shared/BackToHomeButton";
 import HeroSection from "@/components/shared/HeroSection";
-import { getPage } from "@/helper/actions";
+import { getPage, getSettings } from "@/helper/actions";
 import Image from "next/image";
 import React from "react";
 
 const Page = async () => {
   const about = await getPage("about-us");
+  const settings = await getSettings();
 
   const heroData = {
     title: about?.name || "About Us",
@@ -48,27 +50,10 @@ const Page = async () => {
         </div>
       </section>
 
-      {/* Feature Cards */}
-      {/* <section className="bg-white py-16 md:py-24">
-        <div className="container mx-auto px-4 md:px-20">
-          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-            {[1, 2, 3].map((_, index) => (
-              <div
-                key={index}
-                className="bg-gray-50 rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow duration-300"
-              >
-                <h4 className="text-xl font-semibold mb-4 text-[#00401A]">Our Mission {index + 1}</h4>
-                <p className="text-gray-600 leading-relaxed">
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quisquam, quae.
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section> */}
+    
 
       {/* Footer Image Shape (optional) */}
-      <div className="text-center mt-10">
+      <div className="text-center mt-10 mb-4">
         <Image
           src="/images/pshape.png"
           alt="Design Shape"
@@ -77,6 +62,9 @@ const Page = async () => {
           className="mx-auto"
         />
       </div>
+       <div className="flex justify-center items-center">
+               <BackToHomeButton settings={settings}/>
+            </div>
     </div>
   );
 };

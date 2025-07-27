@@ -3,9 +3,10 @@ import Link from "next/link";
 import { FaCalendarAlt, FaUser } from "react-icons/fa";
 import HeroSection from "../shared/HeroSection";
 import BlogSmallCard from "./BlogSmallCard";
+import BackToHomeButton from "../shared/BackToHomeButton";
 
 
-const SingleBlog = ({ blog, blogs }) => {
+const SingleBlog = ({ blog, blogs,settings }) => {
   // Extracting date parts
   const [day, month] = (blog?.post_date || "01 Jan").split(" ");
   const heroData = {
@@ -81,6 +82,9 @@ const SingleBlog = ({ blog, blogs }) => {
           </div>
         </div>
       </div>
+      <div className="flex justify-center items-center">
+               <BackToHomeButton settings={settings}/>
+            </div>
     </div>
   );
 };

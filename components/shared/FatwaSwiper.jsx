@@ -70,7 +70,7 @@ const FatwaSwiper = ({fatwas,fatwa_heading_bar}) => {
         ))}
       </Swiper>
       </div>
-      <div className='bg-[#0D542B] text-white py-2 px-3'>
+      <div className='bg-[#0D542B] text-white py-2 px-3 text-sm'>
         <span> {fatwa_heading_bar}</span>
       </div>
     </div>

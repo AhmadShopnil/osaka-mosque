@@ -1,7 +1,8 @@
 
-import { getBlogs, getSingleBlog } from "@/helper/actions";
+import { getBlogs, getSettings, getSingleBlog } from "@/helper/actions";
 import { notFound } from "next/navigation";
 import SingleBlog from "@/components/blog/SingleBlog";
+import BackToHomeButton from "@/components/shared/BackToHomeButton";
 
 // Optional: Dynamic SEO Metadata
 export async function generateMetadata({ params }) {
@@ -31,12 +32,14 @@ export default async function BlogDetailPage({ params }) {
   const { slug } = await params
   const blog= await getSingleBlog(slug);
   const blogs = await getBlogs();
+  const settings = await getSettings();
 
   if (!blog) return notFound();
 
   return (
     <div className="">
-      <SingleBlog blog={blog} blogs={blogs} />
+      <SingleBlog blog={blog} blogs={blogs} settings={settings} />
+      
     </div>
   );
 }

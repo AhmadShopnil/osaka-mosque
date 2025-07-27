@@ -82,7 +82,7 @@ const scholars_button = getMetaValueByMetaName(settings, "scholars_button") || "
         <div className="flex justify-center items-center mt-8 lg:mt-32">
           <Link
             href="/scholars"
-            className="bg-[#00401A] hover:bg-[#80b918] px-[45px] py-[14px] rounded-md font-bold text-[15px] text-white transition"
+            className="bg-[#00401A] hover:bg-[#80b918] px-5 py-2 rounded-md font-bold text-[15px] text-white transition"
           >
             {scholars_button}
           </Link>

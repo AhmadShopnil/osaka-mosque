@@ -6,11 +6,19 @@ import { Navigation, Pagination, Autoplay } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
+import Image from 'next/image';
 
-const ImageSlider = ({ img_gallery }) => {
+const ImageSlider = ({ img_gallery,img_gallery_heading }) => {
+
   return (
     <div className="w-full max-w-6xl mx-auto mt-10  overflow-hidden shadow-xl">
-      <Swiper
+     <div className="flex flex-col items-center mb-[40px] text-center">
+       <h3 className='pb-[5px] text-[#00401A] text-[20px]'>{img_gallery_heading?.sub_title}</h3>
+      <h3 className='font-semibold text-[#222] text-[28px] sm:text-[38px] md:text-[42px] lg:text-[48px]'>{img_gallery_heading?.title}</h3>
+       <Image className="mt-2" src="/images/pshape.png" alt="Design Shape" width={100} height={50} />
+     </div>
+     <div>
+       <Swiper
         modules={[Navigation, Pagination, Autoplay]}
         navigation
         pagination={{ clickable: true }}
@@ -43,6 +51,7 @@ const ImageSlider = ({ img_gallery }) => {
           </SwiperSlide>
         ))}
       </Swiper>
+     </div>
     </div>
   );
 };

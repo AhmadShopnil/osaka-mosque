@@ -91,15 +91,15 @@ const Last_updateText = getMetaValueByMetaName(settings, "last_update") || "";
           </div>
 
           <div className="md:col-span-3">
-            <h4 className="text-center text-xl font-medium mb-3">
+            <h4 className="text-center text-3xl font-medium mb-3">
              {prayer_time?.short_description}
             </h4>
             <h5 className="text-center text-sm font-medium mb-2">
              <span className="font-semibold">{Last_updateText} :</span> {formatDateTime(prayer_time?.updated_at)}
             </h5>
-            <h5 className="text-center text-sm font-medium mb-6">
+            {/* <h5 className="text-center text-sm font-medium mb-6">
              <span  className="font-semibold">{next_updateText}:</span> {next_update?.value}
-            </h5>
+            </h5> */}
             <table className="w-full rounded-lg border-collapse">
               <thead>
                 <tr>
@@ -153,8 +153,8 @@ const Last_updateText = getMetaValueByMetaName(settings, "last_update") || "";
 
                   return (
                     <tr key={name} className="text-center hover:text-[#00401A] transition">
-                      <td className="p-3">{prayerName}</td>
-                      <td className="p-3">{localRaw}</td>
+                      <td className="p-3 font-bold">{prayerName}</td>
+                      <td className="p-3 font-bold">{localRaw}</td>
                       <td className="p-3">{startTime}</td>
                       <td className="p-3">{endTime}</td>
                     </tr>
@@ -162,6 +162,7 @@ const Last_updateText = getMetaValueByMetaName(settings, "last_update") || "";
                 })}
               </tbody>
             </table>
+            <p className="text-red-600 text-center mt-3">{prayer_time?.description}</p>
           </div>
         </div>
       </div>

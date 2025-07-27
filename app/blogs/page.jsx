@@ -1,7 +1,8 @@
 
 import AllBlogs from "@/components/blog/AllBlogs";
+import BackToHomeButton from "@/components/shared/BackToHomeButton";
 import HeroSection from "@/components/shared/HeroSection";
-import { getBlogs } from "@/helper/actions";
+import { getBlogs, getSettings } from "@/helper/actions";
 
 export const metadata = {
   title: "Latest Blogs | Osaka Masjid",
@@ -10,7 +11,7 @@ export const metadata = {
 
 const BlogPage = async () => {
   const blogs = await getBlogs();
-
+const settings = await getSettings();
   const heroData = {
     title: "",
     subtitle: "",
@@ -19,7 +20,8 @@ const BlogPage = async () => {
   return (
     <div className="pb-64">
       <HeroSection heroData={heroData} />
-      <AllBlogs blogs={blogs} />
+      <AllBlogs blogs={blogs} settings={settings} />
+      
     </div>
   );
 };

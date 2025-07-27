@@ -20,13 +20,13 @@ const Events = ({ events }) => {
   const paginatedEvents = events.slice(startIndex, startIndex + eventsPerPage);
 
   const heroData = {
-    title: "イベント",
+    title: "",
   };
 
   return (
     <div className="pb-64">
       <HeroSection heroData={heroData} />
-      <section className="pt-4 sm:pt-10 md:pt-[50px] bg-[#f8f9fa] min-h-[400px]">
+      <section className="pt-4 sm:pt-10 md:pt-[40px] bg-[#f8f9fa] min-h-[400px]">
         <div className="container mx-auto px-2 lg:px-8">
           {events.length === 0 ? (
             <div className="flex flex-col items-center justify-center text-center pb-10 pt-10">

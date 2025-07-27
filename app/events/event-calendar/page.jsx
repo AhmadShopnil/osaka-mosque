@@ -8,7 +8,7 @@ import { getEvents } from "@/helper/actions";
 export default async function CalendarPage() {
 
 const heroData={
-  title:"Event Calendar"
+  title:""
 }
 const events=await getEvents()
 // console.log("events", events)

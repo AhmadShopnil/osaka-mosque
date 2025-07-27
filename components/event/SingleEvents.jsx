@@ -123,11 +123,11 @@ const SingleEvents = async ({ event }) => {
               }}
             />
           ) : (
-            <p>No Description</p>
+            <p></p>
           )}
 
           <p className=" mt-6">
-            <span className="font-semibold">Speakers:</span> {speakers}
+            <span className="font-semibold"></span> {speakers}
           </p>
           {/* Speakers section start */}
           {/* <div>
@@ -149,9 +149,9 @@ const SingleEvents = async ({ event }) => {
         {/* right side */}
         <div className="w-full md:w-1/4  ">
           <div className=" bg-white  w-full max-w-md">
-            <h3 className="text-xl font-bold text-gray-800 ">
+            {/* <h3 className="text-xl font-bold text-gray-800 ">
               Recent Events
-            </h3>
+            </h3> */}
             {events?.slice(0, 4).map((event, index) => (
               <Link key={index} href={`/events/${event?.slug}`}>
                 <SmallCard event={event} />

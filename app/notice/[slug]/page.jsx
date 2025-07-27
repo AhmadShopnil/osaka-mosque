@@ -1,9 +1,11 @@
 
+import BackToHomeButton from '@/components/shared/BackToHomeButton';
 import HeroSection from '@/components/shared/HeroSection';
-import { getSingleNotice } from '@/helper/actions';
+import { getSettings, getSingleNotice } from '@/helper/actions';
 import React from 'react';
 
 const NoticeDetails = async({ params }) => {
+    const settings = await getSettings();
       const { slug } = await params
       const notice= await getSingleNotice(slug);
       const heroData = {
@@ -35,15 +37,15 @@ const NoticeDetails = async({ params }) => {
             }}
           />
 
-      {/* <div className="bg-white p-6 rounded-xl shadow-md border border-gray-200 text-gray-700 leading-relaxed">
-        {notice?.description.split('\n').map((para, i) => (
-          <p key={i} className="mb-4">{para}</p>
-        ))}
-      </div> */}
+    
 
 
     </div>
+    
       </div>
+      <div className="flex justify-center items-center mt-10">
+                   <BackToHomeButton settings={settings}/>
+                </div>
     </div>
 
     
