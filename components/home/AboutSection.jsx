@@ -20,7 +20,7 @@ const about_button = getMetaValueByMetaName(settings, "about_button") || "Detail
         <div className="flex flex-col md:flex-row gap-12 md:gap-16 justify-between items-center">
           {/* Left side - Image */}
           <div className="w-full md:w-1/2">
-            <div className="relative w-full h-[300px] sm:h-[400px] md:h-[390px] lg:h-[430px]">
+            <div className="relative w-full h-[490px] sm:h-[500px] md:h-[520] lg:h-[530px]">
               {/* Border box for tablet and larger */}
               <div className="hidden md:block absolute top-7 right-7 w-full h-full border-[10px] border-[#00401A] rounded-md z-0" />
 
@@ -67,7 +67,7 @@ const about_button = getMetaValueByMetaName(settings, "about_button") || "Detail
               <div className="mt-[35px]">
                 <a
                   href="/about"
-                  className="bg-[#00401A] hover:bg-[#80b918] px-[45px] py-[14px] rounded-md font-bold text-[15px] text-white transition"
+                  className="bg-[#00401A] hover:bg-[#80b918] px-6 py-3 rounded-md font-bold text-[15px] text-white transition"
                 >
                  {about_button}
 

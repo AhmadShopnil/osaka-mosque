@@ -1,4 +1,5 @@
 // app/learn-more/page.tsx
+import BackToHomeButton from "@/components/shared/BackToHomeButton";
 import HeroSection from "@/components/shared/HeroSection";
 import { getSettings, getSingleSlider } from "@/helper/actions";
 import { getMetaValueFromExtra_Fields } from "@/helper/metaHelpers";
@@ -64,17 +65,12 @@ export default async function LearnMorePage({ params }) {
            
           </div>
         </div>
+         <section className=" text-white text-center px-6 py-10">
+       <BackToHomeButton settings={settings}/>
+      </section>
       </section>
 
-      {/* Call to Action Section */}
-      <section className=" text-white text-center px-6">
-        <Link
-          href="/"
-          className="inline-block bg-[#016630] text-white font-semibold px-6 py-3 rounded-lg shadow hover:bg-gray-100 transition"
-        >
-          Back to Home
-        </Link>
-      </section>
+     
     </main>
   );
 }

@@ -28,6 +28,7 @@ export default async function Home() {
   const our_blog_events = sections.find((s) => s.title_slug === "islamic-blogs-and-events");
   const make_your_donation = sections.find((s) => s.title_slug === "make-your-doantion");
   const islamic_scholars = sections.find((s) => s.title_slug === "islamic-scholars");
+    const img_gallery_heading = sections.find((s) => s.title_slug === "gallery");
   // const quran_hadith_heading = sections.find((s) => s.title_slug === "quran-hadith");
     const notice_heading = sections.find((s) => s.title_slug === "notice-board");
   //  console.log("prayer_time from home", make_your_donation)
@@ -42,7 +43,7 @@ export default async function Home() {
       {/* <Quran_Hadith_Section quotes={quotes}  quran_hadith_heading={quran_hadith_heading}/> */}
       <PrayerTimeSection settings={settings} prayer_time={prayer_time} />
 
-<ImageSlider img_gallery={img_gallery} />
+<ImageSlider img_gallery={img_gallery} img_gallery_heading={img_gallery_heading} />
 
       <OfferedServicesSection settings={settings} offered_services={offered_services} />
       <PillarOfIslamSection settings={settings} pillar_of_islam_info={pillar_of_islam_info} />

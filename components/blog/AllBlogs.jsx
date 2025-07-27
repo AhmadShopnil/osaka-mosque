@@ -6,8 +6,9 @@ import Link from "next/link";
 import { Calendar } from "lucide-react";
 import Pagination from "@/components/shared/Pagination";
 import { formatDate } from "@/helper/formatDate";
+import BackToHomeButton from "../shared/BackToHomeButton";
 
-const AllBlogs = ({ blogs }) => {
+const AllBlogs = ({ blogs,settings }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const blogsPerPage = 6;
   const totalPages = Math.ceil((blogs.length - 1) / blogsPerPage);
@@ -18,15 +19,9 @@ const AllBlogs = ({ blogs }) => {
     .slice((currentPage - 1) * blogsPerPage, currentPage * blogsPerPage);
 
   return (
-    <section className="bg-[#f9f9f9] pt-10 ">
+    <section className="bg-[#f9f9f9] pt-10 py-4 ">
       <div className="container mx-auto px-2 lg:px-8 ">
-        {/* Header */}
-        {/* <div className="text-center mb-16 max-w-3xl mx-auto">
-          <h1 className="text-4xl font-bold text-[#00401A]">{featuredBlog?.name}</h1>
-          <p className="mt-4 text-gray-600 text-lg">
-            Discover our thoughts, stories, and updates on Islamic knowledge, events, and more.
-          </p>
-        </div> */}
+      
 
         {/* Featured Blog */}
         <Link href={`/blogs/${featuredBlog.slug}`}>
@@ -90,6 +85,9 @@ const AllBlogs = ({ blogs }) => {
             onPageChange={(page) => setCurrentPage(page)}
           />
         </div>
+        <div className="flex justify-center items-center pb-4">
+                     <BackToHomeButton settings={settings}/>
+                  </div>
       </div>
     </section>
   );

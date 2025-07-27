@@ -24,11 +24,14 @@ const DonationSection = ({ make_your_donation,donationMethods }) => {
   const [activeTab, setActiveTab] = useState(donationMethods[0]);
 
   return (
-    <section className="relative">
+    <section className="relative bg-[#f8f9fa]">
+      <h2 className="mb-6 pl-2 text-black text-[38px] md:text-[42px] lg:text-[48px] leading-12 ">
+                {make_your_donation?.description}
+              </h2>
       <div
         className="relative bg-cover bg-no-repeat bg-center bg-fixed"
         style={{ backgroundImage: "url('/images/parallax3.jpg')" }}
-      >
+      > 
         <div className="absolute inset-0 bg-[#f8f9fa] opacity-80 z-0" />
 
         <div className="relative grid grid-cols-1 md:grid-cols-2 items-center gap-8 z-10">
@@ -96,7 +99,7 @@ const DonationSection = ({ make_your_donation,donationMethods }) => {
             {/* Bank Info */}
             <div className="mt-6 bg-white rounded-md shadow p-6 border border-gray-100 text-[#222]">
               <h4 className="text-xl font-bold mb-4 text-[#00401A]">
-                銀行情報
+               {make_your_donation?.short_description}
               </h4>
               <div
               className="text-[#666] text-[16px]"

@@ -10,6 +10,7 @@ import { getSettings } from "@/helper/getSettings";
 import axiosInstance from "@/helper/axiosInstance";
 import { getImageUrl } from "@/helper/getImageUrl";
 
+
 const HeroSection = ({ heroData , }) => {
    const [settings, setSettings] = useState([]);
   const { title } = heroData;
@@ -52,7 +53,7 @@ const image = getImageUrl(data);
               alt="Slide 1"
             />
             <div className="absolute inset-0 flex flex-col justify-center items-center mt-40 p-6 text-white text-center">
-              <h1 className="text-[48px] ">{title}</h1>
+              <h1 className="text-[48px] mb-4">{title}</h1>
             
             </div>
           </div>
