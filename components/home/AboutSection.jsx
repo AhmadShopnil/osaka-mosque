@@ -21,7 +21,7 @@ const about_button = getMetaValueByMetaName(settings, "about_button") || "Detail
           {/* Left side - Image */}
           <div className="w-full md:w-1/2">
             <div className="relative w-full h-[490px] sm:h-[500px] md:h-[520] lg:h-[530px]">
-              {/* Border box for tablet and larger */}
+              {/* Border box for tablet , larger */}
               <div className="hidden md:block absolute top-7 right-7 w-full h-full border-[10px] border-[#00401A] rounded-md z-0" />
 
               {/* Actual image */}
