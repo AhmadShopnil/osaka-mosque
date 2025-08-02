@@ -36,17 +36,17 @@ const Page = async () => {
                 }}
               />
 
-           
           </div>
+         <div className="rounded-md overflow-hidden  mt-8 flex justify-center">
+  <Image
+    src={about?.featured_image || "/images/placeholder.jpg"}
+    alt={about?.name}
+    width={500}
+    height={400}
+    className="object-contain "
+  />
+</div>
 
-          <div className="relative w-full h-[300px] lg:h-[500px] rounded-xl overflow-hidden shadow-md mt-10">
-            <Image
-              src={about?.featured_image || "/images/placeholder.jpg"}
-              alt={about?.name}
-              fill
-              className="object-cover"
-            />
-          </div>
         </div>
       </section>
 

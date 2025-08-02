@@ -177,7 +177,7 @@ const PrayerTimeSection = async ({ settings, prayer_time }) => {
                 )
               })}
             </div>
-            <p className="text-red-600 text-center mt-3">{prayer_time?.description}</p>
+            <p className="text-red-600 text-center mt-4">{prayer_time?.description}</p>
           </div>
         </div>
       </div>
