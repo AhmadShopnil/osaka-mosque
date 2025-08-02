@@ -4,6 +4,7 @@ import Footer from "@/components/common/footer/Footer";
 import { Toaster } from "react-hot-toast";
 import Marquee from "@/components/shared/Marquee";
 import FatWaWrapper from "@/components/shared/FatWaWrapper";
+import Script from "next/script";
 
 const merriweather = Merriweather({
   subsets: ["latin"],
@@ -20,13 +21,16 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
+
+    
       <body
         // className={`${geistSans.variable} ${geistMono.variable} antialiased`}
         className={`${merriweather.variable} font-merriweather antialiased`}
       >
-        {/* <PayPalScriptProvider
-          options={{ "client-id": "YOUR_PAYPAL_CLIENT_ID" }}
-        > */}
+         <Script src="/assets/lang-config.js" strategy="beforeInteractive" />
+      <Script src="/assets/translation.js" strategy="beforeInteractive" />
+      <Script src="//translate.google.com/translate_a/element.js?cb=TranslateInit" strategy="afterInteractive" />
+        
         <div>
           <Marquee />
           <FatWaWrapper/>
