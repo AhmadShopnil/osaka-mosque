@@ -17,6 +17,8 @@ import {
 import Image from "next/image";
 
 import GoogleTranslateCustom from "@/components/shared/GoogleTranslateCustom";
+import LanguageSelector from "@/components/utils/LanguageSelector";
+import { LanguageSwitcher } from "@/components/utils/LanguageSwitcher";
 
 const Header = ({ settings }) => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -161,13 +163,11 @@ const Header = ({ settings }) => {
                 </Link>
               </li>
 
-              {/* <li className="">
-                <GoogleTranslate />
-              </li> */}
-              {/* <GoogleTranslate/> */}
+             
               
             </ul>
-            <div className="ml-3"><GoogleTranslateCustom /></div>
+            <LanguageSwitcher />
+            {/* <div className="ml-3"><GoogleTranslateCustom /></div> */}
             
           </nav>
         </div>
@@ -235,6 +235,7 @@ const Header = ({ settings }) => {
               Contact
             </Link>
           </li>
+          {/* <LanguageSwitcher /> */}
         </ul>
       </div>
 

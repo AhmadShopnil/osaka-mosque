@@ -15,6 +15,7 @@ import {
 import Link from "next/link";
 import BlogSmallCard from "@/components/blog/BlogSmallCard";
 import QuickContact from "./QuickContact";
+import { LanguageSwitcher } from "@/components/utils/LanguageSwitcher";
 
 
 export default async function Footer() {
@@ -55,6 +56,7 @@ const section_4_title = getMetaValueByMetaName(settings, "section_4_title") || "
           <div>
             <h2 className="text-xl font-bold mb-4">{section_1_title}</h2>
             <p className="text-gray-700 mb-6">{footer_content}</p>
+            <LanguageSwitcher color={"black"}  />
           </div>
 
           {/* Latest Blogs Section */}
